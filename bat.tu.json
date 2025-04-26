@@ -1,0 +1,452 @@
+{
+    "nong_lich": [
+        {
+            "id": "lap_xuan",
+            "name": "Lập xuân",
+            "from": "04/02",
+            "to": "18/02"
+        },
+        {
+            "id": "vu_thuy",
+            "name": "Vũ thủy",
+            "from": "19/02",
+            "to": "04/03"
+        },
+        {
+            "id": "kinh_trap",
+            "name": "Kinh trập",
+            "from": "05/03",
+            "to": "20/03"
+        },
+        {
+            "id": "xuan_phan",
+            "name": "Xuân phân",
+            "from": "21/03",
+            "to": "04/04"
+        },
+        {
+            "id": "thanh_minh",
+            "name": "Thanh minh",
+            "from": "05/04",
+            "to": "19/04"
+        },
+        {
+            "id": "coc_vu",
+            "name": "Cốc vũ",
+            "from": "20/04",
+            "to": "05/05"
+        },
+        {
+            "id": "lap_ha",
+            "name": "Lập hạ",
+            "from": "06/05",
+            "to": "20/05"
+        },
+        {
+            "id": "tieu_man",
+            "name": "Tiểu mãn",
+            "from": "21/05",
+            "to": "05/06"
+        },
+        {
+            "id": "mang_chung",
+            "name": "Mang chủng",
+            "from": "06/06",
+            "to": "20/06"
+        },
+        {
+            "id": "ha_chi",
+            "name": "Hạ chí",
+            "from": "21/06",
+            "to": "06/07"
+        },
+        {
+            "id": "tieu_thu",
+            "name": "Tiểu thử",
+            "from": "07/07",
+            "to": "22/07"
+        },
+        {
+            "id": "dai_thu",
+            "name": "Đại thử",
+            "from": "23/07",
+            "to": "06/08"
+        },
+        {
+            "id": "lap_thu",
+            "name": "Lập thu",
+            "from": "07/08",
+            "to": "22/08"
+        },
+        {
+            "id": "xu_thu",
+            "name": "Xử thử",
+            "from": "23/08",
+            "to": "07/09"
+        },
+        {
+            "id": "bach_lo",
+            "name": "Bạch lộ",
+            "from": "08/09",
+            "to": "22/09"
+        },
+        {
+            "id": "thu_phan",
+            "name": "Thu phân",
+            "from": "23/09",
+            "to": "07/10"
+        },
+        {
+            "id": "han_lo",
+            "name": "Hàn lộ",
+            "from": "08/10",
+            "to": "22/10"
+        },
+        {
+            "id": "suong_giang",
+            "name": "Sương giáng",
+            "from": "23/10",
+            "to": "06/11"
+        },
+        {
+            "id": "lap_dong",
+            "name": "Lập đông",
+            "from": "07/11",
+            "to": "21/11"
+        },
+        {
+            "id": "tieu_tuyet",
+            "name": "Tiểu tuyết",
+            "from": "22/11",
+            "to": "06/12"
+        },
+        {
+            "id": "dai_tuyet",
+            "name": "Đại tuyết",
+            "from": "07/12",
+            "to": "21/12"
+        },
+        {
+            "id": "dong_chi",
+            "name": "Đông chí",
+            "from": "22/12",
+            "to": "05/01"
+        },
+        {
+            "id": "tieu_han",
+            "name": "Tiểu hàn",
+            "from": "06/01",
+            "to": "20/01"
+        },
+        {
+            "id": "dai_han",
+            "name": "Đại hàn",
+            "from": "21/01",
+            "to": "03/02"
+        }
+    ],
+    "thien_can": [
+        {
+            "id": 0,
+            "name": "Canh",
+            "element": "Kim",
+            "full_element": "Dương Kim",
+            "color": "#fbb034"
+        },
+        {
+            "id": 1,
+            "name": "Tân",
+            "element": "Kim",
+            "full_element": "Âm Kim",
+            "color": "#bfa300"
+        },
+        {
+            "id": 2,
+            "name": "Nhâm",
+            "element": "Thủy",
+            "full_element": "Dương Thủy",
+            "color": "#1976d2"
+        },
+        {
+            "id": 3,
+            "name": "Quý",
+            "element": "Thủy",
+            "full_element": "Âm Thủy",
+            "color": "#0d47a1"
+        },
+        {
+            "id": 4,
+            "name": "Giáp",
+            "element": "Mộc",
+            "full_element": "Dương Mộc",
+            "color": "#4caf50"
+        },
+        {
+            "id": 5,
+            "name": "Ất",
+            "element": "Mộc",
+            "full_element": "Âm Mộc",
+            "color": "#2e7d32"
+        },
+        {
+            "id": 6,
+            "name": "Bính",
+            "element": "Hỏa",
+            "full_element": "Dương Hỏa",
+            "color": "#f44336"
+        },
+        {
+            "id": 7,
+            "name": "Đinh",
+            "element": "Hỏa",
+            "full_element": "Âm Hỏa",
+            "color": "#b71c1c"
+        },
+        {
+            "id": 8,
+            "name": "Mậu",
+            "element": "Thổ",
+            "full_element": "Dương Thổ",
+            "color": "#9e9e9e"
+        },
+        {
+            "id": 9,
+            "name": "Kỷ",
+            "element": "Thổ",
+            "full_element": "Âm Thổ",
+            "color": "#a1887f"
+        }
+    ],
+    "dia_chi": [
+        {
+            "id": 0,
+            "name": "Thân",
+            "element": "Kim",
+            "full_element": "Dương Kim",
+            "color": "#fbb034"
+        },
+        {
+            "id": 1,
+            "name": "Dậu",
+            "element": "Kim",
+            "full_element": "Âm Kim",
+            "color": "#bfa300"
+        },
+        {
+            "id": 2,
+            "name": "Tuất",
+            "element": "Thổ",
+            "full_element": "Dương Thổ",
+            "color": "#9e9e9e"
+        },
+        {
+            "id": 3,
+            "name": "Hợi",
+            "element": "Thủy",
+            "full_element": "Âm Thủy",
+            "color": "#0d47a1"
+        },
+        {
+            "id": 4,
+            "name": "Tý",
+            "element": "Thủy",
+            "full_element": "Dương Thủy",
+            "color": "#1976d2"
+        },
+        {
+            "id": 5,
+            "name": "Sửu",
+            "element": "Thổ",
+            "full_element": "Âm Thổ",
+            "color": "#a1887f"
+        },
+        {
+            "id": 6,
+            "name": "Dần",
+            "element": "Mộc",
+            "full_element": "Dương Mộc",
+            "color": "#4caf50"
+        },
+        {
+            "id": 7,
+            "name": "Mão",
+            "element": "Mộc",
+            "full_element": "Âm Mộc",
+            "color": "#2e7d32"
+        },
+        {
+            "id": 8,
+            "name": "Thìn",
+            "element": "Thổ",
+            "full_element": "Dương Thổ",
+            "color": "#9e9e9e"
+        },
+        {
+            "id": 9,
+            "name": "Tỵ",
+            "element": "Hỏa",
+            "full_element": "Âm Hỏa",
+            "color": "#b71c1c"
+        },
+        {
+            "id": 10,
+            "name": "Ngọ",
+            "element": "Hỏa",
+            "full_element": "Dương Hỏa",
+            "color": "#f44336"
+        },
+        {
+            "id": 11,
+            "name": "Mùi",
+            "element": "Thổ",
+            "full_element": "Âm Thổ",
+            "color": "#a1887f"
+        }
+    ],
+    "thien_can_thang": {
+        "giap": {
+            "1": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "2": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "3": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "4": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "5": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "6": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "7": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "8": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "9": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "10": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "11": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "12": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" }
+        },
+        "ky": {
+            "1": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "2": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "3": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "4": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "5": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "6": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "7": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "8": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "9": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "10": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "11": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "12": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" }
+        },
+        "at": {
+            "1": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "2": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "3": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "4": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "5": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "6": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "7": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "8": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "9": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "10": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "11": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "12": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" }
+        },
+        "canh": {
+            "1": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "2": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "3": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "4": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "5": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "6": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "7": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "8": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "9": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "10": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "11": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "12": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" }
+        },
+        "binh": {
+            "1": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "2": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "3": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "4": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "5": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "6": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "7": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "8": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "9": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "10": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "11": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "12": { "id": "tan", "name": "Tân", "label": "Âm Kim" }
+        },
+        "tan": {
+            "1": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "2": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "3": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "4": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "5": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "6": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "7": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "8": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "9": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "10": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "11": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "12": { "id": "tan", "name": "Tân", "label": "Âm Kim" }
+        },
+        "dinh": {
+            "1": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "2": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "3": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "4": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "5": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "6": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "7": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "8": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "9": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "10": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "11": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "12": { "id": "quy", "name": "Quý", "label": "Âm Thủy" }
+        },
+        "nham": {
+            "1": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "2": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "3": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "4": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "5": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "6": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "7": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "8": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "9": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "10": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "11": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "12": { "id": "quy", "name": "Quý", "label": "Âm Thủy" }
+        },
+        "mau": {
+            "1": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "2": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "3": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "4": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "5": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "6": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "7": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "8": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "9": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "10": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "11": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "12": { "id": "at", "name": "Ất", "label": "Âm Mộc" }
+        },
+        "quy": {
+            "1": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "2": { "id": "at", "name": "Ất", "label": "Âm Mộc" },
+            "3": { "id": "binh", "name": "Bính", "label": "Dương Hỏa" },
+            "4": { "id": "dinh", "name": "Đinh", "label": "Âm Hỏa" },
+            "5": { "id": "mau", "name": "Mậu", "label": "Dương Thổ" },
+            "6": { "id": "ky", "name": "Kỷ", "label": "Âm Thổ" },
+            "7": { "id": "canh", "name": "Canh", "label": "Dương Kim" },
+            "8": { "id": "tan", "name": "Tân", "label": "Âm Kim" },
+            "9": { "id": "nham", "name": "Nhâm", "label": "Dương Thủy" },
+            "10": { "id": "quy", "name": "Quý", "label": "Âm Thủy" },
+            "11": { "id": "giap", "name": "Giáp", "label": "Dương Mộc" },
+            "12": { "id": "at", "name": "Ất", "label": "Âm Mộc" }
+        }
+    },
+    "dia_chi_thang": {
+        "4/2-4/3": { "id": "dan", "name": "Dần", "element": "Mộc", "full_element": "Dương Mộc", "color": "#00aa55" }
+    }
+
+}
