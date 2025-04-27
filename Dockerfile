@@ -1,8 +1,12 @@
-# Sử dụng PHP 8.2 + Apache làm base image
 FROM php:8.2-apache
 
 # Cài extension PHP bắt buộc cho Laravel
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql zip
 
 # Copy source code vào /var/www
 COPY . /var/www
@@ -14,14 +18,14 @@ RUN sed -i 's#/var/www/html#/var/www/public#g' /etc/apache2/sites-available/000-
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage /var/www/bootstrap/cache
 
-# Cài Composer (quản lý PHP package)
+# Copy composer từ image composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Move vào thư mục /var/www và install packages
 WORKDIR /var/www
 RUN composer install --no-dev --optimize-autoloader
 
-# Bật mod_rewrite cho Apache (Laravel bắt buộc dùng rewrite routes)
+# Bật mod_rewrite cho Apache (Laravel cần rewrite URL)
 RUN a2enmod rewrite
 
 # Mở port 80
