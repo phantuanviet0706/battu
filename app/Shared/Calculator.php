@@ -392,7 +392,7 @@ class Calculator
         );
     }
 
-    private static function gregorianToJDN($date) 
+    public static function gregorianToJDN($date) 
     {
         $day = date('d', strtotime($date));
         $month = date('m', strtotime($date));
@@ -418,7 +418,7 @@ class Calculator
      * @param mixed $date
      * @return object
      */
-    public static function calculateHeavenlyStemOfDay($date)
+    public static function calculateHeavenlyStemDay($date)
     {
         $day = date('d', strtotime($date));
         $month = date('m', strtotime($date));
@@ -461,7 +461,7 @@ class Calculator
         );
     }
 
-    public static function calculateEarthlyBirthOfDay($date)
+    public static function calculateEarthlyBranchDay($date)
     {
         $branches = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
         

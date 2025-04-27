@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/page', [PageController::class, 'showForm'])->name('page.form');
+Route::post('/page', [PageController::class, 'calculate'])->name('page.calculate');
