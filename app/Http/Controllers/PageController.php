@@ -27,6 +27,10 @@ use App\Services\PageService;
             $datetime = $request->input('datetime');
 
             $result = $this->page_service->calculate($datetime);
+            if (!$result->code) {
+                return redirect()->back()->withErrors($result->message);
+            }
+            $result = $result->data;
 
             return view('page.result', compact('result'));
         }

@@ -14,7 +14,7 @@ class Calculator
         $day = date('d', strtotime($date));
         $month = date('m', strtotime($date));
 
-        $agricultural_format = (object) [
+        $agricultural_format = [
             (object) ['id' => 'lap_xuan',     'name' => 'Lập Xuân',     'from_day' => 4,  'from_month' => 2,  'to_day' => 18, 'to_month' => 2],
             (object) ['id' => 'vu_thuy',      'name' => 'Vũ Thủy',      'from_day' => 19, 'from_month' => 2,  'to_day' => 4,  'to_month' => 3],
             (object) ['id' => 'kinh_trap',    'name' => 'Kinh Trập',    'from_day' => 5,  'from_month' => 3,  'to_day' => 20, 'to_month' => 3],
@@ -60,9 +60,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $selected_agricultural
-            ]
+            $selected_agricultural
         );
     }
 
@@ -89,11 +87,11 @@ class Calculator
         ];
 
         $round_year_int = intval($year % 10);
-        $last_number_of_year = $year - $round_year_int * 10;
+        // $last_number_of_year = $year - $round_year_int * 10;
 
         $current_heavenly_stem = null;
         foreach ($heavenly_stem_format as $heavenly_stem) {
-            if ($heavenly_stem->id != $last_number_of_year) {
+            if ($heavenly_stem->id != $round_year_int) {
                 continue;
             }
             $current_heavenly_stem = $heavenly_stem;
@@ -106,9 +104,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $current_heavenly_stem
-            ]
+            $current_heavenly_stem
         );
     }
 
@@ -153,9 +149,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $current_earthly_branch
-            ]
+            $current_earthly_branch
         );
     }
 
@@ -337,9 +331,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $current_heavenly_stem_by_month
-            ]
+            $current_heavenly_stem_by_month
         );
     }
 
@@ -354,18 +346,18 @@ class Calculator
         $month = date('m', strtotime($date));
 
         $earthly_branch_month = [
-            (object) ["id" => "dan",  "name" => "Dần",  "element" => "Mộc",  "sub_elemet" => "Dương Mộc",  "color" => "#00aa55", "from_day" => 4, "from_month" => 2,  "to_day" => 4, "to_month" => 3],
-            (object) ["id" => "mao",  "name" => "Mão",  "element" => "Mộc",  "sub_elemet" => "Âm Mộc",     "color" => "#66cc99", "from_day" => 5, "from_month" => 3,  "to_day" => 4, "to_month" => 4],
-            (object) ["id" => "thin", "name" => "Thìn", "element" => "Thổ",  "sub_elemet" => "Dương Thổ",  "color" => "#999966", "from_day" => 5, "from_month" => 4,  "to_day" => 5, "to_month" => 5],
-            (object) ["id" => "ty",   "name" => "Tỵ",   "element" => "Hỏa",  "sub_elemet" => "Âm Hỏa",     "color" => "#cc0000", "from_day" => 6, "from_month" => 5,  "to_day" => 5, "to_month" => 6],
-            (object) ["id" => "ngo",  "name" => "Ngọ",  "element" => "Hỏa",  "sub_elemet" => "Dương Hỏa",  "color" => "#ff3333", "from_day" => 6, "from_month" => 6,  "to_day" => 6, "to_month" => 7],
-            (object) ["id" => "mui",  "name" => "Mùi",  "element" => "Thổ",  "sub_elemet" => "Âm Thổ",     "color" => "#b39c82", "from_day" => 7, "from_month" => 7,  "to_day" => 6, "to_month" => 8],
-            (object) ["id" => "than", "name" => "Thân", "element" => "Kim",  "sub_elemet" => "Dương Kim",  "color" => "#fbb034", "from_day" => 7, "from_month" => 8,  "to_day" => 7, "to_month" => 9],
-            (object) ["id" => "dau",  "name" => "Dậu",  "element" => "Kim",  "sub_elemet" => "Âm Kim",     "color" => "#bfa300", "from_day" => 8, "from_month" => 9,  "to_day" => 7, "to_month" => 10],
-            (object) ["id" => "tuat", "name" => "Tuất", "element" => "Thổ",  "sub_elemet" => "Dương Thổ",  "color" => "#999966", "from_day" => 8, "from_month" => 10, "to_day" => 6, "to_month" => 11],
-            (object) ["id" => "hoi",  "name" => "Hợi",  "element" => "Thủy", "sub_elemet" => "Âm Thủy",    "color" => "#0d47a1", "from_day" => 7, "from_month" => 11, "to_day" => 6, "to_month" => 12],
-            (object) ["id" => "ty2",  "name" => "Tý",   "element" => "Thủy", "sub_elemet" => "Dương Thủy", "color" => "#1976d2", "from_day" => 7, "from_month" => 12, "to_day" => 5, "to_month" => 1],
-            (object) ["id" => "suu",  "name" => "Sửu",  "element" => "Thổ",  "sub_elemet" => "Âm Thổ",     "color" => "#b39c82", "from_day" => 6, "from_month" => 1,  "to_day" => 3, "to_month" => 2]
+            (object) ["id" => 0, "name" => "Thân", "element" => "Kim",  "sub_elemet" => "Dương Kim",  "color" => "#fbb034", "from_day" => 7, "from_month" => 8,  "to_day" => 7, "to_month" => 9],
+            (object) ["id" => 1,  "name" => "Dậu",  "element" => "Kim",  "sub_elemet" => "Âm Kim",     "color" => "#bfa300", "from_day" => 8, "from_month" => 9,  "to_day" => 7, "to_month" => 10],
+            (object) ["id" => 2, "name" => "Tuất", "element" => "Thổ",  "sub_elemet" => "Dương Thổ",  "color" => "#999966", "from_day" => 8, "from_month" => 10, "to_day" => 6, "to_month" => 11],
+            (object) ["id" => 3,  "name" => "Hợi",  "element" => "Thủy", "sub_elemet" => "Âm Thủy",    "color" => "#0d47a1", "from_day" => 7, "from_month" => 11, "to_day" => 6, "to_month" => 12],
+            (object) ["id" => 4,  "name" => "Tý",   "element" => "Thủy", "sub_elemet" => "Dương Thủy", "color" => "#1976d2", "from_day" => 7, "from_month" => 12, "to_day" => 5, "to_month" => 1],
+            (object) ["id" => 5,  "name" => "Sửu",  "element" => "Thổ",  "sub_elemet" => "Âm Thổ",     "color" => "#b39c82", "from_day" => 6, "from_month" => 1,  "to_day" => 3, "to_month" => 2],
+            (object) ["id" => 6,  "name" => "Dần",  "element" => "Mộc",  "sub_elemet" => "Dương Mộc",  "color" => "#00aa55", "from_day" => 4, "from_month" => 2,  "to_day" => 4, "to_month" => 3],
+            (object) ["id" => 7,  "name" => "Mão",  "element" => "Mộc",  "sub_elemet" => "Âm Mộc",     "color" => "#66cc99", "from_day" => 5, "from_month" => 3,  "to_day" => 4, "to_month" => 4],
+            (object) ["id" => 8, "name" => "Thìn", "element" => "Thổ",  "sub_elemet" => "Dương Thổ",  "color" => "#999966", "from_day" => 5, "from_month" => 4,  "to_day" => 5, "to_month" => 5],
+            (object) ["id" => 9,   "name" => "Tỵ",   "element" => "Hỏa",  "sub_elemet" => "Âm Hỏa",     "color" => "#cc0000", "from_day" => 6, "from_month" => 5,  "to_day" => 5, "to_month" => 6],
+            (object) ["id" => 10,  "name" => "Ngọ",  "element" => "Hỏa",  "sub_elemet" => "Dương Hỏa",  "color" => "#ff3333", "from_day" => 6, "from_month" => 6,  "to_day" => 6, "to_month" => 7],
+            (object) ["id" => 11,  "name" => "Mùi",  "element" => "Thổ",  "sub_elemet" => "Âm Thổ",     "color" => "#b39c82", "from_day" => 7, "from_month" => 7,  "to_day" => 6, "to_month" => 8],
         ];
         
         $selected_earthly_branch_month = null;
@@ -386,9 +378,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $selected_earthly_branch_month
-            ]
+            $selected_earthly_branch_month
         );
     }
 
@@ -455,9 +445,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            [
-                'data' => $selected_heavenly_stem
-            ]
+            $selected_heavenly_stem
         );
     }
 
