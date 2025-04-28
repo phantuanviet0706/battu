@@ -40,6 +40,7 @@ use Illuminate\Http\Request;
 			$earthly_branch_month = $res_earthly_branch_month->data;
 			
 			$res_heavenly_stem_day = Calculator::calculateHeavenlyStemDay($date_time);
+			\Log::channel('custom')->info('Heavenly Stem Day', ['data' => $res_heavenly_stem_day]);
 			if (!$res_heavenly_stem_day->code) {
 				return Helper::release('Invalid Heavenly Stem by day data, please check and try again.');
 			}

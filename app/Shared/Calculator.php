@@ -428,9 +428,14 @@ class Calculator
         ];
 
         $day_converted_to_jdn = self::gregorianToJDN($date);
+        \Log::channel('my_custom_log')->error("Heavenly stem day", [
+            'day_converted_to_jdn' => $day_converted_to_jdn,
+        ]);
 
         $heavenly_stem_of_day_calculated = intval(($day_converted_to_jdn + 9) % 10);
-        
+        \Log::channel('my_custom_log')->error("Heavenly stem day calculated", [
+            'heavenly_stem_of_day_calculated' => $heavenly_stem_of_day_calculated,
+        ]);
         $selected_heavenly_stem = null;
         foreach ($heavenly_stem_day as $heavenly_stem) {
             if ($heavenly_stem->id == $heavenly_stem_of_day_calculated) {
@@ -438,7 +443,9 @@ class Calculator
                 break;
             }
         }
-
+        \Log::channel('my_custom_log')->error("Heavenly stem day selected", [
+            'selected_heavenly_stem' => $selected_heavenly_stem,
+        ]);
         if (!$selected_heavenly_stem) {
             return Helper::release("Invalid Heavenly Stem date");
         }
