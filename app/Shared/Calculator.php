@@ -433,6 +433,9 @@ class Calculator
         ]);
 
         $heavenly_stem_of_day_calculated = intval(($day_converted_to_jdn + 9) % 10);
+        if ($heavenly_stem_of_day_calculated == 0) {
+            $heavenly_stem_of_day_calculated = 10;
+        }
         \Log::channel('my_custom_log')->error("Heavenly stem day calculated", [
             'heavenly_stem_of_day_calculated' => $heavenly_stem_of_day_calculated,
         ]);
