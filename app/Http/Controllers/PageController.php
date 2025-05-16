@@ -24,9 +24,8 @@ use App\Services\PageService;
         public function calculate(PageRequest $request)
         {
             $data = $request->validated();
-            $datetime = $request->input('datetime');
 
-            $result = $this->page_service->calculate($datetime);
+            $result = $this->page_service->calculate($request->all());
             if (!$result->code) {
                 return redirect()->back()->withErrors($result->message);
             }

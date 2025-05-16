@@ -27,14 +27,22 @@ class PageRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $date = $this->input('datetime'); // Lấy giá trị input
+        $gender = $this->input('gender');
+        if (!Helper::isEmpty($gender)) {
+            $gender = strtolower($gender);
+            if (!Helper::inset($gender, 'male', 'female')) {
+                return Helper::thrownExceptionValidator('gender', 'Giới tính không hợp lệ, vui lòng kiểm tra lại.');
+            }
+        }
 
-        if (!$date) return Helper::thrownExceptionValidator('birth_datetime', 'Invalid date format, please check and try again.'); // Nếu rỗng thì để rules xử lý tiếp (required)
+        $date = $this->input('birth_date'); // Lấy giá trị input
+
+        if (!$date) return Helper::thrownExceptionValidator('birth_date', 'Invalid date format, please check and try again.'); // Nếu rỗng thì để rules xử lý tiếp (required)
 
         $timestamp = strtotime($date);
 
         if (!$timestamp) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Invalid date format, please check and try again.');
+            return Helper::thrownExceptionValidator('birth_date', 'Invalid date format, please check and try again.');
         }
 
         $day = date('d', $timestamp);
@@ -42,28 +50,38 @@ class PageRequest extends FormRequest
         $year = date('Y', $timestamp);
 
         if (!checkdate($month, $day, $year)) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Ngày tháng năm không hợp lệ, vui lòng kiểm tra lại.');
+            return Helper::thrownExceptionValidator('birth_date', 'Ngày tháng năm không hợp lệ, vui lòng kiểm tra lại.');
         }
 
-        $hour = date('H', $timestamp);
-        $minute = date('i', $timestamp);
-        $second = date('s', $timestamp);
-        if (!$hour) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Vui lòng nhập giờ sinh.');
-        }
-        if (!$minute) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Vui lòng nhập phút sinh.');
-        }
-
-        if ($hour > 23 || $hour < 0) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Giờ sinh không hợp lệ, vui lòng kiểm tra lại.');
-        }
-        if ($minute > 59 || $minute < 0) {
-            return Helper::thrownExceptionValidator('birth_datetime', 'Phút sinh không hợp lệ, vui lòng kiểm tra lại.');
+        $birth_time = $this->input('birth_time');
+        if (!$birth_time) {
+            $ts_birth_time = 0;
+            $time = "00:00";
+        } else {
+            $ts_birth_time = strtotime($birth_time);
+            $hour = date('H', $ts_birth_time);
+            $minute = date('i', $ts_birth_time);
+            $second = date('s', $ts_birth_time);
+            if (!$hour) {
+                return Helper::thrownExceptionValidator('birth_time', 'Vui lòng nhập giờ sinh.');
+            }
+            if (!$minute) {
+                return Helper::thrownExceptionValidator('birth_time', 'Vui lòng nhập phút sinh.');
+            }
+    
+            if ($hour > 23 || $hour < 0) {
+                return Helper::thrownExceptionValidator('birth_time', 'Giờ sinh không hợp lệ, vui lòng kiểm tra lại.');
+            }
+            if ($minute > 59 || $minute < 0) {
+                return Helper::thrownExceptionValidator('birth_time', 'Phút sinh không hợp lệ, vui lòng kiểm tra lại.');
+            }
+            $time = date('H:i', $ts_birth_time);
         }
 
         $this->merge([
-            'datetime' => date('Y-m-d H:i:s', $timestamp),
+            'gender' => $gender,
+            'birth_date' => date('Y-m-d', $timestamp),
+            'birth_time' => $time,
         ]);
     }
 }

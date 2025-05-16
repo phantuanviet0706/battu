@@ -2,287 +2,16 @@
 
 namespace App\Shared;
 
-use DateTime;
-
-class Calculator
-{
-    /**
-     * 1. Calculate Agricultural date
-     * @param mixed $date
-     * @return object
-     */
-    public static function calculateAgricultural($date)
-    {
-        $day = date('d', $date);
-        $month = date('m', $date);
-
-        $agricultural_format = Formula::getFormulaAgricutural();
-
-        $input_date = DateTime::createFromFormat('d-m', "$day-$month");
-        $agricultural = null;
-        foreach ($agricultural_format as $month) {
-            foreach ($month->range as $range) {
-                $start_date = DateTime::createFromFormat('d-m', $range->start);
-                $end_date = DateTime::createFromFormat('d-m', $range->end);
-                if ($input_date >= $start_date && $input_date <= $end_date) {
-                    $month->selected_range = $range;
-                    $agricultural = $month;
-                    break 2;
-                }
-            }
-        }
-
-        if (!$agricultural) {
-            return Helper::release("Invalid agricultural date");
-        }
-
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $agricultural
-        );
-    }
+class Formula {
 
     /**
-     * 2. Calculate Heavenly Stem
-     * @param mixed $date
-     * @return object
+     * @index 1
+     * @desc EN: Get the formula for agricultural
+     * @desc VI: Lấy công thức nông lịch
+     * @return object[]
      */
-    public static function calculateHeavenlyStem($date)
-    {
-        $year = date('Y', strtotime($date));
-
-        $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
-
-        $round_year_int = intval($year % 10);
-        // $last_number_of_year = $year - $round_year_int * 10;
-
-        $current_heavenly_stem = null;
-        foreach ($heavenly_stem_format as $heavenly_stem) {
-            if ($heavenly_stem->id != $round_year_int) {
-                continue;
-            }
-            $current_heavenly_stem = $heavenly_stem;
-            break;
-        }
-        
-        if (!$current_heavenly_stem) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $current_heavenly_stem
-        );
-    }
-
-    /**
-     * 3. Calculate Earthly Branch
-     * @param mixed $date
-     * @return object
-     */
-    public static function calculateEarthlyBranch($date)
-    {
-        $year = date('Y', strtotime($date));
-
-        $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        
-        $year = $year % 12;
-        $remaining = ($year - intval($year)) * 12;
-
-        $current_earthly_branch = null;
-        foreach ($earthly_branch_format as $earthly_branch) {
-            if ($earthly_branch->id != $remaining) {
-                continue;
-            }
-            $current_earthly_branch = $earthly_branch;
-            break;
-        }
-        if (!$current_earthly_branch) {
-            return Helper::release("Invalid Earthly Branch date");
-        }
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $current_earthly_branch
-        );
-    }
-
-    /**
-     * 4. Calculate Heavenly Stem Month
-     * @param mixed $date
-     * @return object
-     */
-    public static function calculateHeavenlyStemMonth($date) {
-        $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
-        
-        $res = self::calculateHeavenlyStem($date);
-        if (!$res->code) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
-
-        $heavenly_stem = $res->data;
-        if (!$heavenly_stem) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
-        $year = date('Y', $date);
-        $lunar_date = Date::convertSolar2Lunar(
-            date('d', $date),
-            date('m', $date),
-            $year
-        );
-        [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
-        $heavenly_stem_year = intval($year % 10);
-        $heavenly_stem_month = intval($lunar_month - 1  + (($heavenly_stem_year + 9) * 2 / 10));
-        
-        $current_heavenly_stem_by_month = null;
-        foreach ($heavenly_stem_format as $format) {
-            if ($format->id != $heavenly_stem_month) {
-                continue;
-            }
-            $current_heavenly_stem_by_month = $format;
-            break;
-        }
-        if (!$current_heavenly_stem_by_month) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $current_heavenly_stem_by_month
-        );
-    }
-
-    /**
-     * 5. Calculate Earthly Branch Month
-     * @param mixed $date
-     * @return object
-     */
-    public static function calculateEarthlyBranchMonth($date) 
-    {
-
-        $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        $lunar_date = Date::convertSolar2Lunar(
-            date('d', $date),
-            date('m', $date),
-            date('Y', $date)
-        );
-        [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
-        $earthly_branch = intval(($lunar_month + 1) % 12);
-        
-        $selected_earthly_branch_month = null;
-        foreach ($earthly_branch_format as $format) {
-            if ($format->id != $earthly_branch) {
-                continue;
-            }
-            $selected_earthly_branch_month = $format;
-            break;
-        }
-
-        if (!$selected_earthly_branch_month) {
-            return Helper::release("Invalid Earthly Branch date");
-        }
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $selected_earthly_branch_month
-        );
-    }
-    
-    /**
-     * 6. Calculaed heavenly stem of day
-     * @param mixed $date
-     * @return object
-     */
-    public static function calculateHeavenlyStemDay($date)
-    {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
-
-        $heavenly_stem_day = [
-            (object) ['id' => 1, 'name' => 'Giáp', 'element' => 'Mộc',  'sub_elemet' => 'Dương Mộc',  'color' => '#00aa55'],
-            (object) ['id' => 2, 'name' => 'Ất',  'element' => 'Mộc',  'sub_elemet' => 'Âm Mộc',     'color' => '#66cc99'],
-            (object) ['id' => 3, 'name' => 'Bính', 'element' => 'Hỏa',  'sub_elemet' => 'Dương Hỏa',  'color' => '#ff3333'],
-            (object) ['id' => 4, 'name' => 'Đinh', 'element' => 'Hỏa',  'sub_elemet' => 'Âm Hỏa',     'color' => '#cc0000'],
-            (object) ['id' => 5, 'name' => 'Mậu', 'element' => 'Thổ',  'sub_elemet' => 'Dương Thổ',  'color' => '#999966'],
-            (object) ['id' => 6, 'name' => 'Kỷ',  'element' => 'Thổ',  'sub_elemet' => 'Âm Thổ',     'color' => '#b39c82'],
-            (object) ['id' => 7, 'name' => 'Canh','element' => 'Kim',  'sub_elemet' => 'Dương Kim',  'color' => '#fbb034'],
-            (object) ['id' => 8, 'name' => 'Tân',  'element' => 'Kim',  'sub_elemet' => 'Âm Kim',     'color' => '#bfa300'],
-            (object) ['id' => 9,  "name"   =>'Nhâm','element'=>'Thủy','sub_elemet'=>'Dương Thủy','color'=>'#1976d2'],
-            (object) ['id' => 10, 'name'=>'Quý', 'element'=>'Thủy','sub_elemet'=>'Âm Thủy','color'=>'#0d47a1']
-        ];
-
-        $day_converted_to_jdn = self::gregorianToJDN($date);
-        \Log::channel('my_custom_log')->error("Heavenly stem day", [
-            'day_converted_to_jdn' => $day_converted_to_jdn,
-        ]);
-
-        $heavenly_stem_of_day_calculated = intval(($day_converted_to_jdn + 9) % 10);
-        if ($heavenly_stem_of_day_calculated == 0) {
-            $heavenly_stem_of_day_calculated = 10;
-        }
-        \Log::channel('my_custom_log')->error("Heavenly stem day calculated", [
-            'heavenly_stem_of_day_calculated' => $heavenly_stem_of_day_calculated,
-        ]);
-        $selected_heavenly_stem = null;
-        foreach ($heavenly_stem_day as $heavenly_stem) {
-            if ($heavenly_stem->id == $heavenly_stem_of_day_calculated) {
-                $selected_heavenly_stem = $heavenly_stem;
-                break;
-            }
-        }
-        \Log::channel('my_custom_log')->error("Heavenly stem day selected", [
-            'selected_heavenly_stem' => $selected_heavenly_stem,
-        ]);
-        if (!$selected_heavenly_stem) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            $selected_heavenly_stem
-        );
-    }
-
-    public static function calculateEarthlyBranchDay($date)
-    {
-        $branches = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
-        
-        $jdn = self::gregorianToJDN($date);
-        $index = ($jdn + 10) % 12;
-
-        return $branches[$index];
-    }
-
-    public static function gregorianToJDN($date) 
-    {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
-
-        if ($month <= 2) {
-            $year -= 1;
-            $month += 12;
-        }
-    
-        $A = intval($year / 100);
-        $B = 2 - $A + intval($A / 4);
-    
-        $jdn = intval(365.25 * ($year + 4716))
-             + intval(30.6001 * ($month + 1))
-             + $day + $B - 1524;
-    
-        return $jdn;
-    }
-
-    public static function calculateNongLich($date)
-    {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
-
-        $agricultural_format = [
+    public static function getFormulaAgricutural() {
+        return [
             (object) [
                 'id' => 0,
                 'name' => 'Dần',
@@ -464,30 +193,168 @@ class Calculator
                 ]
             ],
         ];
+    }
 
-        $input_date = DateTime::createFromFormat('d-m', $date);
-        $agricultural = null;
-        foreach ($agricultural_format as $month) {
-            foreach ($month->range as $range) {
-                $start_date = DateTime::createFromFormat('d-m', $range->start);
-                $end_date = DateTime::createFromFormat('d-m', $range->end);
-                if ($input_date >= $start_date && $input_date <= $end_date) {
-                    $agricultural = $month;
-                    break 2;
-                }
-            }
-        }
+    /**
+     * @index 2
+     * @desc EN: Get the formula for heavenly stem
+     * @desc VI: Lấy công thức thiên can
+     * @return object[]
+     */
+    public static function getFormulaHeavenlyStem() {
+        return [
+            (object) ["id" => 0, "name" => "Canh", "yin_yang" => "Kim",  "polarity" => "Dương", "color" => "text-yellow-500"],
+            (object) ["id" => 1, "name" => "Tân",  "yin_yang" => "Kim",  "polarity" => "Âm",    "color" => "text-yellow-500"],
+            (object) ["id" => 2, "name" => "Nhâm", "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
+            (object) ["id" => 3, "name" => "Quý",  "yin_yang" => "Thủy", "polarity" => "Âm",    "color" => "text-blue-600"],
+            (object) ["id" => 4, "name" => "Giáp", "yin_yang" => "Mộc",  "polarity" => "Dương", "color" => "text-green-700"],
+            (object) ["id" => 5, "name" => "Ất",   "yin_yang" => "Mộc",  "polarity" => "Âm",    "color" => "text-green-700"],
+            (object) ["id" => 6, "name" => "Bính", "yin_yang" => "Hỏa",  "polarity" => "Dương", "color" => "text-red-600"],
+            (object) ["id" => 7, "name" => "Đinh", "yin_yang" => "Hỏa",  "polarity" => "Âm",    "color" => "text-red-600"],
+            (object) ["id" => 8, "name" => "Mậu",  "yin_yang" => "Thổ",  "polarity" => "Dương", "color" => "text-yellow-800"],
+            (object) ["id" => 9, "name" => "Kỷ",   "yin_yang" => "Thổ",  "polarity" => "Âm",    "color" => "text-yellow-800"],
+        ];        
+    }
 
-        if (!$agricultural) {
-            return Helper::release("Invalid agricultural date");
-        }
+    /**
+     * @index 3
+     * @desc EN: Get the formula for earthly branch
+     * @desc VI: Lấy công thức địa chi
+     * @return object[]
+     */
+    public static function getFormulaEarthlyBranch() {
+        return [
+            (object) ["id" => 0, "name" => "Tý",   "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
+            (object) ["id" => 1, "name" => "Sửu",  "yin_yang" => "Thổ",  "polarity" => "Âm",    "color" => "text-yellow-800"],
+            (object) ["id" => 2, "name" => "Dần",  "yin_yang" => "Mộc",  "polarity" => "Dương", "color" => "text-green-700"],
+            (object) ["id" => 3, "name" => "Mão",  "yin_yang" => "Mộc",  "polarity" => "Âm",    "color" => "text-green-700"],
+            (object) ["id" => 4, "name" => "Thìn", "yin_yang" => "Thổ",  "polarity" => "Dương", "color" => "text-yellow-800"],
+            (object) ["id" => 5, "name" => "Tỵ",   "yin_yang" => "Hỏa",  "polarity" => "Âm",    "color" => "text-red-600"],
+            (object) ["id" => 6, "name" => "Ngọ",  "yin_yang" => "Hỏa",  "polarity" => "Dương", "color" => "text-red-600"],
+            (object) ["id" => 7, "name" => "Mùi",  "yin_yang" => "Thổ",  "polarity" => "Âm",    "color" => "text-yellow-800"],
+            (object) ["id" => 8, "name" => "Thân", "yin_yang" => "Kim",  "polarity" => "Dương", "color" => "text-yellow-500"],
+            (object) ["id" => 9, "name" => "Dậu",  "yin_yang" => "Kim",  "polarity" => "Âm",    "color" => "text-yellow-500"],
+        ];               
+    }
 
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            [
-                "agricultural" => $agricultural
-            ]
-        );
+    /**
+     * @index 4
+     * @desc EN: Get the formula for Na Yin (Sixty Jiazi Stems and Branches)
+     * @desc VI: Lấy công thức nạp âm (Lục thập hoa giáp)
+     * @return object[]
+     */
+    public static function getFormulaNaYin() {
+        return [];
+    }
+
+    /**
+     * @index 5
+     * @desc EN: Get the formula propotions of Hidden Heavenly Stem in Earthly Branch
+     * @desc VI: Lấy công thức tỉ lệ của thiên can ẩn trong địa chi
+     * @return object[]
+     */
+    public static function getFormulaHiddenHSinEB() {
+        return [
+            (object) [
+                "id" => 0,
+                "name" => "Tý",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Quý", "yin_yang" => "Âm Thủy", "color" => "#3399ff", "percent" => 100],
+                ]
+            ],
+            (object) [
+                "id" => 1,
+                "name" => "Sửu",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Kỷ", "yin_yang" => "Âm Thổ", "color" => "#996633", "percent" => 60],
+                    (object) ["heavenly_stem" => "Quý", "yin_yang" => "Âm Thủy", "color" => "#3399ff", "percent" => 30],
+                    (object) ["heavenly_stem" => "Tân", "yin_yang" => "Âm Kim", "color" => "#ffbb33", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 2,
+                "name" => "Dần",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Giáp", "yin_yang" => "Dương Mộc", "color" => "#00cc00", "percent" => 60],
+                    (object) ["heavenly_stem" => "Bính", "yin_yang" => "Dương Hỏa", "color" => "#ff4444", "percent" => 30],
+                    (object) ["heavenly_stem" => "Mậu", "yin_yang" => "Dương Thổ", "color" => "#996633", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 3,
+                "name" => "Mão",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Ất", "yin_yang" => "Âm Mộc", "color" => "#00cc00", "percent" => 100],
+                ]
+            ],
+            (object) [
+                "id" => 4,
+                "name" => "Thìn",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Mậu", "yin_yang" => "Dương Thổ", "color" => "#996633", "percent" => 60],
+                    (object) ["heavenly_stem" => "Ất", "yin_yang" => "Âm Mộc", "color" => "#00cc00", "percent" => 30],
+                    (object) ["heavenly_stem" => "Quý", "yin_yang" => "Âm Thủy", "color" => "#3399ff", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 5,
+                "name" => "Tỵ",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Bính", "yin_yang" => "Dương Hỏa", "color" => "#ff4444", "percent" => 60],
+                    (object) ["heavenly_stem" => "Mậu", "yin_yang" => "Dương Thổ", "color" => "#996633", "percent" => 30],
+                    (object) ["heavenly_stem" => "Canh", "yin_yang" => "Dương Kim", "color" => "#ffbb33", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 6,
+                "name" => "Ngọ",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Đinh", "yin_yang" => "Âm Hỏa", "color" => "#ff4444", "percent" => 70],
+                    (object) ["heavenly_stem" => "Kỷ", "yin_yang" => "Âm Thổ", "color" => "#996633", "percent" => 30],
+                ]
+            ],
+            (object) [
+                "id" => 7,
+                "name" => "Mùi",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Đinh", "yin_yang" => "Âm Hỏa", "color" => "#ff4444", "percent" => 30],
+                    (object) ["heavenly_stem" => "Kỷ", "yin_yang" => "Âm Thổ", "color" => "#996633", "percent" => 60],
+                    (object) ["heavenly_stem" => "Ất", "yin_yang" => "Âm Mộc", "color" => "#00cc00", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 8,
+                "name" => "Thân",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Canh", "yin_yang" => "Dương Kim", "color" => "#ffbb33", "percent" => 60],
+                    (object) ["heavenly_stem" => "Nhâm", "yin_yang" => "Dương Thủy", "color" => "#3399ff", "percent" => 30],
+                    (object) ["heavenly_stem" => "Mậu", "yin_yang" => "Dương Thổ", "color" => "#996633", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 9,
+                "name" => "Dậu",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Tân", "yin_yang" => "Âm Kim", "color" => "#ffbb33", "percent" => 100],
+                ]
+            ],
+            (object) [
+                "id" => 10,
+                "name" => "Tuất",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Mậu", "yin_yang" => "Dương Thổ", "color" => "#996633", "percent" => 60],
+                    (object) ["heavenly_stem" => "Tân", "yin_yang" => "Âm Kim", "color" => "#ffbb33", "percent" => 30],
+                    (object) ["heavenly_stem" => "Đinh", "yin_yang" => "Âm Hỏa", "color" => "#ff4444", "percent" => 10],
+                ]
+            ],
+            (object) [
+                "id" => 11,
+                "name" => "Hợi",
+                "hidden" => [
+                    (object) ["heavenly_stem" => "Nhâm", "yin_yang" => "Dương Thủy", "color" => "#3399ff", "percent" => 70],
+                    (object) ["heavenly_stem" => "Giáp", "yin_yang" => "Dương Mộc", "color" => "#00cc00", "percent" => 30],
+                ]
+            ],
+        ];        
     }
 }
