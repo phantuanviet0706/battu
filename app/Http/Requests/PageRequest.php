@@ -54,6 +54,7 @@ class PageRequest extends FormRequest
         }
 
         $birth_time = $this->input('birth_time');
+        $is_input_time = false;
         if (!$birth_time) {
             $ts_birth_time = 0;
             $time = "00:00";
@@ -76,12 +77,14 @@ class PageRequest extends FormRequest
                 return Helper::thrownExceptionValidator('birth_time', 'Phút sinh không hợp lệ, vui lòng kiểm tra lại.');
             }
             $time = date('H:i', $ts_birth_time);
+            $is_input_time = true;
         }
 
         $this->merge([
             'gender' => $gender,
             'birth_date' => date('Y-m-d', $timestamp),
             'birth_time' => $time,
+            'is_input_time' => $is_input_time,
         ]);
     }
 }

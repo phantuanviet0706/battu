@@ -55,7 +55,19 @@ class PageService
 		}
 		$heavenly_stem_day = $res_heavenly_stem_day->data;
 
-		$earthly_branch_day = Calculator::calculateEarthlyBranchDay($date_time);
+		$res_earthly_branch_day = Calculator::calculateEarthlyBranchDay($date_time);
+		if (!$res_earthly_branch_day->code) {
+			return Helper::release('Invalid Earthly Branch by day data, please check and try again.');
+		}
+		$earthly_branch_day = $res_earthly_branch_day->data;
+
+		$is_input_time = $request['is_input_time'];
+		$res_heavenly_stem_hour = Calculator::calculateHeavenlyStemHour($date_time, $is_input_time);
+		$heavenly_stem_hour = isset($res_heavenly_stem_hour->data) ? $res_heavenly_stem_hour->data : null;
+
+		$res_earthly_branch_hour = Calculator::calculateEarthlyBranchHour($date_time, $is_input_time);
+		$earthly_branch_hour = isset($res_earthly_branch_hour->data) ? $res_earthly_branch_hour->data : null;
+
 		$jdn_day = Calculator::gregorianToJDN($date_time);
 
 		list($lDay, $lMonth, $lYear, $isLeap) = Date::convertSolar2Lunar(
@@ -88,6 +100,8 @@ class PageService
 				'earthly_branch_month' => $earthly_branch_month,
 				'heavenly_stem_day' => $heavenly_stem_day,
 				'earthly_branch_day' => $earthly_branch_day,
+				'heavenly_stem_hour' => $heavenly_stem_hour,
+				'earthly_branch_hour' => $earthly_branch_hour,
 				'jdn' => $jdn_day,
 			]
 		];

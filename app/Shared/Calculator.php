@@ -196,63 +196,154 @@ class Calculator
      */
     public static function calculateHeavenlyStemDay($date)
     {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
+        $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
+        $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
 
-        $heavenly_stem_day = [
-            (object) ['id' => 1, 'name' => 'Giáp', 'element' => 'Mộc',  'sub_elemet' => 'Dương Mộc',  'color' => '#00aa55'],
-            (object) ['id' => 2, 'name' => 'Ất',  'element' => 'Mộc',  'sub_elemet' => 'Âm Mộc',     'color' => '#66cc99'],
-            (object) ['id' => 3, 'name' => 'Bính', 'element' => 'Hỏa',  'sub_elemet' => 'Dương Hỏa',  'color' => '#ff3333'],
-            (object) ['id' => 4, 'name' => 'Đinh', 'element' => 'Hỏa',  'sub_elemet' => 'Âm Hỏa',     'color' => '#cc0000'],
-            (object) ['id' => 5, 'name' => 'Mậu', 'element' => 'Thổ',  'sub_elemet' => 'Dương Thổ',  'color' => '#999966'],
-            (object) ['id' => 6, 'name' => 'Kỷ',  'element' => 'Thổ',  'sub_elemet' => 'Âm Thổ',     'color' => '#b39c82'],
-            (object) ['id' => 7, 'name' => 'Canh','element' => 'Kim',  'sub_elemet' => 'Dương Kim',  'color' => '#fbb034'],
-            (object) ['id' => 8, 'name' => 'Tân',  'element' => 'Kim',  'sub_elemet' => 'Âm Kim',     'color' => '#bfa300'],
-            (object) ['id' => 9,  "name"   =>'Nhâm','element'=>'Thủy','sub_elemet'=>'Dương Thủy','color'=>'#1976d2'],
-            (object) ['id' => 10, 'name'=>'Quý', 'element'=>'Thủy','sub_elemet'=>'Âm Thủy','color'=>'#0d47a1']
-        ];
-
-        $day_converted_to_jdn = self::gregorianToJDN($date);
-        \Log::channel('my_custom_log')->error("Heavenly stem day", [
-            'day_converted_to_jdn' => $day_converted_to_jdn,
-        ]);
-
-        $heavenly_stem_of_day_calculated = intval(($day_converted_to_jdn + 9) % 10);
-        if ($heavenly_stem_of_day_calculated == 0) {
-            $heavenly_stem_of_day_calculated = 10;
-        }
-        \Log::channel('my_custom_log')->error("Heavenly stem day calculated", [
-            'heavenly_stem_of_day_calculated' => $heavenly_stem_of_day_calculated,
-        ]);
-        $selected_heavenly_stem = null;
-        foreach ($heavenly_stem_day as $heavenly_stem) {
-            if ($heavenly_stem->id == $heavenly_stem_of_day_calculated) {
-                $selected_heavenly_stem = $heavenly_stem;
+        $heavenly_stem_of_day_calculated = intval($result_calculate_hs_and_eb_day % 10);
+        $selected_heavenly_stem_day = null;
+        foreach ($heavenly_stem_format as $format) {
+            if ($format->id == $heavenly_stem_of_day_calculated) {
+                $selected_heavenly_stem_day = $format;
                 break;
             }
         }
-        \Log::channel('my_custom_log')->error("Heavenly stem day selected", [
-            'selected_heavenly_stem' => $selected_heavenly_stem,
-        ]);
-        if (!$selected_heavenly_stem) {
+        if (!$selected_heavenly_stem_day) {
             return Helper::release("Invalid Heavenly Stem date");
         }
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            $selected_heavenly_stem
+            $selected_heavenly_stem_day
         );
     }
 
+    /**
+     * 7. Calculate earthly branch of day
+     * @param mixed $date
+     * @return object
+     */
     public static function calculateEarthlyBranchDay($date)
     {
-        $branches = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
-        
-        $jdn = self::gregorianToJDN($date);
-        $index = ($jdn + 10) % 12;
+        $earthly_branch_format = Formula::getFormulaEarthlyBranch();
+        $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
 
-        return $branches[$index];
+        $earthly_branch_of_day_calculated = intval($result_calculate_hs_and_eb_day % 12);        
+        $selected_earthly_branch_day = null;
+        foreach ($earthly_branch_format as $format) {
+            if ($format->id == $earthly_branch_of_day_calculated) {
+                $selected_earthly_branch_day = $format;
+                break;
+            }
+        }
+        if (!$selected_earthly_branch_day) {
+            return Helper::release("Invalid Earthly Branch date");
+        }
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $selected_earthly_branch_day
+        );
+    }
+
+    /**
+     * 8. Calculate heavenly stem by hour
+     * @param mixed $date
+     * @return object
+     */
+    public static function calculateHeavenlyStemHour($date, $is_input_time = false)
+    {
+        if (!$is_input_time) {
+            return Helper::release(
+                "Get data successfully",
+                Helper::$SUCCESS_CODE,
+                null
+            );
+        }
+        $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
+        $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
+
+        $hour = date('H', $date);
+
+        $heavenly_stem_of_day_calculated = intval($result_calculate_hs_and_eb_day % 10);
+        $heavenly_stem_by_hour = intval(($hour + 1) / 2 + ($heavenly_stem_of_day_calculated - 2) * 2);
+    
+        $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
+        $selected_heavenly_stem_by_hour = null;
+        foreach ($heavenly_stem_format as $format) {
+            if ($format->id == $heavenly_stem_by_hour) {
+                $selected_heavenly_stem_by_hour = $format;
+                break;
+            }
+        }
+        if (!$selected_heavenly_stem_by_hour) {
+            return Helper::release("Invalid Heavenly Stem date");
+        }
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $selected_heavenly_stem_by_hour
+        );
+    }
+
+    /**
+     * 9. Calculate earthly branch by hour
+     * @param mixed $date
+     * @return object
+     */
+    public static function calculateEarthlyBranchHour($date, $is_input_time = false)
+    {
+        if (!$is_input_time) {
+            return Helper::release(
+                "Get data successfully",
+                Helper::$SUCCESS_CODE,
+                null
+            );
+        }
+        $hour = date('H', $date);
+        $earthly_branch_format = Formula::getFormulaEarthlyBranch();
+        $earthly_branch_by_hour = intval(($hour + 1) / 2);
+
+        $selected_earthly_branch_by_hour = null;
+        foreach ($earthly_branch_format as $format) {
+            if ($format->id == $earthly_branch_by_hour) {
+                $selected_earthly_branch_by_hour = $format;
+                break;
+            }
+        }
+        if (!$selected_earthly_branch_by_hour) {
+            return Helper::release("Invalid Earthly Branch date");
+        }
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $selected_earthly_branch_by_hour
+        );
+    }
+
+    private static function calculateHSandEBday($date) {
+        $day = date("d", $date);
+        $month = date("m", $date);
+        $year = date("Y", $date);
+
+        $century = intval($year / 100);
+        
+        $a_dd = $day;
+        $a_mm = ($month / 2) + 30 * ($month % 2 + 1) + ($month % 2) * ($month / 9);
+        $a_yy = 5 * ($year % 12) + $year / 4;
+        $a_cc = 33 - 16 * ($century % 4) - 3 * ($century / 4);
+        $a_ss = 0;
+
+        if ($month > 2) {
+            $a_ss = -2;
+        } else {
+            if (self::isLeapYear($year)) {
+                $a_ss = -1;
+            } else {
+                $a_ss = 0;
+            }
+        }
+
+        return ($a_dd + $a_mm + $a_cc + $a_yy + $a_ss);
     }
 
     public static function gregorianToJDN($date) 
@@ -276,218 +367,7 @@ class Calculator
         return $jdn;
     }
 
-    public static function calculateNongLich($date)
-    {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
-
-        $agricultural_format = [
-            (object) [
-                'id' => 0,
-                'name' => 'Dần',
-                'range' => [
-                    (object) ["start" => "04-02", "end" => "18-02", "name" => "Lập Xuân"],
-                    (object) ["start" => "19-02", "end" => "04-03", "name" => "Vũ Thủy"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "tot" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "trung" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "yeu" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 1,
-                'name' => 'Mão',
-                'range' => [
-                    (object) ["start" => "05-03", "end" => "20-03", "name" => "Kinh Trập"],
-                    (object) ["start" => "21-03", "end" => "04-04", "name" => "Xuân Phân"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "tot" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "trung" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "yeu" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 2,
-                'name' => 'Thìn',
-                'range' => [
-                    (object) ["start" => "05-04", "end" => "19-04", "name" => "Thanh Minh"],
-                    (object) ["start" => "20-04", "end" => "05-05", "name" => "Cốc Vũ"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "tot" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "trung" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "yeu" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 3,
-                'name' => 'Tỵ',
-                'range' => [
-                    (object) ["start" => "06-05", "end" => "20-05", "name" => "Lập Hạ"],
-                    (object) ["start" => "21-05", "end" => "05-06", "name" => "Tiểu Mãn"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "tot" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "trung" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "yeu" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 4,
-                'name' => 'Ngọ',
-                'range' => [
-                    (object) ["start" => "06-06", "end" => "20-06", "name" => "Mang Chủng"],
-                    (object) ["start" => "21-06", "end" => "06-07", "name" => "Hạ Chí"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "tot" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "trung" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "yeu" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 5,
-                'name' => 'Mùi',
-                'range' => [
-                    (object) ["start" => "07-07", "end" => "22-07", "name" => "Tiểu Thử"],
-                    (object) ["start" => "23-07", "end" => "06-08", "name" => "Đại Thử"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "tot" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "trung" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "yeu" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 6,
-                'name' => 'Thân',
-                'range' => [
-                    (object) ["start" => "07-08", "end" => "22-08", "name" => "Lập Thu"],
-                    (object) ["start" => "23-08", "end" => "07-09", "name" => "Xử Thử"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "tot" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "trung" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "yeu" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 7,
-                'name' => 'Dậu',
-                'range' => [
-                    (object) ["start" => "08-09", "end" => "22-09", "name" => "Bạch Lộ"],
-                    (object) ["start" => "23-09", "end" => "07-10", "name" => "Thu Phân"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "tot" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "trung" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "yeu" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 8,
-                'name' => 'Tuất',
-                'range' => [
-                    (object) ["start" => "08-10", "end" => "22-10", "name" => "Hàn Lộ"],
-                    (object) ["start" => "23-10", "end" => "06-11", "name" => "Sương Giáng"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "tot" => (object) ["name" => "Kim", "yin_yang" => "Dương", "color" => "#ffbb33"],
-                    "trung" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "yeu" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 9,
-                'name' => 'Hợi',
-                'range' => [
-                    (object) ["start" => "07-11", "end" => "21-11", "name" => "Lập Đông"],
-                    (object) ["start" => "22-11", "end" => "06-12", "name" => "Tiểu Tuyết"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "tot" => (object) ["name" => "Mộc", "yin_yang" => "Dương", "color" => "#00aa55"],
-                    "trung" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "yeu" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 10,
-                'name' => 'Tý',
-                'range' => [
-                    (object) ["start" => "07-12", "end" => "21-12", "name" => "Đại Tuyết"],
-                    (object) ["start" => "22-12", "end" => "05-01", "name" => "Đông Chí"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "tot" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "trung" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "yeu" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-            (object) [
-                'id' => 11,
-                'name' => 'Sửu',
-                'range' => [
-                    (object) ["start" => "06-01", "end" => "20-01", "name" => "Tiểu Hàn"],
-                    (object) ["start" => "21-01", "end" => "03-02", "name" => "Đại Hàn"]
-                ],
-                'element' => (object) [
-                    "vuong" => (object) ["name" => "Thổ", "yin_yang" => "Âm", "color" => "#9933cc"],
-                    "tot" => (object) ["name" => "Thủy", "yin_yang" => "Âm", "color" => "#3399ff"],
-                    "trung" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                    "yeu" => (object) ["name" => "Hỏa", "yin_yang" => "Dương", "color" => "#ff4444"],
-                    "khuyet" => (object) ["name" => "", "yin_yang" => "", "color" => ""],
-                ]
-            ],
-        ];
-
-        $input_date = DateTime::createFromFormat('d-m', $date);
-        $agricultural = null;
-        foreach ($agricultural_format as $month) {
-            foreach ($month->range as $range) {
-                $start_date = DateTime::createFromFormat('d-m', $range->start);
-                $end_date = DateTime::createFromFormat('d-m', $range->end);
-                if ($input_date >= $start_date && $input_date <= $end_date) {
-                    $agricultural = $month;
-                    break 2;
-                }
-            }
-        }
-
-        if (!$agricultural) {
-            return Helper::release("Invalid agricultural date");
-        }
-
-        return Helper::release(
-            "Get data successfully",
-            Helper::$SUCCESS_CODE,
-            [
-                "agricultural" => $agricultural
-            ]
-        );
+    private static function isLeapYear($year): bool {
+        return ($year % 4 === 0 && $year % 100 !== 0) || ($year % 400 === 0);
     }
 }

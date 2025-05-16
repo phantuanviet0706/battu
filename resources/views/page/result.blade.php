@@ -81,14 +81,18 @@
                     <!-- Ô đặc biệt: Nhật Chủ -->
                     <td class="border border-gray-400 bg-[#f0f0ea] text-center text-xs">
                         <div class="text-[11px] text-red-600 font-bold mb-1">NHẬT CHỦ</div>
-                        <div class="text-blue-700 font-semibold text-base leading-tight">Nhâm</div>
-                        <div class="text-[11px] text-blue-700">+Thủy</div>
+                        <div class="{{ $result->heavenly_stem_day->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem_day->name }}</div>
+                        <div class="text-[11px] {{ $result->heavenly_stem_day->color }}">{{ ($result->heavenly_stem_day->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_day->yin_yang }}</div>
                     </td>
 
                     <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs">
                         <div class="text-[11px] text-gray-600 mb-1">Thực Thần</div>
-                        <div class="text-yellow-800 font-semibold text-base leading-tight">Mậu</div>
-                        <div class="text-[11px] text-yellow-800">+Thổ</div>
+                        <div class="{{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }} font-semibold text-base leading-tight">
+                            {{ isset($result->heavenly_stem_hour->name) ? $result->heavenly_stem_hour->name : '' }}
+                        </div>
+                        <div class="text-[11px] {{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }}">
+                            {{ (isset($result->heavenly_stem_hour->polarity) ? ($result->heavenly_stem_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->heavenly_stem_hour->yin_yang) ? $result->heavenly_stem_hour->yin_yang : '') }}
+                        </div>
                     </td>
                 </tr>
 
@@ -99,6 +103,7 @@
                         </div>
                     </td>
                     <td class="border border-gray-400">ĐỊA CHI</td>
+                    <!-- Theo năm -->
                     <td class="border border-gray-400 {{ $result->earthly_branch->color }} font-bold">
                         {{ $result->earthly_branch->name }}
                         <br>
@@ -106,6 +111,7 @@
                             {{ ($result->earthly_branch->polarity == "Dương" ? "+" : "-") . $result->earthly_branch->yin_yang }}
                         </span>
                     </td>
+                    <!-- Theo tháng -->
                     <td class="border border-gray-400 {{ $result->earthly_branch_month->color }} font-bold">
                         {{ $result->earthly_branch_month->name }}
                         <br>
@@ -113,8 +119,22 @@
                             {{ ($result->earthly_branch_month->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_month->yin_yang }}
                         </span>
                     </td>
-                    <td class="border border-gray-400">Tuất<br><span class="text-xs">+Thổ</span></td>
-                    <td class="border border-gray-400 {{ $result->earthly_branch->color }} font-bold">Tí<br><span class="text-xs">+Thủy</span></td>
+                    <!-- Theo ngày -->
+                    <td class="border border-gray-400 {{ $result->earthly_branch_day->color }} font-bold">
+                        {{ $result->earthly_branch_day->name }}
+                        <br>
+                        <span class="text-xs">
+                            {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}    
+                        </span>
+                    </td>
+                    <!-- Theo giờ -->
+                    <td class="border border-gray-400 {{ isset($result->earthly_branch_hour->color) ? $result->earthly_branch_hour->color : '' }} font-bold">
+                        {{ isset($result->earthly_branch_hour->name) ? $result->earthly_branch_hour->name : '' }}
+                        <br>
+                        <span class="text-xs">
+                            {{ (isset($result->earthly_branch_hour->polarity) ? ($result->earthly_branch_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->earthly_branch_hour->yin_yang) ? $result->earthly_branch_hour->yin_yang : '') }}
+                        </span>
+                    </td>
                 </tr>
 
                 <tr class="bg-white">
