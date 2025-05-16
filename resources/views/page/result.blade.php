@@ -67,26 +67,26 @@
                     <td class="border border-gray-400">THIÊN CAN</td>
                      <!-- Ô Canh Ất -->
                     <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs">
-                        <div class="text-[11px] text-gray-600 mb-1">Thương Quan</div>
+                        <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem->hidden_stem_by_year->name }}</div>
                         <div class="{{ $result->heavenly_stem->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem->name }}</div>
                         <div class="text-[11px] {{ $result->heavenly_stem->color }}">{{ ($result->heavenly_stem->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem->yin_yang }}</div>
                     </td>
 
                     <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs">
-                        <div class="text-[11px] text-gray-600 mb-1">Thiên Ấn</div>
+                        <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem_month->hidden_stem_by_month->name }}</div>
                         <div class="{{ $result->heavenly_stem_month->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem_month->name }}</div>
                         <div class="text-[11px] {{ $result->heavenly_stem_month->color }}">{{ ($result->heavenly_stem_month->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_month->yin_yang }}</div>
                     </td>
 
                     <!-- Ô đặc biệt: Nhật Chủ -->
                     <td class="border border-gray-400 bg-[#f0f0ea] text-center text-xs">
-                        <div class="text-[11px] text-red-600 font-bold mb-1">NHẬT CHỦ</div>
+                        <div class="text-[11px] text-red-600 font-bold mb-1">{{ $result->heavenly_stem_day->hidden_stem_by_day->name }}</div>
                         <div class="{{ $result->heavenly_stem_day->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem_day->name }}</div>
                         <div class="text-[11px] {{ $result->heavenly_stem_day->color }}">{{ ($result->heavenly_stem_day->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_day->yin_yang }}</div>
                     </td>
 
                     <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs">
-                        <div class="text-[11px] text-gray-600 mb-1">Thực Thần</div>
+                        <div class="text-[11px] text-gray-600 mb-1">{{ isset($result->heavenly_stem_hour->hidden_stem_by_hour) ? $result->heavenly_stem_hour->hidden_stem_by_hour->name : '' }}</div>
                         <div class="{{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }} font-semibold text-base leading-tight">
                             {{ isset($result->heavenly_stem_hour->name) ? $result->heavenly_stem_hour->name : '' }}
                         </div>
@@ -144,10 +144,26 @@
                         </div>
                     </td>
                     <td class="border border-gray-400">TÀNG CAN</td>
-                    <td class="border border-gray-400">Bính<br><span class="text-red-600">+Hỏa</span></td>
-                    <td class="border border-gray-400">Mậu<br><span class="text-yellow-700">+Thổ</span><br>Canh<br><span class="text-yellow-600">+Kim</span><br>Ất<br><span class="text-green-700">+Mộc</span></td>
-                    <td class="border border-gray-400">Mậu<br><span class="text-yellow-700">+Thổ</span><br>Quý<br><span class="text-blue-700">+Thủy</span><br>Tân<br><span class="text-yellow-500">+Kim</span><br>Đinh<br><span class="text-red-600">+Hỏa</span></td>
-                    <td class="border border-gray-400">Quý<br><span class="text-blue-700">+Thủy</span></td>
+                    <td class="border border-gray-400 p-1 align-top">
+                        <div class="flex justify-center gap-1">
+                            
+                        </div>
+                    </td>
+                    <td class="border border-gray-400 p-1 align-top">
+                        <div class="flex justify-center gap-1">
+                            
+                        </div>
+                    </td>
+                    <td class="border border-gray-400 p-1 align-top">
+                        <div class="flex justify-center gap-1">
+                            
+                        </div>
+                    </td>
+                    <td class="border border-gray-400 p-1 align-top">
+                        <div class="flex justify-center gap-1">
+                            
+                        </div>
+                    </td>
                 </tr>
 
                 <tr class="bg-white">

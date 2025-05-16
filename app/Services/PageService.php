@@ -68,6 +68,32 @@ class PageService
 		$res_earthly_branch_hour = Calculator::calculateEarthlyBranchHour($date_time, $is_input_time);
 		$earthly_branch_hour = isset($res_earthly_branch_hour->data) ? $res_earthly_branch_hour->data : null;
 
+		$res_hidden_stem = Calculator::calculateHiddenStems((object) [
+			'heavenly_stem' => $heavenly_stem,
+			'earthly_branch' => $earthly_branch,
+			'heavenly_stem_month' => $heavenly_stem_month,
+			'earthly_branch_month' => $earthly_branch_month,
+			'heavenly_stem_day' => $heavenly_stem_day,
+			'earthly_branch_day' => $earthly_branch_day,
+			'heavenly_stem_hour' => $heavenly_stem_hour,
+			'earthly_branch_hour' => $earthly_branch_hour,
+		]);
+		$res_hidden_stem = $res_hidden_stem->data;
+		
+		$heavenly_stem->hidden_stem_by_year = $res_hidden_stem->hidden_stem_by_year;
+		$heavenly_stem->hidden_hs_in_eb_by_year = $res_hidden_stem->hidden_hs_in_eb_by_year;
+
+		$heavenly_stem_month->hidden_stem_by_month = $res_hidden_stem->hidden_stem_by_month;
+		$heavenly_stem_month->hidden_hs_in_eb_by_month = $res_hidden_stem->hidden_hs_in_eb_by_month;
+		
+		$heavenly_stem_day->hidden_stem_by_day = $res_hidden_stem->hidden_stem_by_day;
+		$heavenly_stem_day->hidden_hs_in_eb_by_day = $res_hidden_stem->hidden_hs_in_eb_by_day;
+
+		if ($heavenly_stem_hour) {
+			$heavenly_stem_hour->hidden_stem_by_hour = $res_hidden_stem->hidden_stem_by_hour;
+			$heavenly_stem_hour->hidden_hs_in_eb_by_hour = $res_hidden_stem->hidden_hs_in_eb_by_hour;
+		}
+
 		$jdn_day = Calculator::gregorianToJDN($date_time);
 
 		list($lDay, $lMonth, $lYear, $isLeap) = Date::convertSolar2Lunar(

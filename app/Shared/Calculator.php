@@ -50,7 +50,7 @@ class Calculator
      */
     public static function calculateHeavenlyStem($date)
     {
-        $year = date('Y', strtotime($date));
+        $year = date('Y', $date);
 
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
 
@@ -65,7 +65,7 @@ class Calculator
             $current_heavenly_stem = $heavenly_stem;
             break;
         }
-        
+
         if (!$current_heavenly_stem) {
             return Helper::release("Invalid Heavenly Stem date");
         }
@@ -83,12 +83,11 @@ class Calculator
      */
     public static function calculateEarthlyBranch($date)
     {
-        $year = date('Y', strtotime($date));
+        $year = date('Y', $date);
 
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        
-        $year = $year % 12;
-        $remaining = ($year - intval($year)) * 12;
+
+        $remaining = ($year - 4) % 12;
 
         $current_earthly_branch = null;
         foreach ($earthly_branch_format as $earthly_branch) {
@@ -113,18 +112,10 @@ class Calculator
      * @param mixed $date
      * @return object
      */
-    public static function calculateHeavenlyStemMonth($date) {
+    public static function calculateHeavenlyStemMonth($date)
+    {
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
-        
-        $res = self::calculateHeavenlyStem($date);
-        if (!$res->code) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
 
-        $heavenly_stem = $res->data;
-        if (!$heavenly_stem) {
-            return Helper::release("Invalid Heavenly Stem date");
-        }
         $year = date('Y', $date);
         $lunar_date = Date::convertSolar2Lunar(
             date('d', $date),
@@ -133,8 +124,8 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
         $heavenly_stem_year = intval($year % 10);
-        $heavenly_stem_month = intval($lunar_month - 1  + (($heavenly_stem_year + 9) * 2 / 10));
-        
+        $heavenly_stem_month = intval(($lunar_month - 1  + (($heavenly_stem_year + 9) * 2)) % 10);
+
         $current_heavenly_stem_by_month = null;
         foreach ($heavenly_stem_format as $format) {
             if ($format->id != $heavenly_stem_month) {
@@ -158,7 +149,7 @@ class Calculator
      * @param mixed $date
      * @return object
      */
-    public static function calculateEarthlyBranchMonth($date) 
+    public static function calculateEarthlyBranchMonth($date)
     {
 
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
@@ -169,7 +160,7 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
         $earthly_branch = intval(($lunar_month + 1) % 12);
-        
+
         $selected_earthly_branch_month = null;
         foreach ($earthly_branch_format as $format) {
             if ($format->id != $earthly_branch) {
@@ -188,7 +179,7 @@ class Calculator
             $selected_earthly_branch_month
         );
     }
-    
+
     /**
      * 6. Calculaed heavenly stem of day
      * @param mixed $date
@@ -227,7 +218,7 @@ class Calculator
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
         $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
 
-        $earthly_branch_of_day_calculated = intval($result_calculate_hs_and_eb_day % 12);        
+        $earthly_branch_of_day_calculated = intval($result_calculate_hs_and_eb_day % 12);
         $selected_earthly_branch_day = null;
         foreach ($earthly_branch_format as $format) {
             if ($format->id == $earthly_branch_of_day_calculated) {
@@ -259,14 +250,15 @@ class Calculator
                 null
             );
         }
+        // Calculate heavenly stem of day
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
         $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
 
-        $hour = date('H', $date);
-
         $heavenly_stem_of_day_calculated = intval($result_calculate_hs_and_eb_day % 10);
-        $heavenly_stem_by_hour = intval(($hour + 1) / 2 + ($heavenly_stem_of_day_calculated - 2) * 2);
-    
+
+        $hour = date('H', $date);
+        $heavenly_stem_by_hour = intval((($hour + 1) / 2 + ($heavenly_stem_of_day_calculated - 2) * 2) % 10);
+
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
         $selected_heavenly_stem_by_hour = null;
         foreach ($heavenly_stem_format as $format) {
@@ -301,7 +293,7 @@ class Calculator
         }
         $hour = date('H', $date);
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        $earthly_branch_by_hour = intval(($hour + 1) / 2);
+        $earthly_branch_by_hour = intval((($hour + 1) / 2) % 10);
 
         $selected_earthly_branch_by_hour = null;
         foreach ($earthly_branch_format as $format) {
@@ -320,13 +312,133 @@ class Calculator
         );
     }
 
-    private static function calculateHSandEBday($date) {
+    public static function calculateHiddenStems($data)
+    {
+        $hidden_hs_in_eb_format = Formula::getFormulaHiddenHSinEB();
+
+        $heavenly_stem = $data->heavenly_stem;
+        $earthly_branch = $data->earthly_branch;
+        $heavenly_stem_month = $data->heavenly_stem_month;
+        $earthly_branch_month = $data->earthly_branch_month;
+        $heavenly_stem_day = $data->heavenly_stem_day;
+        $earthly_branch_day = $data->earthly_branch_day;
+        $heavenly_stem_hour = $data->heavenly_stem_hour;
+        $earthly_branch_hour = $data->earthly_branch_hour;
+
+        $hidden_hs_in_eb_by_year = null;
+        $hidden_hs_in_eb_by_month = null;
+        $hidden_hs_in_eb_by_day = null;
+        $hidden_hs_in_eb_by_hour = null;
+
+        foreach ($hidden_hs_in_eb_format as $format) {
+            if ($format->id == $earthly_branch->id) {
+                $hidden_hs_in_eb_by_year = $format;
+            }
+            if ($format->id == $earthly_branch_month->id) {
+                $hidden_hs_in_eb_by_month = $format;
+            }
+            if ($format->id == $earthly_branch_day->id) {
+                $hidden_hs_in_eb_by_day = $format;
+            }
+            if ($earthly_branch_hour && $format->id == $earthly_branch_hour->id) {
+                $hidden_hs_in_eb_by_hour = $format;
+            }
+        }
+
+        $hidden_stem_format = Formula::getFormulaHiddenStem();
+        $hidden_stem_by_year = null;
+        $hidden_stem_by_month = null;
+        $hidden_stem_by_day = null;
+        $hidden_stem_by_hour = null;
+        foreach ($hidden_stem_format as $format) {
+            if (
+                $format->begin_yin_yang == $heavenly_stem->yin_yang
+                && $format->begin_polarity == $heavenly_stem->polarity
+            ) {
+                $hidden_stems_by_year = $format->hidden_stems;
+                foreach ($hidden_stems_by_year as $hs) {
+                    if (
+                        $hs->end_yin_yang == $earthly_branch->yin_yang
+                        && $hs->end_polarity == $earthly_branch->polarity
+                    ) {
+                        $hidden_stem_by_year = $hs;
+                        break;
+                    }
+                }
+            }
+            if (
+                $format->begin_yin_yang == $heavenly_stem_month->yin_yang
+                && $format->begin_polarity == $heavenly_stem_month->polarity
+            ) {
+                $hidden_stems_by_month = $format->hidden_stems;
+                foreach ($hidden_stems_by_month as $hs) {
+                    if (
+                        $hs->end_yin_yang == $earthly_branch_month->yin_yang
+                        && $hs->end_polarity == $earthly_branch_month->polarity
+                    ) {
+                        $hidden_stem_by_month = $hs;
+                        break;
+                    }
+                }
+            }
+            if (
+                $format->begin_yin_yang == $heavenly_stem_day->yin_yang
+                && $format->begin_polarity == $heavenly_stem_day->polarity
+            ) {
+                $hidden_stems_by_day = $format->hidden_stems;
+                foreach ($hidden_stems_by_day as $hs) {
+                    if (
+                        $hs->end_yin_yang == $earthly_branch_day->yin_yang
+                        && $hs->end_polarity == $earthly_branch_day->polarity
+                    ) {
+                        $hidden_stem_by_day = $hs;
+                        break;
+                    }
+                }
+            }
+            if (
+                $heavenly_stem_hour
+                && $format->begin_yin_yang == $heavenly_stem_hour->yin_yang
+                && $format->begin_polarity == $heavenly_stem_hour->polarity
+            ) {
+                $hidden_stems_by_hour = $format->hidden_stems;
+                foreach ($hidden_stems_by_hour as $hs) {
+                    if (
+                        $earthly_branch_hour
+                        && $hs->end_yin_yang == $earthly_branch_hour->yin_yang
+                        && $hs->end_polarity == $earthly_branch_hour->polarity
+                    ) {
+                        $hidden_stem_by_hour = $hs;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            (object) [
+                'hidden_stem_by_year' => $hidden_stem_by_year,
+                'hidden_stem_by_month' => $hidden_stem_by_month,
+                'hidden_stem_by_day' => $hidden_stem_by_day,
+                'hidden_stem_by_hour' => $hidden_stem_by_hour,
+                'hidden_hs_in_eb_by_year' => $hidden_hs_in_eb_by_year,
+                'hidden_hs_in_eb_by_month' => $hidden_hs_in_eb_by_month,
+                'hidden_hs_in_eb_by_day' => $hidden_hs_in_eb_by_day,
+                'hidden_hs_in_eb_by_hour' => $hidden_hs_in_eb_by_hour
+            ]
+        );
+    }
+
+    private static function calculateHSandEBday($date)
+    {
         $day = date("d", $date);
         $month = date("m", $date);
         $year = date("Y", $date);
 
         $century = intval($year / 100);
-        
+
         $a_dd = $day;
         $a_mm = ($month / 2) + 30 * ($month % 2 + 1) + ($month % 2) * ($month / 9);
         $a_yy = 5 * ($year % 12) + $year / 4;
@@ -346,28 +458,29 @@ class Calculator
         return ($a_dd + $a_mm + $a_cc + $a_yy + $a_ss);
     }
 
-    public static function gregorianToJDN($date) 
+    public static function gregorianToJDN($date)
     {
-        $day = date('d', strtotime($date));
-        $month = date('m', strtotime($date));
-        $year = date('Y', strtotime($date));
+        $day = date('d', $date);
+        $month = date('m', $date);
+        $year = date('Y', $date);
 
         if ($month <= 2) {
             $year -= 1;
             $month += 12;
         }
-    
+
         $A = intval($year / 100);
         $B = 2 - $A + intval($A / 4);
-    
+
         $jdn = intval(365.25 * ($year + 4716))
-             + intval(30.6001 * ($month + 1))
-             + $day + $B - 1524;
-    
+            + intval(30.6001 * ($month + 1))
+            + $day + $B - 1524;
+
         return $jdn;
     }
 
-    private static function isLeapYear($year): bool {
+    private static function isLeapYear($year): bool
+    {
         return ($year % 4 === 0 && $year % 100 !== 0) || ($year % 400 === 0);
     }
 }
