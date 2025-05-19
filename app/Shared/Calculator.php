@@ -438,11 +438,12 @@ class Calculator
         $year = date("Y", $date);
 
         $century = intval($year / 100);
+        $yy = intval($year % 100);
 
         $a_dd = $day;
-        $a_mm = ($month / 2) + 30 * ($month % 2 + 1) + ($month % 2) * ($month / 9);
-        $a_yy = 5 * ($year % 12) + $year / 4;
-        $a_cc = 33 - 16 * ($century % 4) - 3 * ($century / 4);
+        $a_mm = intval($month / 2) + 30 * ($month % 2 + 1) + ($month % 2) * intval($month / 9);
+        $a_yy = 5 * ($yy % 12) + intval($yy / 4);
+        $a_cc = 33 - 16 * ($century % 4) - 3 * intval($century / 4);
         $a_ss = 0;
 
         if ($month > 2) {
