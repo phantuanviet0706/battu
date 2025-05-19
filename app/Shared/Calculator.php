@@ -513,5 +513,59 @@ class Calculator
 
 
         $elemental_sound_format = Formula::getFormulaElementSound();
+
+        $id_elemental_sound = $heavenly_stem->name . " " . $earthly_branch->name;
+        $id_elemental_sound_month = $heavenly_stem_month->name . " " . $earthly_branch_month->name;
+        $id_elemental_sound_day = $heavenly_stem_day->name . " " . $earthly_branch_day->name;
+        $id_elemental_sound_hour = '';
+        if ($heavenly_stem_hour && $earthly_branch_hour) {
+            $id_elemental_sound_hour = $heavenly_stem_hour->name . " " . $earthly_branch_hour->name;
+        }
+
+        $elemental_sound = null;
+        $elemental_sound_month = null;
+        $elemental_sound_day = null;
+        $elemental_sound_hour = null;
+        $is_all_filled = false;
+        foreach ($elemental_sound_format as $format) {
+            if ($format->id == $id_elemental_sound) {
+                $elemental_sound = $format;
+            }
+
+            if ($format->id == $id_elemental_sound_month) {
+                $elemental_sound_month = $format;
+            }
+
+            if ($format->id == $id_elemental_sound_day) {
+                $elemental_sound_day = $format;
+            }
+
+            if ($heavenly_stem_hour && $earthly_branch_hour && $format->id == $id_elemental_sound_hour) {
+                $elemental_sound_hour = $format;
+            }
+
+            if ($elemental_sound && $elemental_sound_month && $elemental_sound_day && $elemental_sound_hour) {
+                $is_all_filled = true;
+            }
+            
+            if ($is_all_filled) {
+                break;
+            }
+        }
+
+        if (!$elemental_sound) {
+            return Helper::release("Invalid Elemental Sound date");
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            (object) [
+                'elemental_sound' => $elemental_sound,
+                'elemental_sound_month' => $elemental_sound_month,
+                'elemental_sound_day' => $elemental_sound_day,
+                'elemental_sound_hour' => $elemental_sound_hour
+            ]
+        );
     }
 }

@@ -102,7 +102,7 @@ class PageService
 			date('Y', $date_time)
 		);
 
-		$elemental_sound = Calculator::calculateElementalSound((object) [
+		$res_elemental_sound = Calculator::calculateElementalSound((object) [
 			'heavenly_stem' => $heavenly_stem,
 			'earthly_branch' => $earthly_branch,
 			'heavenly_stem_month' => $heavenly_stem_month,
@@ -112,6 +112,10 @@ class PageService
 			'heavenly_stem_hour' => $heavenly_stem_hour,
 			'earthly_branch_hour' => $earthly_branch_hour,
 		]);
+		$elemental_sound = null;
+		if ($res_elemental_sound) {
+			$elemental_sound = $res_elemental_sound->data;
+		}
 
 		return (object) [
 			'message' => 'Get data successfully',
@@ -140,6 +144,7 @@ class PageService
 				'heavenly_stem_hour' => $heavenly_stem_hour,
 				'earthly_branch_hour' => $earthly_branch_hour,
 				'jdn' => $jdn_day,
+				'data_sound' => $elemental_sound,
 			]
 		];
 	}

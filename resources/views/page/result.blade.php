@@ -220,10 +220,29 @@
 
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">NẠP ÂM</td>
-                    <td class="border border-gray-400">Phú Đăng <span class="text-yellow-600 font-bold">Kim</span></td>
-                    <td class="border border-gray-400">Bạch Lạp <span class="text-yellow-600 font-bold">Kim</span></td>
-                    <td class="border border-gray-400">Đại Hải <span class="text-blue-600 font-bold">Thủy</span></td>
-                    <td class="border border-gray-400">Tích Lịch <span class="text-red-600 font-bold">Hỏa</span></td>
+                    @if (isset($result->data_sound->elemental_sound))
+                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound->name }} <span class="{{ $result->data_sound->elemental_sound->color }} font-bold">{{ $result->data_sound->elemental_sound->element }}</span></td>
+                    @else
+                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    @endif
+
+                    @if (isset($result->data_sound->elemental_sound_month))
+                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_month->name }} <span class="{{ $result->data_sound->elemental_sound_month->color }} font-bold">{{ $result->data_sound->elemental_sound_month->element }}</span></td>
+                    @else
+                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    @endif
+
+                    @if (isset($result->data_sound->elemental_sound_day))
+                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_day->name }} <span class="{{ $result->data_sound->elemental_sound_day->color }} font-bold">{{ $result->data_sound->elemental_sound_day->element }}</span></td>
+                    @else
+                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    @endif
+
+                    @if (isset($result->data_sound->elemental_sound_hour))
+                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_hour->name }} <span class="{{ $result->data_sound->elemental_sound_hour->color }} font-bold">{{ $result->data_sound->elemental_sound_hour->element }}</span></td>
+                    @else
+                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    @endif
                 </tr>
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">TRƯỜNG SINH</td>
