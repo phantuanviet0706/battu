@@ -117,6 +117,22 @@ class PageService
 			$elemental_sound = $res_elemental_sound->data;
 		}
 
+		$res_growth_stage = Calculator::calculateGrowthStage((object) [
+			'heavenly_stem' => $heavenly_stem,
+			'earthly_branch' => $earthly_branch,
+			'heavenly_stem_month' => $heavenly_stem_month,
+			'earthly_branch_month' => $earthly_branch_month,
+			'heavenly_stem_day' => $heavenly_stem_day,
+			'earthly_branch_day' => $earthly_branch_day,
+			'heavenly_stem_hour' => $heavenly_stem_hour,
+			'earthly_branch_hour' => $earthly_branch_hour,
+		]);
+
+		$growth_stage = null;
+		if ($res_growth_stage) {
+			$growth_stage = $res_growth_stage->data;
+		}
+
 		return (object) [
 			'message' => 'Get data successfully',
 			'code' => 1,
@@ -145,6 +161,7 @@ class PageService
 				'earthly_branch_hour' => $earthly_branch_hour,
 				'jdn' => $jdn_day,
 				'data_sound' => $elemental_sound,
+				'data_growth_stage' => $growth_stage
 			]
 		];
 	}

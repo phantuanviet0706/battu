@@ -246,10 +246,29 @@
                 </tr>
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">TRƯỜNG SINH</td>
-                    <td class="border border-gray-400">Mộc Dục</td>
-                    <td class="border border-gray-400">Dưỡng</td>
-                    <td class="border border-gray-400">Quan Đới</td>
-                    <td class="border border-gray-400">Thai</td>
+                    @if (isset($result->data_growth_stage->growth_stage))
+                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage->result }}</td>
+                    @else
+                        <td class="border border-gray-400"></td>
+                    @endif
+
+                    @if (isset($result->data_growth_stage->growth_stage_month))
+                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_month->result }}</td>
+                    @else
+                        <td class="border border-gray-400"></td>
+                    @endif
+
+                    @if (isset($result->data_growth_stage->growth_stage_day))
+                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_day->result }}</td>
+                    @else
+                        <td class="border border-gray-400"></td>
+                    @endif
+
+                    @if (isset($result->data_growth_stage->growth_stage_hour))
+                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_hour->result }}</td>
+                    @else
+                        <td class="border border-gray-400"></td>
+                    @endif
                 </tr>
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">THẦN SÁT</td>

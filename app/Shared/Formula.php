@@ -767,7 +767,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng trong biển",
             ],
-            
+
             (object) [
                 "id" => "Bính Dần",
                 "name" => "Lư Trung",
@@ -782,7 +782,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa trong lò",
             ],
-            
+
             (object) [
                 "id" => "Mậu Thìn",
                 "name" => "Đại Lâm",
@@ -797,7 +797,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây trong rừng",
             ],
-            
+
             (object) [
                 "id" => "Canh Ngọ",
                 "name" => "Lộ Bàng",
@@ -812,7 +812,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất ven đường",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Thân",
                 "name" => "Kiếm Phong",
@@ -827,7 +827,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng đấu kiếm",
             ],
-            
+
             (object) [
                 "id" => "Giáp Tuất",
                 "name" => "Sơn Đầu",
@@ -842,7 +842,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa đầu núi",
             ],
-            
+
             (object) [
                 "id" => "Bính Tí",
                 "name" => "Giản Hạ",
@@ -857,7 +857,7 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước khe suối",
             ],
-            
+
             (object) [
                 "id" => "Mậu Dần",
                 "name" => "Thành Đầu",
@@ -872,7 +872,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất tường thành",
             ],
-            
+
             (object) [
                 "id" => "Canh Thìn",
                 "name" => "Bạch Lạp",
@@ -887,7 +887,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng trong biển",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Ngọ",
                 "name" => "Dương Liễu",
@@ -902,7 +902,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây liễu rủ",
             ],
-            
+
             (object) [
                 "id" => "Giáp Thân",
                 "name" => "Tuyền Trung",
@@ -917,7 +917,7 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước trong suối",
             ],
-            
+
             (object) [
                 "id" => "Bính Tuất",
                 "name" => "Ốc Thượng",
@@ -932,7 +932,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất trên mái",
             ],
-            
+
             (object) [
                 "id" => "Mậu Tí",
                 "name" => "Tích Lịch",
@@ -947,7 +947,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa sấm sét",
             ],
-            
+
             (object) [
                 "id" => "Canh Dần",
                 "name" => "Tùng Bách",
@@ -962,7 +962,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây tùng bách",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Thìn",
                 "name" => "Trường Lưu",
@@ -977,7 +977,7 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước sông dài",
             ],
-            
+
             (object) [
                 "id" => "Giáp Ngọ",
                 "name" => "Sa Trung",
@@ -992,7 +992,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng trong cát",
             ],
-            
+
             (object) [
                 "id" => "Bính Thân",
                 "name" => "Sơn Hạ",
@@ -1007,7 +1007,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa dưới núi",
             ],
-            
+
             (object) [
                 "id" => "Mậu Tuấn",
                 "name" => "Bình Địa",
@@ -1022,7 +1022,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây đất bằng",
             ],
-            
+
             (object) [
                 "id" => "Canh Tí",
                 "name" => "Bích Thượng",
@@ -1037,7 +1037,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất vách tường",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Dần",
                 "name" => "Kim Bạch",
@@ -1052,7 +1052,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng pha bạc",
             ],
-            
+
             (object) [
                 "id" => "Giáp Thìn",
                 "name" => "Phú Đăng",
@@ -1067,7 +1067,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa đèn dầu",
             ],
-            
+
             (object) [
                 "id" => "Bính Ngọ",
                 "name" => "Thiên Hà",
@@ -1082,7 +1082,7 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước trên trời",
             ],
-            
+
             (object) [
                 "id" => "Mậu Thân",
                 "name" => "Đại Trạch",
@@ -1097,7 +1097,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất đầm lầy",
             ],
-            
+
             (object) [
                 "id" => "Canh Tuất",
                 "name" => "Thoa Xuyến",
@@ -1112,7 +1112,7 @@ class Formula
                 "color" => "text-yellow-500",
                 "sub_desc" => "Vàng trang sức",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Tí",
                 "name" => "Tang Đố",
@@ -1127,7 +1127,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây dâu cang",
             ],
-            
+
             (object) [
                 "id" => "Giáp Dần",
                 "name" => "Đại Khuê",
@@ -1142,7 +1142,7 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước khe lớn",
             ],
-            
+
             (object) [
                 "id" => "Bính Thìn",
                 "name" => "Sa Trung",
@@ -1157,7 +1157,7 @@ class Formula
                 "color" => "text-purple-500",
                 "sub_desc" => "Đất trong cát",
             ],
-            
+
             (object) [
                 "id" => "Mậu Ngọ",
                 "name" => "Thiên Thượng",
@@ -1172,7 +1172,7 @@ class Formula
                 "color" => "text-red-500",
                 "sub_desc" => "Lửa trên trời",
             ],
-            
+
             (object) [
                 "id" => "Canh Thân",
                 "name" => "Thạch Lựu",
@@ -1187,7 +1187,7 @@ class Formula
                 "color" => "text-green-500",
                 "sub_desc" => "Cây thạch lựu",
             ],
-            
+
             (object) [
                 "id" => "Nhâm Tuất",
                 "name" => "Đại Hải",
@@ -1202,6 +1202,438 @@ class Formula
                 "color" => "text-blue-500",
                 "sub_desc" => "Nước biển lớn",
             ],
+        ];
+    }
+
+    /**
+     * @index 8
+     * @desc EN: Get the formula for growth stage
+     * @desc VI: Lấy công thức trường sinh
+     * @return object[]
+     */
+    public static function getFormulaGrowthStage()
+    {
+        return [
+            (object) [
+                "id" => "Hợi Mộc",
+                "heavenly_stem_name" => "Hợi",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Trường Sinh"
+            ],
+            (object) [
+                "id" => "Dần Hỏa",
+                "heavenly_stem_name" => "Dần",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Trường Sinh"
+            ],
+            (object) [
+                "id" => "Tỵ Thổ",
+                "heavenly_stem_name" => "Tỵ",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Trường Sinh"
+            ],
+            (object) [
+                "id" => "Thân Kim",
+                "heavenly_stem_name" => "Thân",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Trường Sinh"
+            ],
+            (object) [
+                "id" => "Thân Thủy",
+                "heavenly_stem_name" => "Thân",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Trường Sinh"
+            ],
+            (object) [
+                "id" => "Tí Mộc",
+                "heavenly_stem_name" => "Tí",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Mộc Dục"
+            ],
+            (object) [
+                "id" => "Mão Hỏa",
+                "heavenly_stem_name" => "Mão",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Mộc Dục"
+            ],
+            (object) [
+                "id" => "Ngọ Thổ",
+                "heavenly_stem_name" => "Ngọ",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Mộc Dục"
+            ],
+            (object) [
+                "id" => "Dậu Kim",
+                "heavenly_stem_name" => "Dậu",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Mộc Dục"
+            ],
+            (object) [
+                "id" => "Dậu Thủy",
+                "heavenly_stem_name" => "Dậu",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Mộc Dục"
+            ],
+            (object) [
+                "id" => "Sửu Mộc",
+                "heavenly_stem_name" => "Sửu",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Quan Đới"
+            ],
+            (object) [
+                "id" => "Thìn Hỏa",
+                "heavenly_stem_name" => "Thìn",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Quan Đới"
+            ],
+            (object) [
+                "id" => "Mùi Thổ",
+                "heavenly_stem_name" => "Mùi",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Quan Đới"
+            ],
+            (object) [
+                "id" => "Tuất Kim",
+                "heavenly_stem_name" => "Tuất",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Quan Đới"
+            ],
+            (object) [
+                "id" => "Tuất Thủy",
+                "heavenly_stem_name" => "Tuất",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Quan Đới"
+            ],
+            (object) [
+                "id" => "Dần Mộc",
+                "heavenly_stem_name" => "Dần",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Lâm Quan"
+            ],
+            (object) [
+                "id" => "Tỵ Hỏa",
+                "heavenly_stem_name" => "Tỵ",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Lâm Quan"
+            ],
+            (object) [
+                "id" => "Thân Thổ",
+                "heavenly_stem_name" => "Thân",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Lâm Quan"
+            ],
+            (object) [
+                "id" => "Hợi Kim",
+                "heavenly_stem_name" => "Hợi",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Lâm Quan"
+            ],
+            (object) [
+                "id" => "Hợi Thủy",
+                "heavenly_stem_name" => "Hợi",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Lâm Quan"
+            ],
+            (object) [
+                "id" => "Mão Mộc",
+                "heavenly_stem_name" => "Mão",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Đế Vượng"
+            ],
+            (object) [
+                "id" => "Ngọ Hỏa",
+                "heavenly_stem_name" => "Ngọ",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Đế Vượng"
+            ],
+            (object) [
+                "id" => "Dậu Thổ",
+                "heavenly_stem_name" => "Dậu",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Đế Vượng"
+            ],
+            (object) [
+                "id" => "Tí Kim",
+                "heavenly_stem_name" => "Tí",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Đế Vượng"
+            ],
+            (object) [
+                "id" => "Tí Thủy",
+                "heavenly_stem_name" => "Tí",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Đế Vượng"
+            ],
+            (object) [
+                "id" => "Thìn Mộc",
+                "heavenly_stem_name" => "Thìn",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Suy"
+            ],
+            (object) [
+                "id" => "Mùi Hỏa",
+                "heavenly_stem_name" => "Mùi",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Suy"
+            ],
+            (object) [
+                "id" => "Tuất Thổ",
+                "heavenly_stem_name" => "Tuất",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Suy"
+            ],
+            (object) [
+                "id" => "Sửu Kim",
+                "heavenly_stem_name" => "Sửu",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Suy"
+            ],
+            (object) [
+                "id" => "Sửu Thủy",
+                "heavenly_stem_name" => "Sửu",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Suy"
+            ],
+            (object) [
+                "id" => "Tỵ Mộc",
+                "heavenly_stem_name" => "Tỵ",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Bệnh"
+            ],
+            (object) [
+                "id" => "Thân Hỏa",
+                "heavenly_stem_name" => "Thân",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Bệnh"
+            ],
+            (object) [
+                "id" => "Hợi Thổ",
+                "heavenly_stem_name" => "Hợi",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Bệnh"
+            ],
+            (object) [
+                "id" => "Dần Kim",
+                "heavenly_stem_name" => "Dần",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Bệnh"
+            ],
+            (object) [
+                "id" => "Dần Thủy",
+                "heavenly_stem_name" => "Dần",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Bệnh"
+            ],
+            (object) [
+                "id" => "Ngọ Mộc",
+                "heavenly_stem_name" => "Ngọ",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Tử"
+            ],
+            (object) [
+                "id" => "Dậu Hỏa",
+                "heavenly_stem_name" => "Dậu",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Tử"
+            ],
+            (object) [
+                "id" => "Tí Thổ",
+                "heavenly_stem_name" => "Tí",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Tử"
+            ],
+            (object) [
+                "id" => "Mão Kim",
+                "heavenly_stem_name" => "Mão",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Tử"
+            ],
+            (object) [
+                "id" => "Mão Thủy",
+                "heavenly_stem_name" => "Mão",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Tử"
+            ],
+            (object) [
+                "id" => "Mùi Mộc",
+                "heavenly_stem_name" => "Mùi",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Mộ"
+            ],
+            (object) [
+                "id" => "Tuất Hỏa",
+                "heavenly_stem_name" => "Tuất",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Mộ"
+            ],
+            (object) [
+                "id" => "Sửu Thổ",
+                "heavenly_stem_name" => "Sửu",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Mộ"
+            ],
+            (object) [
+                "id" => "Thìn Kim",
+                "heavenly_stem_name" => "Thìn",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Mộ"
+            ],
+            (object) [
+                "id" => "Thìn Thủy",
+                "heavenly_stem_name" => "Thìn",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Mộ"
+            ],
+            (object) [
+                "id" => "Thân Mộc",
+                "heavenly_stem_name" => "Thân",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Tuyệt"
+            ],
+            (object) [
+                "id" => "Hợi Hỏa",
+                "heavenly_stem_name" => "Hợi",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Tuyệt"
+            ],
+            (object) [
+                "id" => "Dần Thổ",
+                "heavenly_stem_name" => "Dần",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Tuyệt"
+            ],
+            (object) [
+                "id" => "Tỵ Kim",
+                "heavenly_stem_name" => "Tỵ",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Tuyệt"
+            ],
+            (object) [
+                "id" => "Tỵ Thủy",
+                "heavenly_stem_name" => "Tỵ",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Tuyệt"
+            ],
+            (object) [
+                "id" => "Dậu Mộc",
+                "heavenly_stem_name" => "Dậu",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Thai"
+            ],
+            (object) [
+                "id" => "Tí Hỏa",
+                "heavenly_stem_name" => "Tí",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Thai"
+            ],
+            (object) [
+                "id" => "Mão Thổ",
+                "heavenly_stem_name" => "Mão",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Thai"
+            ],
+            (object) [
+                "id" => "Ngọ Kim",
+                "heavenly_stem_name" => "Ngọ",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Thai"
+            ],
+            (object) [
+                "id" => "Ngọ Thủy",
+                "heavenly_stem_name" => "Ngọ",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Thai"
+            ],
+            (object) [
+                "id" => "Tuất Mộc",
+                "heavenly_stem_name" => "Tuất",
+                "earthly_branch_name" => "Mộc",
+                "color" => "text-green-600",
+                "result" => "Dưỡng"
+            ],
+            (object) [
+                "id" => "Sửu Hỏa",
+                "heavenly_stem_name" => "Sửu",
+                "earthly_branch_name" => "Hỏa",
+                "color" => "text-red-500",
+                "result" => "Dưỡng"
+            ],
+            (object) [
+                "id" => "Thìn Thổ",
+                "heavenly_stem_name" => "Thìn",
+                "earthly_branch_name" => "Thổ",
+                "color" => "text-yellow-800",
+                "result" => "Dưỡng"
+            ],
+            (object) [
+                "id" => "Mùi Kim",
+                "heavenly_stem_name" => "Mùi",
+                "earthly_branch_name" => "Kim",
+                "color" => "text-yellow-500",
+                "result" => "Dưỡng"
+            ],
+            (object) [
+                "id" => "Mùi Thủy",
+                "heavenly_stem_name" => "Mùi",
+                "earthly_branch_name" => "Thủy",
+                "color" => "text-blue-500",
+                "result" => "Dưỡng"
+            ]
         ];
     }
 }

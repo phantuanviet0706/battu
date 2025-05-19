@@ -553,10 +553,6 @@ class Calculator
             }
         }
 
-        if (!$elemental_sound) {
-            return Helper::release("Invalid Elemental Sound date");
-        }
-
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
@@ -565,6 +561,72 @@ class Calculator
                 'elemental_sound_month' => $elemental_sound_month,
                 'elemental_sound_day' => $elemental_sound_day,
                 'elemental_sound_hour' => $elemental_sound_hour
+            ]
+        );
+    }
+
+    /**
+     * 11. Calculate growth stage
+     * @param mixed $data
+     * @return object
+     */
+    public static function calculateGrowthStage($data)
+    {
+        $growth_stage_formula = Formula::getFormulaGrowthStage();
+
+        $heavenly_stem = $data->heavenly_stem;
+        $earthly_branch = $data->earthly_branch;
+        $heavenly_stem_month = $data->heavenly_stem_month;
+        $earthly_branch_month = $data->earthly_branch_month;
+        $heavenly_stem_day = $data->heavenly_stem_day;
+        $earthly_branch_day = $data->earthly_branch_day;
+        $heavenly_stem_hour = $data->heavenly_stem_hour;
+        $earthly_branch_hour = $data->earthly_branch_hour;
+
+        $key_by_year = $earthly_branch->name . " " . $heavenly_stem->yin_yang;
+        $key_by_month = $earthly_branch_month->name . " " . $heavenly_stem_month->yin_yang;
+        $key_by_day = $earthly_branch_day->name . " " . $heavenly_stem_day->yin_yang;
+        $key_by_hour = "";
+        if ($earthly_branch_hour && $heavenly_stem_hour) {
+            $key_by_hour = $earthly_branch_hour->name . " " . $heavenly_stem_hour->yin_yang;
+        }
+
+        $growth_stage = null;
+        $growth_stage_month = null;
+        $growth_stage_day = null;
+        $growth_stage_hour = null;
+        $is_all_set = false;
+        foreach ($growth_stage_formula as $formula) {
+            if ($formula->id == $key_by_year) {
+                $growth_stage = $formula;
+            }
+            if ($formula->id == $key_by_month) {
+                $growth_stage_month = $formula;
+            }
+            if ($formula->id == $key_by_day) {
+                $growth_stage_day = $formula;
+            }
+            if ($formula->id == $key_by_hour) {
+                $growth_stage_hour = $formula;
+            }
+
+            if ($growth_stage && $growth_stage_month && $growth_stage_day && $growth_stage_hour) {
+                $is_all_set = true;
+            }
+
+            if ($is_all_set) {
+                break;
+            }
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            (object) [
+                'growth_stage' => $growth_stage,
+                'growth_stage_month' => $growth_stage_month,
+                'growth_stage_day' => $growth_stage_day,
+                'growth_stage_hour' => $growth_stage_hour
             ]
         );
     }
