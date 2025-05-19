@@ -312,6 +312,11 @@ class Calculator
         );
     }
 
+    /**
+     * Private function to calculate hidden stems
+     * @param mixed $data
+     * @return object
+     */
     public static function calculateHiddenStems($data)
     {
         $hidden_hs_in_eb_format = Formula::getFormulaHiddenHSinEB();
@@ -431,6 +436,11 @@ class Calculator
         );
     }
 
+    /**
+     * Calculate Heavenly stem and Earthly branch day
+     * @param mixed $date
+     * @return int
+     */
     private static function calculateHSandEBday($date)
     {
         $day = date("d", $date);
@@ -483,5 +493,25 @@ class Calculator
     private static function isLeapYear($year): bool
     {
         return ($year % 4 === 0 && $year % 100 !== 0) || ($year % 400 === 0);
+    }
+
+    /**
+     * 10. Calculate Elemental Sound
+     * @param mixed $data
+     * @return object
+     */
+    public static function calculateElementalSound($data)
+    {
+        $heavenly_stem = $data->heavenly_stem;
+        $earthly_branch = $data->earthly_branch;
+        $heavenly_stem_month = $data->heavenly_stem_month;
+        $earthly_branch_month = $data->earthly_branch_month;
+        $heavenly_stem_day = $data->heavenly_stem_day;
+        $earthly_branch_day = $data->earthly_branch_day;
+        $heavenly_stem_hour = $data->heavenly_stem_hour;
+        $earthly_branch_hour = $data->earthly_branch_hour;
+
+
+        $elemental_sound_format = Formula::getFormulaElementSound();
     }
 }

@@ -166,7 +166,7 @@ class Formula
             ],
             (object) [
                 'id' => 10,
-                'name' => 'Tý',
+                'name' => 'Tí',
                 'range' => [
                     (object) ["start" => "07-12", "end" => "21-12", "name" => "Đại Tuyết"],
                     (object) ["start" => "22-12", "end" => "05-01", "name" => "Đông Chí"]
@@ -228,7 +228,7 @@ class Formula
     public static function getFormulaEarthlyBranch()
     {
         return [
-            (object) ["id" => 0, "name" => "Tý",   "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
+            (object) ["id" => 0, "name" => "Tí",   "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
             (object) ["id" => 1, "name" => "Sửu",  "yin_yang" => "Thổ",  "polarity" => "Âm",    "color" => "text-yellow-800"],
             (object) ["id" => 2, "name" => "Dần",  "yin_yang" => "Mộc",  "polarity" => "Dương", "color" => "text-green-600"],
             (object) ["id" => 3, "name" => "Mão",  "yin_yang" => "Mộc",  "polarity" => "Âm",    "color" => "text-green-600"],
@@ -265,7 +265,7 @@ class Formula
         return [
             (object) [
                 "id" => 0,
-                "name" => "Tý",
+                "name" => "Tí",
                 "hidden" => [
                     (object) [
                         "heavenly_stem" => "Quý",
@@ -562,6 +562,12 @@ class Formula
         ];
     }
 
+    /**
+     * @index 6
+     * @desc EN: Get the formula for hidden stem
+     * @desc VI: Lấy công thức thiên can ẩn
+     * @return object[]
+     */
     public static function getFormulaHiddenStem()
     {
         return [
@@ -734,6 +740,467 @@ class Formula
                     (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-500"],
                     (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
+            ],
+        ];
+    }
+
+    /**
+     * @index 7
+     * @desc EN: Get the formula for sound
+     * @desc VI: Lấy công thức âm
+     * @return object[]
+     */
+    public static function getFormulaElementSound()
+    {
+        return [
+            (object) [
+                "id" => "Giáp Tí",
+                "name" => "Hải Trung",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong biển",
+            ],
+            (object) [
+                "id" => "Ất Sửu",
+                "name" => "Hải Trung",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong biển",
+            ],
+            
+            (object) [
+                "id" => "Bính Dần",
+                "name" => "Lư Trung",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa trong lò",
+            ],
+            (object) [
+                "id" => "Đinh Mão",
+                "name" => "Lư Trung",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa trong lò",
+            ],
+            
+            (object) [
+                "id" => "Mậu Thìn",
+                "name" => "Đại Lâm",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây trong rừng",
+            ],
+            (object) [
+                "id" => "Kỷ Tỵ",
+                "name" => "Đại Lâm",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây trong rừng",
+            ],
+            
+            (object) [
+                "id" => "Canh Ngọ",
+                "name" => "Lộ Bàng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất ven đường",
+            ],
+            (object) [
+                "id" => "Tân Mùi",
+                "name" => "Lộ Bàng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất ven đường",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Thân",
+                "name" => "Kiếm Phong",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng đấu kiếm",
+            ],
+            (object) [
+                "id" => "Quý Dậu",
+                "name" => "Kiếm Phong",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng đấu kiếm",
+            ],
+            
+            (object) [
+                "id" => "Giáp Tuất",
+                "name" => "Sơn Đầu",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa đầu núi",
+            ],
+            (object) [
+                "id" => "Ất Hợi",
+                "name" => "Sơn Đầu",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa đầu núi",
+            ],
+            
+            (object) [
+                "id" => "Bính Tí",
+                "name" => "Giản Hạ",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước khe suối",
+            ],
+            (object) [
+                "id" => "Đinh Sửu",
+                "name" => "Giản Hạ",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước khe suối",
+            ],
+            
+            (object) [
+                "id" => "Mậu Dần",
+                "name" => "Thành Đầu",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất tường thành",
+            ],
+            (object) [
+                "id" => "Kỷ Mão",
+                "name" => "Thành Đầu",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất tường thành",
+            ],
+            
+            (object) [
+                "id" => "Canh Thìn",
+                "name" => "Bạch Lạp",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong biển",
+            ],
+            (object) [
+                "id" => "Tân Tỵ",
+                "name" => "Bạch Lạp",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong biển",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Ngọ",
+                "name" => "Dương Liễu",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây liễu rủ",
+            ],
+            (object) [
+                "id" => "Quý Mùi",
+                "name" => "Dương Liễu",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây liễu rủ",
+            ],
+            
+            (object) [
+                "id" => "Giáp Thân",
+                "name" => "Tuyền Trung",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước trong suối",
+            ],
+            (object) [
+                "id" => "Ất Dậu",
+                "name" => "Tuyền Trung",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước trong suối",
+            ],
+            
+            (object) [
+                "id" => "Bính Tuất",
+                "name" => "Ốc Thượng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất trên mái",
+            ],
+            (object) [
+                "id" => "Đinh Hợi",
+                "name" => "Ốc Thượng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất trên mái",
+            ],
+            
+            (object) [
+                "id" => "Mậu Tí",
+                "name" => "Tích Lịch",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa sấm sét",
+            ],
+            (object) [
+                "id" => "Kỷ Sửu",
+                "name" => "Tích Lịch",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa sấm sét",
+            ],
+            
+            (object) [
+                "id" => "Canh Dần",
+                "name" => "Tùng Bách",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây tùng bách",
+            ],
+            (object) [
+                "id" => "Tân Mão",
+                "name" => "Tùng Bách",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây tùng bách",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Thìn",
+                "name" => "Trường Lưu",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước sông dài",
+            ],
+            (object) [
+                "id" => "Quý Tỵ",
+                "name" => "Trường Lưu",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước sông dài",
+            ],
+            
+            (object) [
+                "id" => "Giáp Ngọ",
+                "name" => "Sa Trung",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong cát",
+            ],
+            (object) [
+                "id" => "Ất Mùi",
+                "name" => "Sa Trung",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trong cát",
+            ],
+            
+            (object) [
+                "id" => "Bính Thân",
+                "name" => "Sơn Hạ",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa dưới núi",
+            ],
+            (object) [
+                "id" => "Đinh Dậu",
+                "name" => "Sơn Hạ",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa dưới núi",
+            ],
+            
+            (object) [
+                "id" => "Mậu Tuấn",
+                "name" => "Bình Địa",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây đất bằng",
+            ],
+            (object) [
+                "id" => "Kỷ Hợi",
+                "name" => "Bình Địa",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây đất bằng",
+            ],
+            
+            (object) [
+                "id" => "Canh Tí",
+                "name" => "Bích Thượng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất vách tường",
+            ],
+            (object) [
+                "id" => "Tân Sửu",
+                "name" => "Bích Thượng",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất vách tường",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Dần",
+                "name" => "Kim Bạch",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng pha bạc",
+            ],
+            (object) [
+                "id" => "Quý Mão",
+                "name" => "Kim Bạch",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng pha bạc",
+            ],
+            
+            (object) [
+                "id" => "Giáp Thìn",
+                "name" => "Phú Đăng",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa đèn dầu",
+            ],
+            (object) [
+                "id" => "Ất Tỵ",
+                "name" => "Phú Đăng",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa đèn dầu",
+            ],
+            
+            (object) [
+                "id" => "Bính Ngọ",
+                "name" => "Thiên Hà",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước trên trời",
+            ],
+            (object) [
+                "id" => "Đinh Mùi",
+                "name" => "Thiên Hà",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước trên trời",
+            ],
+            
+            (object) [
+                "id" => "Mậu Thân",
+                "name" => "Đại Trạch",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất đầm lầy",
+            ],
+            (object) [
+                "id" => "Kỷ Dậu",
+                "name" => "Đại Trạch",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất đầm lầy",
+            ],
+            
+            (object) [
+                "id" => "Canh Tuất",
+                "name" => "Thoa Xuyến",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trang sức",
+            ],
+            (object) [
+                "id" => "Tân Hợi",
+                "name" => "Thoa Xuyến",
+                "element" => "Kim",
+                "color" => "text-yellow-500",
+                "sub_desc" => "Vàng trang sức",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Tí",
+                "name" => "Tang Đố",
+                "element" => "Kim",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây dâu cang",
+            ],
+            (object) [
+                "id" => "Quý Sửu",
+                "name" => "Tang Đố",
+                "element" => "Kim",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây dâu cang",
+            ],
+            
+            (object) [
+                "id" => "Giáp Dần",
+                "name" => "Đại Khuê",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước khe lớn",
+            ],
+            (object) [
+                "id" => "Ất Mão",
+                "name" => "Đại Khuê",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước khe lớn",
+            ],
+            
+            (object) [
+                "id" => "Bính Thìn",
+                "name" => "Sa Trung",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất trong cát",
+            ],
+            (object) [
+                "id" => "Đinh Tỵ",
+                "name" => "Sa Trung",
+                "element" => "Thổ",
+                "color" => "text-purple-500",
+                "sub_desc" => "Đất trong cát",
+            ],
+            
+            (object) [
+                "id" => "Mậu Ngọ",
+                "name" => "Thiên Thượng",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa trên trời",
+            ],
+            (object) [
+                "id" => "Kỷ Mùi",
+                "name" => "Thiên Thượng",
+                "element" => "Hỏa",
+                "color" => "text-red-500",
+                "sub_desc" => "Lửa trên trời",
+            ],
+            
+            (object) [
+                "id" => "Canh Thân",
+                "name" => "Thạch Lựu",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây thạch lựu",
+            ],
+            (object) [
+                "id" => "Tân Dậu",
+                "name" => "Thạch Lựu",
+                "element" => "Mộc",
+                "color" => "text-green-500",
+                "sub_desc" => "Cây thạch lựu",
+            ],
+            
+            (object) [
+                "id" => "Nhâm Tuất",
+                "name" => "Đại Hải",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước biển lớn",
+            ],
+            (object) [
+                "id" => "Quý Hợi",
+                "name" => "Đại Hải",
+                "element" => "Thủy",
+                "color" => "text-blue-500",
+                "sub_desc" => "Nước biển lớn",
             ],
         ];
     }
