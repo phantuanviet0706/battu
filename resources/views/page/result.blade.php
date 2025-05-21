@@ -9,9 +9,9 @@
             <h3 class="text-xl font-semibold">{{ $result->name }}</h3>
             <p class="text-sm text-gray-500">
                 {{ (isset($result->input->hour) ? $result->input->hour : 0) . "h" . (isset($result->input->minute) ? $result->input->minute : 0) }}
-                 - 
+                -
                 {{ $result->input->day . "/" . $result->input->month . "/" . $result->input->year }}
-                 - 
+                -
                 {{ isset($result->gender) ? ($result->gender == 'male' ? 'Male' : 'Female') : 'unknown' }}
             </p>
         </div>
@@ -65,7 +65,7 @@
                     </td>
                     <!-- Dòng 4: THIÊN CAN -->
                     <td class="border border-gray-400">THIÊN CAN</td>
-                     <!-- Ô Canh Ất -->
+                    <!-- Ô Canh Ất -->
                     <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs">
                         <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem->hidden_stem_by_year->name }}</div>
                         <div class="{{ $result->heavenly_stem->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem->name }}</div>
@@ -124,7 +124,7 @@
                         {{ $result->earthly_branch_day->name }}
                         <br>
                         <span class="text-xs">
-                            {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}    
+                            {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}
                         </span>
                     </td>
                     <!-- Theo giờ -->
@@ -147,72 +147,72 @@
                     <td class="border border-gray-400 p-1 align-top">
                         <div class="flex justify-center gap-1">
                             @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
-                                @php
-                                    $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;    
-                                @endphp
-                                @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
-                                    @foreach ($hidden_items_by_year->hidden as $hidden_item)
-                                        <div class="px-2" style="height: 100%;">
-                                            <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                            @php
+                            $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
+                            @endphp
+                            @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
+                            @foreach ($hidden_items_by_year->hidden as $hidden_item)
+                            <div class="px-2" style="height: 100%;">
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                            </div>
+                            @endforeach
+                            @endif
                             @endif
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
                         <div class="flex justify-center gap-1">
                             @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
-                                @php
-                                    $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;    
-                                @endphp
-                                @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
-                                    @foreach ($hidden_items_by_month->hidden as $hidden_item)
-                                        <div class="px-2" style="height: 100%;">
-                                            <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                            @php
+                            $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
+                            @endphp
+                            @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
+                            @foreach ($hidden_items_by_month->hidden as $hidden_item)
+                            <div class="px-2" style="height: 100%;">
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                            </div>
+                            @endforeach
+                            @endif
                             @endif
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
                         <div class="flex justify-center gap-1">
                             @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
-                                @php
-                                    $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;    
-                                @endphp
-                                @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
-                                    @foreach ($hidden_items_by_day->hidden as $hidden_item)
-                                        <div class="px-2" style="height: 100%;">
-                                            <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                            @php
+                            $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
+                            @endphp
+                            @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
+                            @foreach ($hidden_items_by_day->hidden as $hidden_item)
+                            <div class="px-2" style="height: 100%;">
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                            </div>
+                            @endforeach
+                            @endif
                             @endif
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
                         <div class="flex justify-center gap-1">
                             @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
-                                @php
-                                    $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;    
-                                @endphp
-                                @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
-                                    @foreach ($hidden_items_by_hour->hidden as $hidden_item)
-                                        <div class="px-2" style="height: 100%;">
-                                            <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                            <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                            @php
+                            $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
+                            @endphp
+                            @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
+                            @foreach ($hidden_items_by_hour->hidden as $hidden_item)
+                            <div class="px-2" style="height: 100%;">
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                            </div>
+                            @endforeach
+                            @endif
                             @endif
                         </div>
                     </td>
@@ -221,53 +221,53 @@
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">NẠP ÂM</td>
                     @if (isset($result->data_sound->elemental_sound))
-                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound->name }} <span class="{{ $result->data_sound->elemental_sound->color }} font-bold">{{ $result->data_sound->elemental_sound->element }}</span></td>
+                    <td class="border border-gray-400">{{ $result->data_sound->elemental_sound->name }} <span class="{{ $result->data_sound->elemental_sound->color }} font-bold">{{ $result->data_sound->elemental_sound->element }}</span></td>
                     @else
-                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    <td class="border border-gray-400"><span class="font-bold"></span></td>
                     @endif
 
                     @if (isset($result->data_sound->elemental_sound_month))
-                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_month->name }} <span class="{{ $result->data_sound->elemental_sound_month->color }} font-bold">{{ $result->data_sound->elemental_sound_month->element }}</span></td>
+                    <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_month->name }} <span class="{{ $result->data_sound->elemental_sound_month->color }} font-bold">{{ $result->data_sound->elemental_sound_month->element }}</span></td>
                     @else
-                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    <td class="border border-gray-400"><span class="font-bold"></span></td>
                     @endif
 
                     @if (isset($result->data_sound->elemental_sound_day))
-                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_day->name }} <span class="{{ $result->data_sound->elemental_sound_day->color }} font-bold">{{ $result->data_sound->elemental_sound_day->element }}</span></td>
+                    <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_day->name }} <span class="{{ $result->data_sound->elemental_sound_day->color }} font-bold">{{ $result->data_sound->elemental_sound_day->element }}</span></td>
                     @else
-                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    <td class="border border-gray-400"><span class="font-bold"></span></td>
                     @endif
 
                     @if (isset($result->data_sound->elemental_sound_hour))
-                        <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_hour->name }} <span class="{{ $result->data_sound->elemental_sound_hour->color }} font-bold">{{ $result->data_sound->elemental_sound_hour->element }}</span></td>
+                    <td class="border border-gray-400">{{ $result->data_sound->elemental_sound_hour->name }} <span class="{{ $result->data_sound->elemental_sound_hour->color }} font-bold">{{ $result->data_sound->elemental_sound_hour->element }}</span></td>
                     @else
-                        <td class="border border-gray-400"><span class="font-bold"></span></td>
+                    <td class="border border-gray-400"><span class="font-bold"></span></td>
                     @endif
                 </tr>
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">TRƯỜNG SINH</td>
                     @if (isset($result->data_growth_stage->growth_stage))
-                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage->result }}</td>
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage->result }}</td>
                     @else
-                        <td class="border border-gray-400"></td>
+                    <td class="border border-gray-400"></td>
                     @endif
 
                     @if (isset($result->data_growth_stage->growth_stage_month))
-                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_month->result }}</td>
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_month->result }}</td>
                     @else
-                        <td class="border border-gray-400"></td>
+                    <td class="border border-gray-400"></td>
                     @endif
 
                     @if (isset($result->data_growth_stage->growth_stage_day))
-                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_day->result }}</td>
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_day->result }}</td>
                     @else
-                        <td class="border border-gray-400"></td>
+                    <td class="border border-gray-400"></td>
                     @endif
 
                     @if (isset($result->data_growth_stage->growth_stage_hour))
-                        <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_hour->result }}</td>
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_hour->result }}</td>
                     @else
-                        <td class="border border-gray-400"></td>
+                    <td class="border border-gray-400"></td>
                     @endif
                 </tr>
                 <tr class="bg-white">
@@ -279,6 +279,127 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div class="bg-white rounded-lg shadow p-4 h-[300px] relative">
+                <h3 class="text-lg font-semibold mb-2">Ngũ Hành Thập Thần</h3>
+                <canvas id="chartThapThan"></canvas>
+            </div>
+
+            <div class="relative bg-white rounded-lg shadow p-4 w-full h-[400px]">
+                <h3 class="text-lg font-semibold text-center mb-4 h-[30px]">Ngũ Hành Phân Phối</h3>
+
+                <div class="item-content relative">
+                    <!-- Trung tâm -->
+                    <div class="item-center absolute w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-black bg-white flex flex-col items-center justify-center z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80">
+                            <circle r="39" />
+                            <path fill="#fff" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
+                            <circle r="5" cy="19" fill="#fff" />
+                            <circle r="5" cy="-19" />
+                            <savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host><en2vi-host xmlns="http://www.w3.org/1999/xhtml" class="corom-element" version="3" style="all: initial; position: absolute; top: 0; left: 0; right: 0; height: 0; margin: 0; text-align: left; z-index: 10000000000; pointer-events: none; border: none; display: block"></en2vi-host><savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host>
+                        </svg>
+
+                        <!-- Nội dung chữ ở giữa -->
+                        <div class="absolute z-10 text-center">
+                            <div class="text-xs font-semibold text-white">Nhâm</div>
+                            <div class="text-sm font-bold text-white">Thủy</div>
+                        </div>
+                    </div>
+
+                    <!-- Mộc - top center -->
+                    <div class="item-top-center absolute top-[8%] left-1/2 -translate-x-1/2">
+                        <div class="w-24 h-24 rounded-full bg-green-600 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Mộc</div>
+                            <div class="text-[10px]">-1</div>
+                        </div>
+                        <div class="svg-line">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <rect y="139.474" style="fill:rgba(5,150,105);" width="800" height="200" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Hỏa - top right -->
+                    <div class="item-top-right absolute top-[28%] right-[5%]">
+                        <div class="w-24 h-24 rounded-full bg-red-500 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Hỏa</div>
+                            <div class="text-[10px]">-2</div>
+                        </div>
+                        <div class="svg-line">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <rect y="139.474" style="fill:rgba(239, 68, 68);" width="800" height="200" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Thổ - bottom right -->
+                    <div class="item-bottom-right absolute bottom-[8%] right-[20%]">
+                        <div class="w-24 h-24 rounded-full bg-yellow-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Thổ</div>
+                            <div class="text-[10px]">+10</div>
+                        </div>
+                        <div class="svg-line">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <rect y="139.474" style="fill:rgba(120, 53, 15);" width="800" height="200" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Kim - bottom left -->
+                    <div class="item-bottom-left absolute bottom-[8%] left-[20%]">
+                        <div class="w-24 h-24 rounded-full bg-yellow-300 text-black text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Kim</div>
+                            <div class="text-[10px]">+4</div>
+                        </div>
+                        <div class="svg-line">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <rect y="139.474" style="fill:rgba(252, 211, 77);" width="800" height="200" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Thủy - top left -->
+                    <div class="item-top-left absolute top-[28%] left-[5%]">
+                        <div class="w-24 h-24 rounded-full bg-blue-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Thủy</div>
+                            <div class="text-[10px]">+5</div>
+                        </div>
+                        <div class="svg-line">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <rect y="139.474" style="fill:rgba(30, 58, 138);" width="800" height="200" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-lg shadow p-4 h-[300px] relative">
+                <h3 class="text-lg font-semibold mb-2">Ngũ Hành Tương Quan</h3>
+                <canvas id="chartTuongQuan"></canvas>
+            </div>
+        </div>
     </div>
 
     <!-- 2. DỤNG THẦN -->
@@ -307,3 +428,117 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    // Block 1: Ngũ Hành Thập Thần
+    new Chart(document.getElementById('chartThapThan'), {
+        type: 'bar',
+        data: {
+            labels: [
+                'Thiên Tài',
+                'Tỷ Kiên',
+                'Kiếp Tài',
+                'Chính Ấn',
+                'Thực Thần',
+                'Thương Quan',
+                'Chính Quan',
+                'Thất Sát',
+                'Thiên Ấn',
+                'Chính Tài'
+            ],
+            datasets: [{
+                label: '%',
+                data: [90, 82, 76, 72, 50, 48],
+                backgroundColor: '#89d8f5',
+                borderRadius: 6,
+                barPercentage: 0.8,
+                categoryPercentage: 0.7
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.parsed.x}%`;
+                        }
+                    }
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'right',
+                    formatter: (value) => value + '%',
+                    color: '#000',
+                    font: {
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    position: 'left',
+                    ticks: {
+                        align: 'start',
+                        padding: 10,
+                        color: (context) => {
+                            const label = context.tick.label;
+                            const colorMap = {
+                                'Thiên Tài': '#26a269',
+                                'Tỷ Kiên': '#585858',
+                                'Kiếp Tài': '#8d8d8d',
+                                'Chính Ấn': '#c69c6d',
+                                'Thực Thần': '#1f4e79',
+                                'Thương Quan': '#3366cc',
+                                'Chính Quan': '#cc0000',
+                                'Thất Sát': '#d43f00',
+                                'Thiên Ấn': '#d4aa00',
+                                'Chính Tài': '#1f7a1f'
+                            };
+                            return colorMap[label] || '#000';
+                        }
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+
+
+    // Block 2: Ngũ Hành Phân Phối
+
+    // Block 3: Ngũ Hành Tương Quan
+    new Chart(document.getElementById('chartTuongQuan'), {
+        type: 'pie',
+        data: {
+            labels: ['Mộc', 'Hỏa', 'Thổ', 'Kim', 'Thủy'],
+            datasets: [{
+                data: [4, 9, 45, 18, 22],
+                backgroundColor: ['#4ade80', '#f87171', '#a78bfa', '#facc15', '#38bdf8']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+@endpush
