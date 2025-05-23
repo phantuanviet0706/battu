@@ -28,7 +28,9 @@ class Calculator
                 if ($start_date > $end_date) {
                     $year++;
                     $end_date = DateTime::createFromFormat('d-m-Y',  $range->end . "-$year");
-                    $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+                    if ($start_date > $input_date) {
+                        $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+                    }
                 }
                 if ($input_date >= $start_date && $input_date <= $end_date) {
                     $agr->selected_range = $range;
