@@ -52,9 +52,9 @@
                 <tr>
                     <!-- Dòng 3: NÔNG LỊCH -->
                     <td class="border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold">NÔNG LỊCH</td>
-                    <td class="border border-gray-400 bg-[#f5e4c3]">{{ $result->input->year }}</td>
+                    <td class="border border-gray-400 bg-[#f5e4c3]">{{ $result->input->lunar_year }}</td>
                     <td class="border border-gray-400 bg-[#f5e4c3]">{{ isset($result->agricultural->selected_range->name) ? $result->agricultural->selected_range->name : 'unknown' }}</td>
-                    <td class="border border-gray-400 bg-[#f5e4c3]">{{ $result->input->day }}</td>
+                    <td class="border border-gray-400 bg-[#f5e4c3]">{{ $result->input->lunar_day }}</td>
                 </tr>
 
                 <tr class="bg-white">
@@ -80,7 +80,7 @@
 
                     <!-- Ô đặc biệt: Nhật Chủ -->
                     <td class="border border-gray-400 bg-[#f0f0ea] text-center text-xs">
-                        <div class="text-[11px] text-red-600 font-bold mb-1">{{ $result->heavenly_stem_day->hidden_stem_by_day->name }}</div>
+                        <div class="text-[11px] font-bold mb-1">Nhật Chủ</div>
                         <div class="{{ $result->heavenly_stem_day->color }} font-semibold text-base leading-tight">{{ $result->heavenly_stem_day->name }}</div>
                         <div class="text-[11px] {{ $result->heavenly_stem_day->color }}">{{ ($result->heavenly_stem_day->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_day->yin_yang }}</div>
                     </td>
@@ -153,9 +153,9 @@
                             @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
                             @foreach ($hidden_items_by_year->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
@@ -171,9 +171,9 @@
                             @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
                             @foreach ($hidden_items_by_month->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
@@ -189,9 +189,9 @@
                             @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
                             @foreach ($hidden_items_by_day->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
@@ -207,9 +207,9 @@
                             @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
                             @foreach ($hidden_items_by_hour->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ $hidden_item->percent . "%" }}</div>
+                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
@@ -246,26 +246,26 @@
                 </tr>
                 <tr class="bg-white">
                     <td class="border border-gray-400" colspan="2">TRƯỜNG SINH</td>
-                    @if (isset($result->data_growth_stage->growth_stage))
-                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage->result }}</td>
+                    @if (isset($result->data_growth_stage->growth_stage->name))
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage->name }}</td>
                     @else
                     <td class="border border-gray-400"></td>
                     @endif
 
-                    @if (isset($result->data_growth_stage->growth_stage_month))
-                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_month->result }}</td>
+                    @if (isset($result->data_growth_stage->growth_stage_month->name))
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_month->name }}</td>
                     @else
                     <td class="border border-gray-400"></td>
                     @endif
 
-                    @if (isset($result->data_growth_stage->growth_stage_day))
-                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_day->result }}</td>
+                    @if (isset($result->data_growth_stage->growth_stage_day->name))
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_day->name }}</td>
                     @else
                     <td class="border border-gray-400"></td>
                     @endif
 
-                    @if (isset($result->data_growth_stage->growth_stage_hour))
-                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_hour->result }}</td>
+                    @if (isset($result->data_growth_stage->growth_stage_hour->name))
+                    <td class="border border-gray-400">{{ $result->data_growth_stage->growth_stage_hour->name }}</td>
                     @else
                     <td class="border border-gray-400"></td>
                     @endif
@@ -286,11 +286,10 @@
                 <canvas id="chartThapThan"></canvas>
             </div>
 
-            <div class="relative bg-white rounded-lg shadow p-4 w-full h-[400px]">
+            <!--<div class="relative bg-white rounded-lg shadow p-4 w-full h-[400px]">
                 <h3 class="text-lg font-semibold text-center mb-4 h-[30px]">Ngũ Hành Phân Phối</h3>
 
                 <div class="item-content relative">
-                    <!-- Trung tâm -->
                     <div class="item-center absolute w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-black bg-white flex flex-col items-center justify-center z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80">
                             <circle r="39" />
@@ -300,14 +299,12 @@
                             <savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host><en2vi-host xmlns="http://www.w3.org/1999/xhtml" class="corom-element" version="3" style="all: initial; position: absolute; top: 0; left: 0; right: 0; height: 0; margin: 0; text-align: left; z-index: 10000000000; pointer-events: none; border: none; display: block"></en2vi-host><savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host>
                         </svg>
 
-                        <!-- Nội dung chữ ở giữa -->
                         <div class="absolute z-10 text-center">
                             <div class="text-xs font-semibold text-white">Nhâm</div>
                             <div class="text-sm font-bold text-white">Thủy</div>
                         </div>
                     </div>
 
-                    <!-- Mộc - top center -->
                     <div class="item-top-center absolute top-[8%] left-1/2 -translate-x-1/2">
                         <div class="w-24 h-24 rounded-full bg-green-600 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
                             <div>Mộc</div>
@@ -324,7 +321,6 @@
                         </div>
                     </div>
 
-                    <!-- Hỏa - top right -->
                     <div class="item-top-right absolute top-[28%] right-[5%]">
                         <div class="w-24 h-24 rounded-full bg-red-500 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
                             <div>Hỏa</div>
@@ -341,7 +337,6 @@
                         </div>
                     </div>
 
-                    <!-- Thổ - bottom right -->
                     <div class="item-bottom-right absolute bottom-[8%] right-[20%]">
                         <div class="w-24 h-24 rounded-full bg-yellow-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
                             <div>Thổ</div>
@@ -358,7 +353,6 @@
                         </div>
                     </div>
 
-                    <!-- Kim - bottom left -->
                     <div class="item-bottom-left absolute bottom-[8%] left-[20%]">
                         <div class="w-24 h-24 rounded-full bg-yellow-300 text-black text-xs font-semibold flex flex-col items-center justify-center shadow">
                             <div>Kim</div>
@@ -375,7 +369,6 @@
                         </div>
                     </div>
 
-                    <!-- Thủy - top left -->
                     <div class="item-top-left absolute top-[28%] left-[5%]">
                         <div class="w-24 h-24 rounded-full bg-blue-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
                             <div>Thủy</div>
@@ -392,8 +385,78 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
+            <div class="relative bg-white rounded-lg shadow p-4 max-w-xl aspect-square">
+                <h3 class="text-lg font-semibold text-center mb-4">Ngũ Hành Phân Phối</h3>
+
+                <!-- Vòng tròn bố cục -->
+                <div class="relative w-full h-full flex items-center justify-center">
+                    <!-- Trung tâm Âm Dương -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-black bg-white flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" class="absolute w-full h-full">
+                            <circle r="39" fill="black" />
+                            <path fill="white" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
+                            <circle r="5" cy="19" fill="white" />
+                            <circle r="5" cy="-19" fill="black" />
+                        </svg>
+                        <div class="z-10 text-center">
+                            <div class="text-xs font-semibold text-white">Nhâm</div>
+                            <div class="text-sm font-bold text-white">Thủy</div>
+                        </div>
+                    </div>
+
+                    <!-- Đường nối -->
+                    <svg class="absolute w-full h-full z-0" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+                        <line x1="50" y1="10" x2="84" y2="30" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <line x1="84" y1="30" x2="75" y2="84" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <line x1="75" y1="84" x2="25" y2="84" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <line x1="25" y1="84" x2="16" y2="30" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <line x1="16" y1="30" x2="50" y2="10" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <defs>
+                            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L6,3 z" fill="#ccc" />
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <!-- Các hành xung quanh -->
+                    <div class="absolute top-[5%] left-1/2 transform -translate-x-1/2">
+                        <div class="w-20 h-20 rounded-full bg-green-600 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Mộc</div>
+                            <div class="text-[10px]">-1</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-[20%] right-[5%]">
+                        <div class="w-20 h-20 rounded-full bg-red-500 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Hỏa</div>
+                            <div class="text-[10px]">-2</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-[5%] right-[20%]">
+                        <div class="w-20 h-20 rounded-full bg-yellow-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Thổ</div>
+                            <div class="text-[10px]">+10</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-[5%] left-[20%]">
+                        <div class="w-20 h-20 rounded-full bg-yellow-300 text-black text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Kim</div>
+                            <div class="text-[10px]">+4</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-[20%] left-[5%]">
+                        <div class="w-20 h-20 rounded-full bg-blue-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
+                            <div>Thủy</div>
+                            <div class="text-[10px]">+5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="bg-white rounded-lg shadow p-4 h-[300px] relative">
                 <h3 class="text-lg font-semibold mb-2">Ngũ Hành Tương Quan</h3>

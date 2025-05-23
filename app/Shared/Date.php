@@ -110,7 +110,7 @@ class Date
             $lunarMonth = $lunarMonth - 12;
         }
         if ($lunarMonth >= 11 && $diff < 4) {
-            $lunarYear += 1;
+            $lunarYear -= 1;
         }
         return [$lunarDay, $lunarMonth, $lunarYear, $lunarLeap];
     }    

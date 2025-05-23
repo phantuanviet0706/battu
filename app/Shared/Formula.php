@@ -166,7 +166,7 @@ class Formula
             ],
             (object) [
                 'id' => 10,
-                'name' => 'Tí',
+                'name' => 'Tý',
                 'range' => [
                     (object) ["start" => "07-12", "end" => "21-12", "name" => "Đại Tuyết"],
                     (object) ["start" => "22-12", "end" => "05-01", "name" => "Đông Chí"]
@@ -228,7 +228,7 @@ class Formula
     public static function getFormulaEarthlyBranch()
     {
         return [
-            (object) ["id" => 0, "name" => "Tí",   "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
+            (object) ["id" => 0, "name" => "Tý",   "yin_yang" => "Thủy", "polarity" => "Dương", "color" => "text-blue-600"],
             (object) ["id" => 1, "name" => "Sửu",  "yin_yang" => "Thổ",  "polarity" => "Âm",    "color" => "text-yellow-800"],
             (object) ["id" => 2, "name" => "Dần",  "yin_yang" => "Mộc",  "polarity" => "Dương", "color" => "text-green-600"],
             (object) ["id" => 3, "name" => "Mão",  "yin_yang" => "Mộc",  "polarity" => "Âm",    "color" => "text-green-600"],
@@ -265,7 +265,7 @@ class Formula
         return [
             (object) [
                 "id" => 0,
-                "name" => "Tí",
+                "name" => "Tý",
                 "hidden" => [
                     (object) [
                         "heavenly_stem" => "Quý",
@@ -576,16 +576,16 @@ class Formula
                 "begin_polarity" => "Dương",
                 "color" => "text-yellow-500",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -593,16 +593,16 @@ class Formula
                 "begin_polarity" => "Âm",
                 "color" => "text-yellow-500",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -610,33 +610,33 @@ class Formula
                 "begin_polarity" => "Âm",
                 "color" => "text-green-600",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                ]
-            ],
-            (object) [
-                "begin_yin_yang" => "Mộc",
-                "begin_polarity" => "Dương",
-                "color" => "text-green-600",
-                "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-700"],
                     (object) ["name" => "Thương Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                ]
+            ],
+            (object) [
+                "begin_yin_yang" => "Mộc",
+                "begin_polarity" => "Dương",
+                "color" => "text-green-600",
+                "hidden_stems" => [
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -644,33 +644,33 @@ class Formula
                 "begin_polarity" => "Dương",
                 "color" => "text-blue-600",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                ]
-            ],
-            (object) [
-                "begin_yin_yang" => "Thủy",
-                "begin_polarity" => "Âm",
-                "color" => "text-blue-600",
-                "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-700"],
                     (object) ["name" => "Thương Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                ]
+            ],
+            (object) [
+                "begin_yin_yang" => "Thủy",
+                "begin_polarity" => "Âm",
+                "color" => "text-blue-600",
+                "hidden_stems" => [
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -678,33 +678,33 @@ class Formula
                 "begin_polarity" => "Dương",
                 "color" => "text-red-600",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                ]
-            ],
-            (object) [
-                "begin_yin_yang" => "Hỏa",
-                "begin_polarity" => "Âm",
-                "color" => "text-red-600",
-                "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-700"],
                     (object) ["name" => "Thương Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                ]
+            ],
+            (object) [
+                "begin_yin_yang" => "Hỏa",
+                "begin_polarity" => "Âm",
+                "color" => "text-red-600",
+                "hidden_stems" => [
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -712,16 +712,16 @@ class Formula
                 "begin_polarity" => "Dương",
                 "color" => "text-yellow-700",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-500"],
                 ]
             ],
             (object) [
@@ -729,16 +729,16 @@ class Formula
                 "begin_polarity" => "Âm",
                 "color" => "text-yellow-700",
                 "hidden_stems" => [
-                    (object) ["name" => "Chính Ấn", "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thiên Ấn", "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-700"],
-                    (object) ["name" => "Thực Thần", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-blue-600"],
-                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-blue-600"],
-                    (object) ["name" => "Chính Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-green-600"],
-                    (object) ["name" => "Thiên Tài", "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-green-600"],
-                    (object) ["name" => "Chính Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-red-600"],
-                    (object) ["name" => "Thiên Quan", "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-red-600"],
-                    (object) ["name" => "Tỷ Kiên", "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-500"],
-                    (object) ["name" => "Kiếp Tài", "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-500"],
+                    (object) ["name" => "Thiên Ấn"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Âm", "color" => "text-yellow-700"],
+                    (object) ["name" => "Chính Ấn"   , "end_yin_yang" => "Hỏa", "end_polarity" => "Dương", "color" => "text-yellow-700"],
+                    (object) ["name" => "Thương Quan", "end_yin_yang" => "Kim", "end_polarity" => "Âm", "color" => "text-blue-600"],
+                    (object) ["name" => "Thực Thần"  , "end_yin_yang" => "Kim", "end_polarity" => "Dương", "color" => "text-blue-600"],
+                    (object) ["name" => "Thiên Tài"  , "end_yin_yang" => "Thủy", "end_polarity" => "Âm", "color" => "text-green-600"],
+                    (object) ["name" => "Chính Tài"  , "end_yin_yang" => "Thủy", "end_polarity" => "Dương", "color" => "text-green-600"],
+                    (object) ["name" => "Thiên Quan" , "end_yin_yang" => "Mộc", "end_polarity" => "Âm", "color" => "text-red-600"],
+                    (object) ["name" => "Chính Quan" , "end_yin_yang" => "Mộc", "end_polarity" => "Dương", "color" => "text-red-600"],
+                    (object) ["name" => "Kiếp Tài"   , "end_yin_yang" => "Thổ", "end_polarity" => "Âm", "color" => "text-yellow-500"],
+                    (object) ["name" => "Tỷ Kiên"    , "end_yin_yang" => "Thổ", "end_polarity" => "Dương", "color" => "text-yellow-500"],
                 ]
             ],
         ];
@@ -754,7 +754,7 @@ class Formula
     {
         return [
             (object) [
-                "id" => "Giáp Tí",
+                "id" => "Giáp Tý",
                 "name" => "Hải Trung",
                 "element" => "Kim",
                 "color" => "text-yellow-500",
@@ -844,7 +844,7 @@ class Formula
             ],
 
             (object) [
-                "id" => "Bính Tí",
+                "id" => "Bính Tý",
                 "name" => "Giản Hạ",
                 "element" => "Thủy",
                 "color" => "text-blue-500",
@@ -934,7 +934,7 @@ class Formula
             ],
 
             (object) [
-                "id" => "Mậu Tí",
+                "id" => "Mậu Tý",
                 "name" => "Tích Lịch",
                 "element" => "Hỏa",
                 "color" => "text-red-500",
@@ -1024,7 +1024,7 @@ class Formula
             ],
 
             (object) [
-                "id" => "Canh Tí",
+                "id" => "Canh Tý",
                 "name" => "Bích Thượng",
                 "element" => "Thổ",
                 "color" => "text-purple-500",
@@ -1114,7 +1114,7 @@ class Formula
             ],
 
             (object) [
-                "id" => "Nhâm Tí",
+                "id" => "Nhâm Tý",
                 "name" => "Tang Đố",
                 "element" => "Kim",
                 "color" => "text-green-500",
@@ -1215,425 +1215,97 @@ class Formula
     {
         return [
             (object) [
-                "id" => "Hợi Mộc",
-                "heavenly_stem_name" => "Hợi",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Trường Sinh"
+                "id" => "Canh",
+                "start" => "Mùi",
+                "direction" => 1
             ],
             (object) [
-                "id" => "Dần Hỏa",
-                "heavenly_stem_name" => "Dần",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Trường Sinh"
+                "id" => "Tân",
+                "start" => "Tý",
+                "direction" => 0
             ],
             (object) [
-                "id" => "Tỵ Thổ",
-                "heavenly_stem_name" => "Tỵ",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Trường Sinh"
+                "id" => "Nhâm",
+                "start" => "Thân",
+                "direction" => 1
             ],
             (object) [
-                "id" => "Thân Kim",
-                "heavenly_stem_name" => "Thân",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Trường Sinh"
+                "id" => "Quý",
+                "start" => "Mão",
+                "direction" => 0
             ],
             (object) [
-                "id" => "Thân Thủy",
-                "heavenly_stem_name" => "Thân",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Trường Sinh"
+                "id" => "Giáp",
+                "start" => "Hợi",
+                "direction" => 1
             ],
             (object) [
-                "id" => "Tí Mộc",
-                "heavenly_stem_name" => "Tí",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Mộc Dục"
+                "id" => "Ất",
+                "start" => "Ngọ",
+                "direction" => 0
             ],
             (object) [
-                "id" => "Mão Hỏa",
-                "heavenly_stem_name" => "Mão",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Mộc Dục"
+                "id" => "Bính",
+                "start" => "Dần",
+                "direction" => 1
             ],
             (object) [
-                "id" => "Ngọ Thổ",
-                "heavenly_stem_name" => "Ngọ",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Mộc Dục"
+                "id" => "Đinh",
+                "start" => "Dậu",
+                "direction" => 0
             ],
             (object) [
-                "id" => "Dậu Kim",
-                "heavenly_stem_name" => "Dậu",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Mộc Dục"
+                "id" => "Mậu",
+                "start" => "Dần",
+                "direction" => 1
             ],
             (object) [
-                "id" => "Dậu Thủy",
-                "heavenly_stem_name" => "Dậu",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Mộc Dục"
+                "id" => "Kỷ",
+                "start" => "Dậu",
+                "direction" => 0
             ],
-            (object) [
-                "id" => "Sửu Mộc",
-                "heavenly_stem_name" => "Sửu",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Quan Đới"
-            ],
-            (object) [
-                "id" => "Thìn Hỏa",
-                "heavenly_stem_name" => "Thìn",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Quan Đới"
-            ],
-            (object) [
-                "id" => "Mùi Thổ",
-                "heavenly_stem_name" => "Mùi",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Quan Đới"
-            ],
-            (object) [
-                "id" => "Tuất Kim",
-                "heavenly_stem_name" => "Tuất",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Quan Đới"
-            ],
-            (object) [
-                "id" => "Tuất Thủy",
-                "heavenly_stem_name" => "Tuất",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Quan Đới"
-            ],
-            (object) [
-                "id" => "Dần Mộc",
-                "heavenly_stem_name" => "Dần",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Lâm Quan"
-            ],
-            (object) [
-                "id" => "Tỵ Hỏa",
-                "heavenly_stem_name" => "Tỵ",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Lâm Quan"
-            ],
-            (object) [
-                "id" => "Thân Thổ",
-                "heavenly_stem_name" => "Thân",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Lâm Quan"
-            ],
-            (object) [
-                "id" => "Hợi Kim",
-                "heavenly_stem_name" => "Hợi",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Lâm Quan"
-            ],
-            (object) [
-                "id" => "Hợi Thủy",
-                "heavenly_stem_name" => "Hợi",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Lâm Quan"
-            ],
-            (object) [
-                "id" => "Mão Mộc",
-                "heavenly_stem_name" => "Mão",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Đế Vượng"
-            ],
-            (object) [
-                "id" => "Ngọ Hỏa",
-                "heavenly_stem_name" => "Ngọ",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Đế Vượng"
-            ],
-            (object) [
-                "id" => "Dậu Thổ",
-                "heavenly_stem_name" => "Dậu",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Đế Vượng"
-            ],
-            (object) [
-                "id" => "Tí Kim",
-                "heavenly_stem_name" => "Tí",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Đế Vượng"
-            ],
-            (object) [
-                "id" => "Tí Thủy",
-                "heavenly_stem_name" => "Tí",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Đế Vượng"
-            ],
-            (object) [
-                "id" => "Thìn Mộc",
-                "heavenly_stem_name" => "Thìn",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Suy"
-            ],
-            (object) [
-                "id" => "Mùi Hỏa",
-                "heavenly_stem_name" => "Mùi",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Suy"
-            ],
-            (object) [
-                "id" => "Tuất Thổ",
-                "heavenly_stem_name" => "Tuất",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Suy"
-            ],
-            (object) [
-                "id" => "Sửu Kim",
-                "heavenly_stem_name" => "Sửu",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Suy"
-            ],
-            (object) [
-                "id" => "Sửu Thủy",
-                "heavenly_stem_name" => "Sửu",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Suy"
-            ],
-            (object) [
-                "id" => "Tỵ Mộc",
-                "heavenly_stem_name" => "Tỵ",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Bệnh"
-            ],
-            (object) [
-                "id" => "Thân Hỏa",
-                "heavenly_stem_name" => "Thân",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Bệnh"
-            ],
-            (object) [
-                "id" => "Hợi Thổ",
-                "heavenly_stem_name" => "Hợi",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Bệnh"
-            ],
-            (object) [
-                "id" => "Dần Kim",
-                "heavenly_stem_name" => "Dần",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Bệnh"
-            ],
-            (object) [
-                "id" => "Dần Thủy",
-                "heavenly_stem_name" => "Dần",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Bệnh"
-            ],
-            (object) [
-                "id" => "Ngọ Mộc",
-                "heavenly_stem_name" => "Ngọ",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Tử"
-            ],
-            (object) [
-                "id" => "Dậu Hỏa",
-                "heavenly_stem_name" => "Dậu",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Tử"
-            ],
-            (object) [
-                "id" => "Tí Thổ",
-                "heavenly_stem_name" => "Tí",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Tử"
-            ],
-            (object) [
-                "id" => "Mão Kim",
-                "heavenly_stem_name" => "Mão",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Tử"
-            ],
-            (object) [
-                "id" => "Mão Thủy",
-                "heavenly_stem_name" => "Mão",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Tử"
-            ],
-            (object) [
-                "id" => "Mùi Mộc",
-                "heavenly_stem_name" => "Mùi",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Mộ"
-            ],
-            (object) [
-                "id" => "Tuất Hỏa",
-                "heavenly_stem_name" => "Tuất",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Mộ"
-            ],
-            (object) [
-                "id" => "Sửu Thổ",
-                "heavenly_stem_name" => "Sửu",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Mộ"
-            ],
-            (object) [
-                "id" => "Thìn Kim",
-                "heavenly_stem_name" => "Thìn",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Mộ"
-            ],
-            (object) [
-                "id" => "Thìn Thủy",
-                "heavenly_stem_name" => "Thìn",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Mộ"
-            ],
-            (object) [
-                "id" => "Thân Mộc",
-                "heavenly_stem_name" => "Thân",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Tuyệt"
-            ],
-            (object) [
-                "id" => "Hợi Hỏa",
-                "heavenly_stem_name" => "Hợi",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Tuyệt"
-            ],
-            (object) [
-                "id" => "Dần Thổ",
-                "heavenly_stem_name" => "Dần",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Tuyệt"
-            ],
-            (object) [
-                "id" => "Tỵ Kim",
-                "heavenly_stem_name" => "Tỵ",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Tuyệt"
-            ],
-            (object) [
-                "id" => "Tỵ Thủy",
-                "heavenly_stem_name" => "Tỵ",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Tuyệt"
-            ],
-            (object) [
-                "id" => "Dậu Mộc",
-                "heavenly_stem_name" => "Dậu",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Thai"
-            ],
-            (object) [
-                "id" => "Tí Hỏa",
-                "heavenly_stem_name" => "Tí",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Thai"
-            ],
-            (object) [
-                "id" => "Mão Thổ",
-                "heavenly_stem_name" => "Mão",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Thai"
-            ],
-            (object) [
-                "id" => "Ngọ Kim",
-                "heavenly_stem_name" => "Ngọ",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Thai"
-            ],
-            (object) [
-                "id" => "Ngọ Thủy",
-                "heavenly_stem_name" => "Ngọ",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Thai"
-            ],
-            (object) [
-                "id" => "Tuất Mộc",
-                "heavenly_stem_name" => "Tuất",
-                "earthly_branch_name" => "Mộc",
-                "color" => "text-green-600",
-                "result" => "Dưỡng"
-            ],
-            (object) [
-                "id" => "Sửu Hỏa",
-                "heavenly_stem_name" => "Sửu",
-                "earthly_branch_name" => "Hỏa",
-                "color" => "text-red-500",
-                "result" => "Dưỡng"
-            ],
-            (object) [
-                "id" => "Thìn Thổ",
-                "heavenly_stem_name" => "Thìn",
-                "earthly_branch_name" => "Thổ",
-                "color" => "text-yellow-800",
-                "result" => "Dưỡng"
-            ],
-            (object) [
-                "id" => "Mùi Kim",
-                "heavenly_stem_name" => "Mùi",
-                "earthly_branch_name" => "Kim",
-                "color" => "text-yellow-500",
-                "result" => "Dưỡng"
-            ],
-            (object) [
-                "id" => "Mùi Thủy",
-                "heavenly_stem_name" => "Mùi",
-                "earthly_branch_name" => "Thủy",
-                "color" => "text-blue-500",
-                "result" => "Dưỡng"
-            ]
+        ];
+    }
+
+    /**
+     * @index 9
+     * @desc EN: Get the formula of growth stage result
+     * @desc VI: Lấy kết quả công thức trường sinh
+     * @return object[]
+     */
+    public static function getFormulaGrowthStageResult()
+    {
+        return [
+            (object) ["id" => 0, "name" => "Sinh"],
+            (object) ["id" => 1, "name" => "Dục"],
+            (object) ["id" => 2, "name" => "Đới"],
+            (object) ["id" => 3, "name" => "Quan"],
+            (object) ["id" => 4, "name" => "Vượng"],
+            (object) ["id" => 5, "name" => "Suy"],
+            (object) ["id" => 6, "name" => "Bệnh"],
+            (object) ["id" => 7, "name" => "Tử"],
+            (object) ["id" => 8, "name" => "Mộ"],
+            (object) ["id" => 9, "name" => "Tuyệt"],
+            (object) ["id" => 10, "name" => "Thai"],
+            (object) ["id" => 11, "name" => "Dưỡng"],
+        ];
+    }
+
+    public static function getFormulaZodiac()
+    {
+        return [
+            (object) ["id" => 0, "name" => "Tý"],
+            (object) ["id" => 1, "name" => "Sửu"],
+            (object) ["id" => 2, "name" => "Dần"],
+            (object) ["id" => 3, "name" => "Mão"],
+            (object) ["id" => 4, "name" => "Thìn"],
+            (object) ["id" => 5, "name" => "Tỵ"],
+            (object) ["id" => 6, "name" => "Ngọ"],
+            (object) ["id" => 7, "name" => "Mùi"],
+            (object) ["id" => 8, "name" => "Thân"],
+            (object) ["id" => 9, "name" => "Dậu"],
+            (object) ["id" => 10, "name" => "Tuất"],
+            (object) ["id" => 11, "name" => "Hợi"],
         ];
     }
 }
