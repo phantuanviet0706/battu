@@ -67,3 +67,193 @@
     top: 52px;
     left: 52px;
 }
+
+.content-charts {
+    font-family: 'Inter', sans-serif;
+}
+
+/* CSS cho biểu tượng Âm Dương */
+.yin-yang {
+    width: 48%;
+    /* Tăng kích thước tương đối so với container */
+    height: 48%;
+    /* Tăng kích thước tương đối so với container */
+    max-width: 120px;
+    /* Tăng giới hạn kích thước tối đa */
+    max-height: 120px;
+    /* Tăng giới hạn kích thước tối đa */
+    border-radius: 50%;
+    /* Đảo ngược vị trí màu: trắng bên trái, đen bên phải */
+    background: linear-gradient(to right, #fff 0%, #fff 50%, #000 50%, #000 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    /* Đảm bảo Âm Dương ở trên các mũi tên */
+    border: 2px solid black;
+    /* Thêm viền */
+}
+
+.yin-yang::before {
+    /* Nửa trên của vòng tròn nhỏ trên nền trắng */
+    content: '';
+    position: absolute;
+    width: 50%;
+    /* Tương đối so với yin-yang */
+    height: 50%;
+    /* Tương đối so với yin-yang */
+    border-radius: 50%;
+    background: #000;
+    /* Chấm đen trên nền trắng */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.yin-yang::after {
+    /* Nửa dưới của vòng tròn nhỏ trên nền đen */
+    content: '';
+    position: absolute;
+    width: 50%;
+    /* Tương đối so với yin-yang */
+    height: 50%;
+    /* Tương đối so với yin-yang */
+    border-radius: 50%;
+    background: #fff;
+    /* Chấm trắng trên nền đen */
+    top: auto;
+    bottom: 0;
+    z-index: 1;
+}
+
+.yin-yang-dot-black {
+    /* Chấm đen trên nền trắng */
+    width: 12.5%;
+    /* Tương đối so với yin-yang */
+    height: 12.5%;
+    /* Tương đối so với yin-yang */
+    border-radius: 50%;
+    background: #000;
+    /* Chấm đen */
+    position: absolute;
+    bottom: 18.75%;
+    /* Tương đối so với yin-yang */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.yin-yang-dot-white {
+    /* Chấm trắng trên nền đen */
+    width: 12.5%;
+    /* Tương đối so với yin-yang */
+    height: 12.5%;
+    /* Tương đối so với yin-yang */
+    border-radius: 50%;
+    background: #fff;
+    /* Chấm trắng */
+    position: absolute;
+    top: 18.75%;
+    /* Tương đối so với yin-yang */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Văn bản bên trong Âm Dương */
+.yin-yang .absolute.text-nham {
+    /* Nhâm ở nửa trắng (bên trái) */
+    top: 60%;
+    left: 25%;
+    /* Căn giữa ngang trong nửa trắng */
+    transform: translate(-50%, -50%);
+    /* Căn giữa chữ */
+    font-size: 0.7rem;
+    /* Kích thước font */
+    font-weight: bold;
+    color: black;
+    /* Chữ đen trên nền trắng */
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.yin-yang .absolute.text-thuy {
+    /* Thủy ở nửa đen (bên phải) */
+    top: 40%;
+    left: 75%;
+    /* Căn giữa ngang trong nửa đen */
+    transform: translate(-50%, -50%);
+    /* Căn giữa chữ */
+    font-size: 0.7rem;
+    /* Kích thước font */
+    font-weight: bold;
+    color: white;
+    /* Chữ trắng trên nền đen */
+    white-space: nowrap;
+    z-index: 10;
+}
+
+
+/* Vị trí tương đối cho container của sơ đồ Ngũ Hành */
+.nguhanh-container {
+    position: relative;
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của parent */
+    max-width: 250px;
+    /* Giới hạn kích thước tối đa trên màn hình lớn */
+    height: auto;
+    /* Chiều cao tự động */
+    aspect-ratio: 1 / 1;
+    /* Giữ tỷ lệ 1:1 (hình vuông) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* Căn giữa container */
+}
+
+/* Vị trí các yếu tố Ngũ Hành */
+.nguhanh-element {
+    position: absolute;
+    width: 18%;
+    /* Giảm kích thước tương đối so với container (45px / 250px = 0.18) */
+    height: 18%;
+    /* Giảm kích thước tương đối so với container */
+    max-width: 45px;
+    /* Giảm giới hạn kích thước tối đa */
+    max-height: 45px;
+    /* Giảm giới hạn kích thước tối đa */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.65rem;
+    /* Giảm kích thước font */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Đảm bảo văn bản căn giữa */
+    transform: translate(-50%, -50%);
+    /* Căn giữa theo top/left */
+    z-index: 1;
+    /* Đảm bảo các yếu tố ở trên mũi tên */
+}
+
+/* Điều chỉnh cho màn hình nhỏ (dưới 768px - kích thước `md` của Tailwind) */
+@media (max-width: 767px) {
+    .text-gray-700.w-24 {
+        width: 80px;
+        /* Điều chỉnh chiều rộng cho màn hình nhỏ hơn */
+    }
+
+    /* Đảm bảo khoảng cách giữa các cột trên mobile */
+    .grid {
+        gap: 1.5rem;
+        /* Khoảng cách mặc định của gap-6 */
+    }
+}

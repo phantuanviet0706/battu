@@ -280,187 +280,63 @@
             </tbody>
         </table>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-            <div class="bg-white rounded-lg shadow p-4 h-[300px] relative">
-                <h3 class="text-lg font-semibold mb-2">Ngũ Hành Thập Thần</h3>
-                <canvas id="chartThapThan"></canvas>
-            </div>
+        <div class="content-charts">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
 
-            <!--<div class="relative bg-white rounded-lg shadow p-4 w-full h-[400px]">
-                <h3 class="text-lg font-semibold text-center mb-4 h-[30px]">Ngũ Hành Phân Phối</h3>
-
-                <div class="item-content relative">
-                    <div class="item-center absolute w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-black bg-white flex flex-col items-center justify-center z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80">
-                            <circle r="39" />
-                            <path fill="#fff" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
-                            <circle r="5" cy="19" fill="#fff" />
-                            <circle r="5" cy="-19" />
-                            <savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host><en2vi-host xmlns="http://www.w3.org/1999/xhtml" class="corom-element" version="3" style="all: initial; position: absolute; top: 0; left: 0; right: 0; height: 0; margin: 0; text-align: left; z-index: 10000000000; pointer-events: none; border: none; display: block"></en2vi-host><savior-host xmlns="http://www.w3.org/1999/xhtml" style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host>
-                        </svg>
-
-                        <div class="absolute z-10 text-center">
-                            <div class="text-xs font-semibold text-white">Nhâm</div>
-                            <div class="text-sm font-bold text-white">Thủy</div>
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Ngũ Hành Thập Thần</h2>
+                    <div class="flex flex-col items-start justify-center w-full flex-grow">
+                        <div class="relative w-full h-full min-h-[250px]">
+                            <canvas id="thapThanChart"></canvas>
                         </div>
                     </div>
+                </div>
 
-                    <div class="item-top-center absolute top-[8%] left-1/2 -translate-x-1/2">
-                        <div class="w-24 h-24 rounded-full bg-green-600 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Mộc</div>
-                            <div class="text-[10px]">-1</div>
-                        </div>
-                        <div class="svg-line">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <rect y="139.474" style="fill:rgba(5,150,105);" width="800" height="200" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Ngũ Hành phân phối</h2>
+                    <div class="flex flex-col items-center justify-center w-full flex-grow">
+                        <div class="nguhanh-container">
+                            <div class="absolute yin-yang">
+                                <div class="yin-yang-dot-black"></div>
+                                <div class="yin-yang-dot-white"></div>
+                                <div class="absolute text-nham">Nhâm</div>
+                                <div class="absolute text-thuy">Thủy</div>
+                            </div>
 
-                    <div class="item-top-right absolute top-[28%] right-[5%]">
-                        <div class="w-24 h-24 rounded-full bg-red-500 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Hỏa</div>
-                            <div class="text-[10px]">-2</div>
-                        </div>
-                        <div class="svg-line">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <rect y="139.474" style="fill:rgba(239, 68, 68);" width="800" height="200" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
+                            <div class="nguhanh-element" data-element="Moc" style="background-color: #4CAF50;">
+                                Mộc <br /> -1
+                            </div>
+                            <div class="nguhanh-element" data-element="Hoa" style="background-color: #F44336;">
+                                Hỏa <br /> -2
+                            </div>
+                            <div class="nguhanh-element" data-element="Tho" style="background-color: #FFC107;">
+                                Thổ <br /> +10
+                            </div>
+                            <div class="nguhanh-element" data-element="Kim" style="background-color: #9E9E9E;">
+                                Kim <br /> +4
+                            </div>
+                            <div class="nguhanh-element" data-element="Thuy" style="background-color: #2196F3;">
+                                Thủy <br /> +5
+                            </div>
 
-                    <div class="item-bottom-right absolute bottom-[8%] right-[20%]">
-                        <div class="w-24 h-24 rounded-full bg-yellow-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Thổ</div>
-                            <div class="text-[10px]">+10</div>
-                        </div>
-                        <div class="svg-line">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <rect y="139.474" style="fill:rgba(120, 53, 15);" width="800" height="200" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="item-bottom-left absolute bottom-[8%] left-[20%]">
-                        <div class="w-24 h-24 rounded-full bg-yellow-300 text-black text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Kim</div>
-                            <div class="text-[10px]">+4</div>
-                        </div>
-                        <div class="svg-line">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <rect y="139.474" style="fill:rgba(252, 211, 77);" width="800" height="200" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="item-top-left absolute top-[28%] left-[5%]">
-                        <div class="w-24 h-24 rounded-full bg-blue-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Thủy</div>
-                            <div class="text-[10px]">+5</div>
-                        </div>
-                        <div class="svg-line">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" width="96px" height="10px" viewBox="0 0 290.658 290.658" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <rect y="139.474" style="fill:rgba(30, 58, 138);" width="800" height="200" />
-                                    </g>
-                                </g>
+                            <svg class="absolute w-full h-full" viewBox="0 0 250 250" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none; z-index: 0;">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                                    </marker>
+                                </defs>
                             </svg>
                         </div>
                     </div>
                 </div>
-            </div>-->
 
-            <div class="relative bg-white rounded-lg shadow p-4 max-w-xl aspect-square">
-                <h3 class="text-lg font-semibold text-center mb-4">Ngũ Hành Phân Phối</h3>
-
-                <!-- Vòng tròn bố cục -->
-                <div class="relative w-full h-full flex items-center justify-center">
-                    <!-- Trung tâm Âm Dương -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-black bg-white flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" class="absolute w-full h-full">
-                            <circle r="39" fill="black" />
-                            <path fill="white" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
-                            <circle r="5" cy="19" fill="white" />
-                            <circle r="5" cy="-19" fill="black" />
-                        </svg>
-                        <div class="z-10 text-center">
-                            <div class="text-xs font-semibold text-white">Nhâm</div>
-                            <div class="text-sm font-bold text-white">Thủy</div>
-                        </div>
-                    </div>
-
-                    <!-- Đường nối -->
-                    <svg class="absolute w-full h-full z-0" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
-                        <line x1="50" y1="10" x2="84" y2="30" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
-                        <line x1="84" y1="30" x2="75" y2="84" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
-                        <line x1="75" y1="84" x2="25" y2="84" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
-                        <line x1="25" y1="84" x2="16" y2="30" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
-                        <line x1="16" y1="30" x2="50" y2="10" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow)" />
-                        <defs>
-                            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
-                                <path d="M0,0 L0,6 L6,3 z" fill="#ccc" />
-                            </marker>
-                        </defs>
-                    </svg>
-
-                    <!-- Các hành xung quanh -->
-                    <div class="absolute top-[5%] left-1/2 transform -translate-x-1/2">
-                        <div class="w-20 h-20 rounded-full bg-green-600 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Mộc</div>
-                            <div class="text-[10px]">-1</div>
-                        </div>
-                    </div>
-
-                    <div class="absolute top-[20%] right-[5%]">
-                        <div class="w-20 h-20 rounded-full bg-red-500 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Hỏa</div>
-                            <div class="text-[10px]">-2</div>
-                        </div>
-                    </div>
-
-                    <div class="absolute bottom-[5%] right-[20%]">
-                        <div class="w-20 h-20 rounded-full bg-yellow-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Thổ</div>
-                            <div class="text-[10px]">+10</div>
-                        </div>
-                    </div>
-
-                    <div class="absolute bottom-[5%] left-[20%]">
-                        <div class="w-20 h-20 rounded-full bg-yellow-300 text-black text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Kim</div>
-                            <div class="text-[10px]">+4</div>
-                        </div>
-                    </div>
-
-                    <div class="absolute top-[20%] left-[5%]">
-                        <div class="w-20 h-20 rounded-full bg-blue-900 text-white text-xs font-semibold flex flex-col items-center justify-center shadow">
-                            <div>Thủy</div>
-                            <div class="text-[10px]">+5</div>
-                        </div>
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Ngũ Hành tương quan</h2>
+                    <div class="relative flex items-center justify-center w-full max-w-[250px] aspect-square flex-grow">
+                        <canvas id="nguHanhChart"></canvas>
                     </div>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-lg shadow p-4 h-[300px] relative">
-                <h3 class="text-lg font-semibold mb-2">Ngũ Hành Tương Quan</h3>
-                <canvas id="chartTuongQuan"></canvas>
             </div>
         </div>
     </div>
@@ -494,113 +370,327 @@
 
 @push('scripts')
 <script>
-    // Block 1: Ngũ Hành Thập Thần
-    new Chart(document.getElementById('chartThapThan'), {
-        type: 'bar',
-        data: {
-            labels: [
-                'Thiên Tài',
-                'Tỷ Kiên',
-                'Kiếp Tài',
-                'Chính Ấn',
-                'Thực Thần',
-                'Thương Quan',
-                'Chính Quan',
-                'Thất Sát',
-                'Thiên Ấn',
-                'Chính Tài'
-            ],
+    document.addEventListener('DOMContentLoaded', () => {
+        // Dữ liệu cho biểu đồ Ngũ Hành tương quan (Pie Chart)
+        const nguHanhData = {
+            labels: ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'],
             datasets: [{
-                label: '%',
-                data: [90, 82, 76, 72, 50, 48],
-                backgroundColor: '#89d8f5',
-                borderRadius: 6,
-                barPercentage: 0.8,
-                categoryPercentage: 0.7
+                data: [4.08, 9.18, 22.45, 18.37, 45.92], // Đã điều chỉnh để tổng là 100%
+                backgroundColor: [
+                    '#4CAF50', // Mộc (Green)
+                    '#F44336', // Hỏa (Red)
+                    '#2196F3', // Thủy (Blue)
+                    '#FFC107', // Thổ (Yellow)
+                    '#673AB7' // Kim (Purple)
+                ],
+                hoverOffset: 4
             }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.parsed.x}%`;
+        };
+
+        const nguHanhConfig = {
+            type: 'pie',
+            data: nguHanhData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false // Ẩn chú giải mặc định
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
                         }
                     }
+                }
+            }
+        };
+
+        const nguHanhChart = new Chart(
+            document.getElementById('nguHanhChart'),
+            nguHanhConfig
+        );
+
+        // Plugin tùy chỉnh để hiển thị phần trăm bên trong thanh
+        const percentageInBarPlugin = {
+            id: 'percentageInBar',
+            afterDatasetDraw(chart, args, options) {
+                const {
+                    ctx,
+                    chartArea: {
+                        left,
+                        right,
+                        top,
+                        bottom,
+                        width,
+                        height
+                    },
+                    scales: {
+                        x,
+                        y
+                    }
+                } = chart;
+                ctx.save();
+
+                args.meta.data.forEach((bar, index) => {
+                    const value = chart.data.datasets[0].data[index];
+                    const percentage = value.toFixed(0) + '%'; // Lấy phần trăm và làm tròn
+
+                    const xPos = bar.x;
+                    const yPos = bar.y;
+                    const barWidth = bar.width;
+
+                    ctx.fillStyle = 'white'; // Màu chữ
+                    ctx.textAlign = 'right'; // Căn chữ sang phải
+                    ctx.textBaseline = 'middle'; // Căn giữa theo chiều dọc
+                    ctx.font = 'bold 12px Inter, sans-serif'; // Font chữ
+
+                    let textX = xPos - 5; // Dịch sang trái 5px từ mép phải của thanh
+                    let textY = yPos;
+
+                    // Đảm bảo chữ không bị tràn ra ngoài thanh nếu thanh quá ngắn
+                    if (barWidth < ctx.measureText(percentage).width + 10) {
+                        ctx.fillStyle = 'black'; // Đổi màu chữ sang đen
+                        ctx.textAlign = 'left'; // Căn chữ sang trái
+                        textX = xPos + 5; // Vẽ ở bên ngoài thanh
+                    }
+
+                    ctx.fillText(percentage, textX, textY);
+                });
+                ctx.restore();
+            }
+        };
+
+        // Dữ liệu cho biểu đồ Ngũ Hành Thập Thần (Horizontal Bar Chart)
+        const thapThanData = {
+            labels: [
+                'Thiên Tài', 'Tỷ Kiên', 'Kiếp Tải', 'Chính Ấn', 'Thực Thần',
+                'Thương Quan', 'Chính Quan', 'Thất Sát', 'Thiên Ấn', 'Chính Tài'
+            ],
+            datasets: [{
+                label: 'Phần trăm',
+                data: [58, 70, 76, 70, 50, 40, 0, 0, 0, 0],
+                backgroundColor: [
+                    '#4CAF50', // Màu xanh lá cây (Mộc - Thiên Tài)
+                    '#9E9E9E', // Màu xám (Kim - Tỷ Kiên)
+                    '#757575', // Màu xám đậm (Kim - Kiếp Tải)
+                    '#FFC107', // Màu vàng (Thổ - Chính Ấn)
+                    '#2196F3', // Màu xanh dương (Thủy - Thực Thần)
+                    '#1976D2', // Màu xanh dương đậm (Thủy - Thương Quan)
+                    '#F44336', // Màu đỏ (Hỏa - Chính Quan)
+                    '#D32F2F', // Màu đỏ đậm (Hỏa - Thất Sát)
+                    '#689F38', // Màu xanh lá cây đậm (Mộc - Thiên Ấn)
+                    '#8BC34A' // Màu xanh lá cây nhạt (Mộc - Chính Tài)
+                ],
+                borderColor: [
+                    '#4CAF50',
+                    '#9E9E9E',
+                    '#757575',
+                    '#FFC107',
+                    '#2196F3',
+                    '#1976D2',
+                    '#F44336',
+                    '#D32F2F',
+                    '#689F38',
+                    '#8BC34A'
+                ],
+                borderWidth: 1,
+                borderRadius: 5, // Bo tròn góc của thanh
+                barThickness: 15 // Độ dày của thanh
+            }]
+        };
+
+        const thapThanConfig = {
+            type: 'bar',
+            data: thapThanData,
+            options: {
+                indexAxis: 'y', // Biểu đồ thanh ngang
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false // Ẩn chú giải
+                    },
+                    tooltip: {
+                        enabled: false // Tắt tooltip mặc định để dùng plugin tùy chỉnh
+                    },
+                    percentageInBar: {} // Kích hoạt plugin
                 },
-                datalabels: {
-                    anchor: 'end',
-                    align: 'right',
-                    formatter: (value) => value + '%',
-                    color: '#000',
-                    font: {
-                        weight: 'bold'
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100, // Đặt giới hạn tối đa là 100%
+                        ticks: {
+                            display: false // Ẩn nhãn trục X
+                        },
+                        grid: {
+                            display: false // Ẩn đường lưới trục X
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false // Ẩn đường lưới ngang
+                        },
+                        ticks: {
+                            color: 'black', // Màu chữ nhãn
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            align: 'start', // Căn trái nhãn trục Y
+                            padding: 10 // Thêm padding để nhãn không quá sát mép
+                        }
                     }
                 }
             },
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    max: 100,
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    position: 'left',
-                    ticks: {
-                        align: 'start',
-                        padding: 10,
-                        color: (context) => {
-                            const label = context.tick.label;
-                            const colorMap = {
-                                'Thiên Tài': '#26a269',
-                                'Tỷ Kiên': '#585858',
-                                'Kiếp Tài': '#8d8d8d',
-                                'Chính Ấn': '#c69c6d',
-                                'Thực Thần': '#1f4e79',
-                                'Thương Quan': '#3366cc',
-                                'Chính Quan': '#cc0000',
-                                'Thất Sát': '#d43f00',
-                                'Thiên Ấn': '#d4aa00',
-                                'Chính Tài': '#1f7a1f'
-                            };
-                            return colorMap[label] || '#000';
-                        }
-                    },
-                    grid: {
-                        display: false
-                    }
-                }
+            plugins: [percentageInBarPlugin] // Đăng ký plugin
+        };
+
+        const thapThanChart = new Chart(
+            document.getElementById('thapThanChart'),
+            thapThanConfig
+        );
+
+        // --- Logic cho Ngũ Hành phân phối (mũi tên) ---
+        const nguhanhElements = {
+            Moc: {
+                el: document.querySelector('[data-element="Moc"]'),
+                color: '#4CAF50',
+                x: 0,
+                y: 0
+            },
+            Hoa: {
+                el: document.querySelector('[data-element="Hoa"]'),
+                color: '#F44336',
+                x: 0,
+                y: 0
+            },
+            Tho: {
+                el: document.querySelector('[data-element="Tho"]'),
+                color: '#FFC107',
+                x: 0,
+                y: 0
+            },
+            Kim: {
+                el: document.querySelector('[data-element="Kim"]'),
+                color: '#9E9E9E',
+                x: 0,
+                y: 0
+            },
+            Thuy: {
+                el: document.querySelector('[data-element="Thuy"]'),
+                color: '#2196F3',
+                x: 0,
+                y: 0
             }
+        };
+
+        const nguhanhContainer = document.querySelector('.nguhanh-container');
+        const svgArrows = nguhanhContainer.querySelector('svg');
+        const containerSize = 250; // Kích thước viewBox của SVG
+        const elementRadius = 22.5; // Bán kính của mỗi yếu tố (45px/2)
+        const pentagonCircumradius = 100; // Bán kính của đường tròn đi qua tâm các yếu tố (tăng để phù hợp với Âm Dương lớn hơn)
+        const centerX = containerSize / 2;
+        const centerY = containerSize / 2;
+        const arrowHeadLength = 10; // Chiều dài của đầu mũi tên
+
+        // Hàm tính toán vị trí tâm của yếu tố trên đường tròn ngũ giác
+        function calculateElementPosition(angleDegrees) {
+            const angleRadians = (angleDegrees - 90) * Math.PI / 180.0; // -90 để Mộc ở trên cùng
+            return {
+                x: centerX + pentagonCircumradius * Math.cos(angleRadians),
+                y: centerY + pentagonCircumradius * Math.sin(angleRadians)
+            };
         }
-    });
 
+        // Đặt vị trí cho các yếu tố và lưu tâm của chúng
+        const positions = {
+            Moc: calculateElementPosition(0), // Top
+            Hoa: calculateElementPosition(72), // Top-right
+            Tho: calculateElementPosition(144), // Bottom-right
+            Kim: calculateElementPosition(216), // Bottom-left
+            Thuy: calculateElementPosition(288) // Top-left
+        };
 
-    // Block 2: Ngũ Hành Phân Phối
+        // Gán vị trí cho các phần tử HTML và lưu tâm
+        for (const key in nguhanhElements) {
+            const pos = positions[key];
+            nguhanhElements[key].el.style.left = `${(pos.x / containerSize) * 100}%`;
+            nguhanhElements[key].el.style.top = `${(pos.y / containerSize) * 100}%`;
+            nguhanhElements[key].x = pos.x;
+            nguhanhElements[key].y = pos.y;
+        }
 
-    // Block 3: Ngũ Hành Tương Quan
-    new Chart(document.getElementById('chartTuongQuan'), {
-        type: 'pie',
-        data: {
-            labels: ['Mộc', 'Hỏa', 'Thổ', 'Kim', 'Thủy'],
-            datasets: [{
-                data: [4, 9, 45, 18, 22],
-                backgroundColor: ['#4ade80', '#f87171', '#a78bfa', '#facc15', '#38bdf8']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
+        // Hàm tính điểm trên viền của một hình tròn hướng về một điểm khác
+        function getPointOnCircleEdgeTowards(cx, cy, targetX, targetY, radius) {
+            const angle = Math.atan2(targetY - cy, targetX - cx);
+            return {
+                x: cx + radius * Math.cos(angle),
+                y: cy + radius * Math.sin(angle)
+            };
+        }
+
+        // Vẽ các mũi tên theo chu trình tương sinh
+        const flowOrder = ['Moc', 'Hoa', 'Tho', 'Kim', 'Thuy', 'Moc']; // Chu trình tương sinh
+
+        // Xóa các mũi tên cũ trước khi vẽ lại
+        svgArrows.innerHTML = `
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                    </marker>
+                </defs>
+            `;
+
+        for (let i = 0; i < flowOrder.length - 1; i++) {
+            const startElement = nguhanhElements[flowOrder[i]];
+            const endElement = nguhanhElements[flowOrder[i + 1]];
+
+            // Điểm trên viền của yếu tố bắt đầu, hướng về yếu tố kết thúc
+            const startPoint = getPointOnCircleEdgeTowards(startElement.x, startElement.y, endElement.x, endElement.y, elementRadius);
+
+            // Điểm trên viền của yếu tố kết thúc, hướng về yếu tố bắt đầu (để mũi tên không đi vào trong)
+            const endPointForArrowTip = getPointOnCircleEdgeTowards(endElement.x, endElement.y, startElement.x, startElement.y, elementRadius);
+
+            // Tính toán điểm cuối thực sự của đường thẳng để mũi tên không bị cắt
+            // Di chuyển điểm cuối lùi lại một chút từ endPointForArrowTip bằng chiều dài đầu mũi tên
+            const dx = endPointForArrowTip.x - startPoint.x;
+            const dy = endPointForArrowTip.y - startPoint.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            let actualLineEndX = endPointForArrowTip.x;
+            let actualLineEndY = endPointForArrowTip.y;
+
+            if (distance > arrowHeadLength) {
+                const unitDx = dx / distance;
+                const unitDy = dy / distance;
+                actualLineEndX = endPointForArrowTip.x - unitDx * arrowHeadLength;
+                actualLineEndY = endPointForArrowTip.y - unitDy * arrowHeadLength;
+            } else {
+                actualLineEndX = startPoint.x + dx / 2;
+                actualLineEndY = startPoint.y + dy / 2;
             }
+
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            path.setAttribute("x1", startPoint.x);
+            path.setAttribute("y1", startPoint.y);
+            path.setAttribute("x2", actualLineEndX);
+            path.setAttribute("y2", actualLineEndY);
+            path.setAttribute("stroke", "rgba(107, 114, 128, 0.7)"); // text-gray-400 opacity-70
+            path.setAttribute("stroke-width", "1.5"); // Giảm độ dày cho thanh thoát
+            path.setAttribute("marker-end", "url(#arrowhead)"); // Thêm đầu mũi tên
+
+            svgArrows.appendChild(path);
         }
     });
 </script>
