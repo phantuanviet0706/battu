@@ -699,19 +699,19 @@ class Calculator
         $growth_stage_day_zodiac = null;
         $growth_stage_hour_zodiac = null;
         foreach ($zodiac_formula as $formula) {
-            if ($growth_stage_year !== false && $growth_stage_year->start == $formula->name) {
+            if ($growth_stage_year != false && $growth_stage_year->start == $formula->name) {
                 $growth_stage_year_zodiac = $formula;
             }
 
-            if ($growth_stage_month !== false && $growth_stage_month->start == $formula->name) {
+            if ($growth_stage_month != false && $growth_stage_month->start == $formula->name) {
                 $growth_stage_month_zodiac = $formula;
             }
 
-            if ($growth_stage_day !== false && $growth_stage_day->start == $formula->name) {
+            if ($growth_stage_day != false && $growth_stage_day->start == $formula->name) {
                 $growth_stage_day_zodiac = $formula;
             }
 
-            if ($growth_stage_hour !== false && $growth_stage_hour->start == $formula->name) {
+            if ($growth_stage_hour != false && $growth_stage_hour->start == $formula->name) {
                 $growth_stage_hour_zodiac = $formula;
             }
         }
@@ -721,19 +721,19 @@ class Calculator
         $zodiac_day = null;
         $zodiac_hour = null;
         foreach ($zodiac_formula as $formula) {
-            if ($growth_stage_year_zodiac !== false && $growth_stage_year !== false && $earthly_branch->name == $formula->name) {
+            if ($growth_stage_year_zodiac != false && $growth_stage_year !== false && $earthly_branch->name == $formula->name) {
                 $zodiac_year = (($formula->id - $growth_stage_year_zodiac->id) * ($growth_stage_year->direction == 1 ? 1 : -1) + 12) % 12;
             }
 
-            if ($growth_stage_month_zodiac !== false && $growth_stage_month !== false && $earthly_branch_month->name == $formula->name) {
+            if ($growth_stage_month_zodiac != false && $growth_stage_month !== false && $earthly_branch_month->name == $formula->name) {
                 $zodiac_month = (($formula->id - $growth_stage_month_zodiac->id) * ($growth_stage_month->direction == 1 ? 1 : -1) + 12) % 12;
             }
 
-            if ($growth_stage_day_zodiac !== false && $growth_stage_day !== false && $earthly_branch_day->name == $formula->name) {
+            if ($growth_stage_day_zodiac != false && $growth_stage_day !== false && $earthly_branch_day->name == $formula->name) {
                 $zodiac_day = (($formula->id - $growth_stage_day_zodiac->id) * ($growth_stage_day->direction == 1 ? 1 : -1) + 12) % 12;
             }
 
-            if ($growth_stage_hour_zodiac !== false && $growth_stage_hour !== false && $earthly_branch_hour && $earthly_branch_hour->name == $formula->name) {
+            if ($growth_stage_hour_zodiac != false && $growth_stage_hour !== false && $earthly_branch_hour && $earthly_branch_hour->name == $formula->name) {
                 $zodiac_hour = (($formula->id - $growth_stage_hour_zodiac->id) * ($growth_stage_hour->direction == 1 ? 1 : -1) + 12) % 12;
             }
         }
@@ -745,19 +745,19 @@ class Calculator
         $growth_stage_day_result = null;
         $growth_stage_hour_result = null;
         foreach ($growth_stage_result_formula as $formula) {
-            if ($zodiac_year !== false && $zodiac_year == $formula->id) {
+            if ($zodiac_year != false && $zodiac_year == $formula->id) {
                 $growth_stage_year_result = $formula;
             }
 
-            if ($zodiac_month !== false && $zodiac_month == $formula->id) {
+            if ($zodiac_month != false && $zodiac_month == $formula->id) {
                 $growth_stage_month_result = $formula;
             }
 
-            if ($zodiac_day !== false && $zodiac_day == $formula->id) {
+            if ($zodiac_day != false && $zodiac_day == $formula->id) {
                 $growth_stage_day_result = $formula;
             }
 
-            if ($zodiac_hour !== false && $zodiac_hour == $formula->id) {
+            if ($zodiac_hour != false && $zodiac_hour == $formula->id) {
                 $growth_stage_hour_result = $formula;
             }
         }
@@ -772,5 +772,15 @@ class Calculator
                 'growth_stage_hour' => $growth_stage_hour_result
             ]
         );
+    }
+
+    /**
+     * 12. Calculate Shensha System
+     * @param mixed $data
+     * @return object
+     */
+    public static function calculateShenshaSystem($data)
+    {
+
     }
 }
