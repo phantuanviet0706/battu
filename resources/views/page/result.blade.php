@@ -371,6 +371,8 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        Chart.register(ChartDataLabels);
+
         // Dữ liệu cho biểu đồ Ngũ Hành tương quan (Pie Chart)
         const nguHanhData = {
             labels: ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'],
@@ -410,9 +412,35 @@
                                 return label;
                             }
                         }
+                    },
+                    datalabels: {
+                        color: '#fff', // Màu chữ
+                        formatter: (value, context) => {
+                            // Lấy tổng giá trị của tất cả các lát cắt
+                            const sum = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                            const percentage = (value / sum * 100).toFixed(1) + '%'; // Tính phần trăm
+                            return percentage;
+                        },
+                        font: {
+                            weight: 'bold',
+                            size: 14 // Kích thước chữ
+                        },
+                        // Điều chỉnh vị trí nhãn để tránh trùng lặp
+                        anchor: 'end', // "start", "center", "end"
+                        align: 'start', // "start", "center", "end"
+                        offset: 10, // Khoảng cách từ viền lát cắt
+                        borderRadius: 4,
+                        backgroundColor: (context) => context.dataset.backgroundColor[context.dataIndex], // Màu nền theo màu lát cắt
+                        padding: {
+                            top: 6,
+                            bottom: 6,
+                            left: 8,
+                            right: 8
+                        }
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels]
         };
 
         const nguHanhChart = new Chart(

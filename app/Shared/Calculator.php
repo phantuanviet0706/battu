@@ -781,6 +781,26 @@ class Calculator
      */
     public static function calculateShenshaSystem($data)
     {
-
+        $formula_shensha_system = Formula::getFormulaShenshaSystem();
+        $formula_shensha_by_day_master = Formula::getFormulaShenshaByDayMaster();
+        $formula_shensha_special_by_day_master = Formula::getSpecialFormulaByDayMaster();
+        $formula_shensha_by_earthly_hour = Formula::getFormulaShenshaByEarthlyHour();
+        $formula_shensha_by_earthly_day = Formula::getFormulaShenshaByEarthlyDay();
+        $formula_shensha_by_earthly_month = Formula::getFormulaShenshaByEarthlyMonth();
+        $formula_shensha_by_earthly_month_with_heavenly = Formula::getFormulaShenshaByEarthlyMonthWithHeavenly();
+        $formula_shensha_by_earthly_year = Formula::getFormulaShenshaByEarthlyYear();
+        $formula_shensha_by_earthly_year_with_heavenly = Formula::getFormulaShenshaByEarthlyYearWithHeavenly();
+        $formula_shensha_by_earthly_year_special = Formula::getFormulaShenshaByEarthlyYearSpecial();
+        $formula_shensha_by_heavenly_year = Formula::getFormulaShenshaByHeavenlyYear();
+        $formula_shensha_by_heavenly_day = Formula::getFormulaShenshaByHeavenlyDay();
+    
+        $heavenly_stem = $data->heavenly_stem;
+        $earthly_branch = $data->earthly_branch;
+        $heavenly_stem_month = $data->heavenly_stem_month;
+        $earthly_branch_month = $data->earthly_branch_month;
+        $heavenly_stem_day = $data->heavenly_stem_day;
+        $earthly_branch_day = $data->earthly_branch_day;
+        $heavenly_stem_hour = $data->heavenly_stem_hour;
+        $earthly_branch_hour = $data->earthly_branch_hour;
     }
 }

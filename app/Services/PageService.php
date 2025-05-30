@@ -133,6 +133,20 @@ class PageService
 			$growth_stage = $res_growth_stage->data;
 		}
 
+		// $res_shensha = Calculator::calculateShenshaSystem((object) [
+		// 	'heavenly_stem' => $heavenly_stem,
+		// 	'earthly_branch' => $earthly_branch,
+		// 	'heavenly_stem_month' => $heavenly_stem_month,
+		// 	'earthly_branch_month' => $earthly_branch_month,
+		// 	'heavenly_stem_day' => $heavenly_stem_day,
+		// 	'earthly_branch_day' => $earthly_branch_day,
+		// 	'heavenly_stem_hour' => $heavenly_stem_hour,
+		// 	'earthly_branch_hour' => $earthly_branch_hour,
+		// ]);
+		// if (!$res_shensha->code) {
+		// 	return Helper::release('Invalid Shensha data, please check and try again.');
+		// }
+
 		return (object) [
 			'message' => 'Get data successfully',
 			'code' => 1,
