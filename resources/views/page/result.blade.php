@@ -145,7 +145,7 @@
                     </td>
                     <td class="text-custom-yellow border border-gray-400 font-bold">TÀNG CAN</td>
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1">
+                        <div class="flex justify-center gap-1 mt-8">
                             @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
                             @php
                             $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
@@ -154,7 +154,7 @@
                             @foreach ($hidden_items_by_year->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
                                 <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
                                 <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
@@ -163,7 +163,7 @@
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1">
+                        <div class="flex justify-center gap-1 mt-8">
                             @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
                             @php
                             $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
@@ -172,7 +172,7 @@
                             @foreach ($hidden_items_by_month->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
                                 <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
                                 <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
@@ -181,7 +181,7 @@
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1">
+                        <div class="flex justify-center gap-1 mt-8">
                             @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
                             @php
                             $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
@@ -190,7 +190,7 @@
                             @foreach ($hidden_items_by_day->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
                                 <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
                                 <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
@@ -199,7 +199,7 @@
                         </div>
                     </td>
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1">
+                        <div class="flex justify-center gap-1 mt-8">
                             @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
                             @php
                             $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
@@ -208,7 +208,7 @@
                             @foreach ($hidden_items_by_hour->hidden as $hidden_item)
                             <div class="px-2" style="height: 100%;">
                                 <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
                                 <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach

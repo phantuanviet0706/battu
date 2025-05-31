@@ -301,6 +301,10 @@ table {
     font-size: 2.5rem;
 }
 
+.text-sub-container {
+    font-size: 1.5rem;
+}
+
 .font-custom-size {
     color: #ED6D35;
 }
