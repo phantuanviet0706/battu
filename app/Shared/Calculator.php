@@ -104,7 +104,7 @@ class Calculator
             $year
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
-        
+
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
 
         $remaining = ($lunar_year - 4) % 12;
@@ -339,6 +339,7 @@ class Calculator
      */
     public static function calculateHiddenStems($data)
     {
+        $calculate_hidden_stems = [];
         $hidden_hs_in_eb_format = Formula::getFormulaHiddenHSinEB();
 
         $heavenly_stem = $data->heavenly_stem;
@@ -388,6 +389,11 @@ class Calculator
                         && $hs->end_polarity == $earthly_branch->polarity
                     ) {
                         $hidden_stem_by_year = $hs;
+                        if (isset($calculate_hidden_stems[$hs->name])) {
+                            $calculate_hidden_stems[$hs->name] = $calculate_hidden_stems[$hs->name] + 1;
+                        } else {
+                            $calculate_hidden_stems[$hs->name] = 1;
+                        }
                     }
                 }
             }
@@ -404,6 +410,11 @@ class Calculator
                         && $hs->end_polarity == $earthly_branch_month->polarity
                     ) {
                         $hidden_stem_by_month = $hs;
+                        if (isset($calculate_hidden_stems[$hs->name])) {
+                            $calculate_hidden_stems[$hs->name] = $calculate_hidden_stems[$hs->name] + 1;
+                        } else {
+                            $calculate_hidden_stems[$hs->name] = 1;
+                        }
                     }
                 }
             }
@@ -420,6 +431,11 @@ class Calculator
                         && $hs->end_polarity == $earthly_branch_day->polarity
                     ) {
                         $hidden_stem_by_day = $hs;
+                        if (isset($calculate_hidden_stems[$hs->name])) {
+                            $calculate_hidden_stems[$hs->name] = $calculate_hidden_stems[$hs->name] + 1;
+                        } else {
+                            $calculate_hidden_stems[$hs->name] = 1;
+                        }
                     }
                 }
 
@@ -433,6 +449,11 @@ class Calculator
                                 && $hs_check->end_polarity == $hidden_item->polarity
                             ) {
                                 $hidden_item->hidden_combo = $hs_check->name;
+                                if (isset($calculate_hidden_stems[$hs_check->name])) {
+                                    $calculate_hidden_stems[$hs_check->name] = $calculate_hidden_stems[$hs_check->name] + 1;
+                                } else {
+                                    $calculate_hidden_stems[$hs_check->name] = 1;
+                                }
                                 break;
                             }
                         }
@@ -449,6 +470,11 @@ class Calculator
                                 && $hs_check->end_polarity == $hidden_item->polarity
                             ) {
                                 $hidden_item->hidden_combo = $hs_check->name;
+                                if (isset($calculate_hidden_stems[$hs_check->name])) {
+                                    $calculate_hidden_stems[$hs_check->name] = $calculate_hidden_stems[$hs_check->name] + 1;
+                                } else {
+                                    $calculate_hidden_stems[$hs_check->name] = 1;
+                                }
                                 break;
                             }
                         }
@@ -465,13 +491,18 @@ class Calculator
                                 && $hs_check->end_polarity == $hidden_item->polarity
                             ) {
                                 $hidden_item->hidden_combo = $hs_check->name;
+                                if (isset($calculate_hidden_stems[$hs_check->name])) {
+                                    $calculate_hidden_stems[$hs_check->name] = $calculate_hidden_stems[$hs_check->name] + 1;
+                                } else {
+                                    $calculate_hidden_stems[$hs_check->name] = 1;
+                                }
                                 break;
                             }
                         }
                     }
                 }
 
-                // Tính thiên can ẩn trong địa chi theo ngày
+                // Tính thiên can ẩn trong địa chi theo giờ
                 if (isset($hidden_hs_in_eb_by_hour->hidden) && count($hidden_hs_in_eb_by_hour->hidden) > 0) {
                     foreach ($hidden_hs_in_eb_by_hour->hidden as &$hidden_item) {
                         $hidden_item->hidden_combo = '';
@@ -481,6 +512,11 @@ class Calculator
                                 && $hs_check->end_polarity == $hidden_item->polarity
                             ) {
                                 $hidden_item->hidden_combo = $hs_check->name;
+                                if (isset($calculate_hidden_stems[$hs_check->name])) {
+                                    $calculate_hidden_stems[$hs_check->name] = $calculate_hidden_stems[$hs_check->name] + 1;
+                                } else {
+                                    $calculate_hidden_stems[$hs_check->name] = 1;
+                                }
                                 break;
                             }
                         }
@@ -502,6 +538,11 @@ class Calculator
                         && $hs->end_polarity == $earthly_branch_hour->polarity
                     ) {
                         $hidden_stem_by_hour = $hs;
+                        if (isset($calculate_hidden_stems[$hs->name])) {
+                            $calculate_hidden_stems[$hs->name] = $calculate_hidden_stems[$hs->name] + 1;
+                        } else {
+                            $calculate_hidden_stems[$hs->name] = 1;
+                        }
                     }
                 }
             }
@@ -518,7 +559,8 @@ class Calculator
                 'hidden_hs_in_eb_by_year' => $hidden_hs_in_eb_by_year,
                 'hidden_hs_in_eb_by_month' => $hidden_hs_in_eb_by_month,
                 'hidden_hs_in_eb_by_day' => $hidden_hs_in_eb_by_day,
-                'hidden_hs_in_eb_by_hour' => $hidden_hs_in_eb_by_hour
+                'hidden_hs_in_eb_by_hour' => $hidden_hs_in_eb_by_hour,
+                'calculate_hidden_stems' => $calculate_hidden_stems
             ]
         );
     }
@@ -634,7 +676,7 @@ class Calculator
             if ($elemental_sound && $elemental_sound_month && $elemental_sound_day && $elemental_sound_hour) {
                 $is_all_filled = true;
             }
-            
+
             if ($is_all_filled) {
                 break;
             }
@@ -715,7 +757,7 @@ class Calculator
                 $growth_stage_hour_zodiac = $formula;
             }
         }
-        
+
         $zodiac_year = null;
         $zodiac_month = null;
         $zodiac_day = null;
@@ -793,7 +835,7 @@ class Calculator
         $formula_shensha_by_earthly_year_special = Formula::getFormulaShenshaByEarthlyYearSpecial();
         $formula_shensha_by_heavenly_year = Formula::getFormulaShenshaByHeavenlyYear();
         $formula_shensha_by_heavenly_day = Formula::getFormulaShenshaByHeavenlyDay();
-    
+
         $heavenly_stem = $data->heavenly_stem;
         $earthly_branch = $data->earthly_branch;
         $heavenly_stem_month = $data->heavenly_stem_month;

@@ -175,7 +175,8 @@ class PageService
 				'earthly_branch_hour' => $earthly_branch_hour,
 				'jdn' => $jdn_day,
 				'data_sound' => $elemental_sound,
-				'data_growth_stage' => $growth_stage
+				'data_growth_stage' => $growth_stage,
+				'calculate_hidden_stems' => $res_hidden_stem->calculate_hidden_stems
 			]
 		];
 	}
