@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         datasets: [{
             data: [4.08, 9.18, 22.45, 18.37, 45.92], // Đã điều chỉnh để tổng là 100%
             backgroundColor: [
-                '#4CAF50', // Mộc (Green)
-                '#F44336', // Hỏa (Red)
-                '#2196F3', // Thủy (Blue)
-                '#FFC107', // Thổ (Yellow)
-                '#673AB7' // Kim (Purple)
+                '#7CB342', // Màu cho 9% (Mộc)
+                '#D9534F', // Màu cho 18% (Hỏa)
+                '#337AB7', // Màu cho 27% (Thủy)
+                '#4A201B', // Màu cho 32%
+                '#F0AD4E', // Màu cho 14% (Kim)
             ],
             hoverOffset: 4
         }]
@@ -107,53 +107,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Plugin tùy chỉnh để hiển thị phần trăm bên trong thanh
     const percentageInBarPlugin = {
-        id: 'percentageInBar',
-        afterDatasetDraw(chart, args, options) {
-            const {
-                ctx,
-                chartArea: {
-                    left,
-                    right,
-                    top,
-                    bottom,
-                    width,
-                    height
-                },
-                scales: {
-                    x,
-                    y
-                }
-            } = chart;
-            ctx.save();
+    id: 'percentageInBar',
+    afterDatasetsDraw(chart, args, options) {
+        const { ctx, chartArea: { left, right, top, bottom, width, height }, scales: { x, y } } = chart;
 
-            args.meta.data.forEach((bar, index) => {
-                const value = chart.data.datasets[0].data[index];
-                const percentage = value.toFixed(0) + '%'; // Lấy phần trăm và làm tròn
+        ctx.save();
 
-                const xPos = bar.x;
-                const yPos = bar.y;
-                const barWidth = bar.width;
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+            const meta = chart.getDatasetMeta(datasetIndex);
+            if (!meta.hidden) {
+                meta.data.forEach((bar, index) => {
+                    const value = dataset.data[index];
+                    // Chỉ hiển thị nhãn nếu giá trị lớn hơn 0
+                    if (value > 0) {
+                        const barX = bar.x;
+                        const barY = bar.y;
+                        const barWidth = bar.width; // Chiều rộng của thanh ngang
+                        const barHeight = bar.height; // Chiều cao của thanh ngang
 
-                ctx.fillStyle = 'white'; // Màu chữ
-                ctx.textAlign = 'right'; // Căn chữ sang phải
-                ctx.textBaseline = 'middle'; // Căn giữa theo chiều dọc
-                ctx.font = 'bold 12px Inter, sans-serif'; // Font chữ
+                        // Tính toán phần trăm
+                        const total = x.max; // Giới hạn tối đa của trục X là 100
+                        const percentage = ((value / total) * 100).toFixed(0) + '%'; // Làm tròn và thêm %
 
-                let textX = xPos - 5; // Dịch sang trái 5px từ mép phải của thanh
-                let textY = yPos;
+                        // Cài đặt font và màu chữ
+                        ctx.fillStyle = 'white'; // Màu chữ trắng cho dễ nhìn trên nền màu thanh
+                        ctx.font = 'bold 12px Arial'; // Font và kích thước chữ
+                        ctx.textAlign = 'center'; // Căn giữa chữ theo chiều ngang
+                        ctx.textBaseline = 'middle'; // Căn giữa chữ theo chiều dọc
 
-                // Đảm bảo chữ không bị tràn ra ngoài thanh nếu thanh quá ngắn
-                if (barWidth < ctx.measureText(percentage).width + 10) {
-                    ctx.fillStyle = 'black'; // Đổi màu chữ sang đen
-                    ctx.textAlign = 'left'; // Căn chữ sang trái
-                    textX = xPos + 5; // Vẽ ở bên ngoài thanh
-                }
+                        // Tính toán vị trí chữ
+                        // Đặt chữ ở giữa thanh bar
+                        const textX = barX - (barWidth / 2); // Vị trí X của chữ (ở giữa thanh)
+                        const textY = barY; // Vị trí Y của chữ (ở giữa thanh)
 
-                ctx.fillText(percentage, textX, textY);
-            });
-            ctx.restore();
-        }
-    };
+                        // Vẽ chữ
+                        ctx.fillText(percentage, textX, textY);
+                    }
+                });
+            }
+        });
+
+        ctx.restore();
+    }
+};
 
     // Dữ liệu cho biểu đồ Ngũ Hành Thập Thần (Horizontal Bar Chart)
     const thapThanData = {
@@ -208,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip: {
                     enabled: false // Tắt tooltip mặc định để dùng plugin tùy chỉnh
                 },
-                percentageInBar: {} // Kích hoạt plugin
+                // Không cần percentageInBar: {} ở đây nữa, vì plugin đã được đăng ký ở cấp độ Chart toàn cục
             },
             scales: {
                 x: {
@@ -237,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         },
-        plugins: [percentageInBarPlugin] // Đăng ký plugin
+        plugins: [percentageInBarPlugin] // Đăng ký plugin ở đây
     };
 
     const thapThanChart = new Chart(

@@ -845,4 +845,14 @@ class Calculator
         $heavenly_stem_hour = $data->heavenly_stem_hour;
         $earthly_branch_hour = $data->earthly_branch_hour;
     }
+
+    /**
+     * 13. Calculate Elements Data Point
+     * @param mixed $data
+     * @return object
+     */
+    public static function calculateElementsDataPoint($data)
+    {
+        
+    }
 }
