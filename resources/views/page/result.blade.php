@@ -342,7 +342,7 @@
     </div>
 
     <!-- 2. DỤNG THẦN -->
-    <div class="container bg-white p-6 rounded-lg shadow-lg mt-5">
+    <div class="bg-white p-6 rounded-lg shadow-lg mt-5">
         <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">2. DỤNG THẦN</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
