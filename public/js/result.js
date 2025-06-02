@@ -31,10 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     Chart.register(ChartDataLabels);
 
     // Dữ liệu cho biểu đồ Ngũ Hành tương quan (Pie Chart)
+    let data_ngu_hanh = master_data.calculated_percentage_data;
+    const data_labels = ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'];
+    let sorted_data = [];
+    data_labels.forEach(key => {
+        if (data_ngu_hanh.hasOwnProperty(key)) {
+            sorted_data.push(data_ngu_hanh[key]);
+        }
+    });
+
     const nguHanhData = {
-        labels: ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'],
+        labels: data_labels,
         datasets: [{
-            data: [4.08, 9.18, 22.45, 18.37, 45.92], // Đã điều chỉnh để tổng là 100%
+            data: sorted_data, // Đã điều chỉnh để tổng là 100%
             backgroundColor: [
                 '#7CB342', // Màu cho 9% (Mộc)
                 '#D9534F', // Màu cho 18% (Hỏa)
@@ -107,49 +116,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Plugin tùy chỉnh để hiển thị phần trăm bên trong thanh
     const percentageInBarPlugin = {
-    id: 'percentageInBar',
-    afterDatasetsDraw(chart, args, options) {
-        const { ctx, chartArea: { left, right, top, bottom, width, height }, scales: { x, y } } = chart;
+        id: 'percentageInBar',
+        afterDatasetsDraw(chart, args, options) {
+            const { ctx, chartArea: { left, right, top, bottom, width, height }, scales: { x, y } } = chart;
 
-        ctx.save();
+            ctx.save();
 
-        chart.data.datasets.forEach((dataset, datasetIndex) => {
-            const meta = chart.getDatasetMeta(datasetIndex);
-            if (!meta.hidden) {
-                meta.data.forEach((bar, index) => {
-                    const value = dataset.data[index];
-                    // Chỉ hiển thị nhãn nếu giá trị lớn hơn 0
-                    if (value > 0) {
-                        const barX = bar.x;
-                        const barY = bar.y;
-                        const barWidth = bar.width; // Chiều rộng của thanh ngang
-                        const barHeight = bar.height; // Chiều cao của thanh ngang
+            chart.data.datasets.forEach((dataset, datasetIndex) => {
+                const meta = chart.getDatasetMeta(datasetIndex);
+                if (!meta.hidden) {
+                    meta.data.forEach((bar, index) => {
+                        const value = dataset.data[index];
+                        // Chỉ hiển thị nhãn nếu giá trị lớn hơn 0
+                        if (value > 0) {
+                            const barX = bar.x;
+                            const barY = bar.y;
+                            const barWidth = bar.width; // Chiều rộng của thanh ngang
+                            const barHeight = bar.height; // Chiều cao của thanh ngang
 
-                        // Tính toán phần trăm
-                        const total = x.max; // Giới hạn tối đa của trục X là 100
-                        const percentage = ((value / total) * 100).toFixed(0) + '%'; // Làm tròn và thêm %
+                            // Tính toán phần trăm
+                            const total = x.max; // Giới hạn tối đa của trục X là 100
+                            const percentage = ((value / total) * 100).toFixed(0) + '%'; // Làm tròn và thêm %
 
-                        // Cài đặt font và màu chữ
-                        ctx.fillStyle = 'white'; // Màu chữ trắng cho dễ nhìn trên nền màu thanh
-                        ctx.font = 'bold 12px Arial'; // Font và kích thước chữ
-                        ctx.textAlign = 'center'; // Căn giữa chữ theo chiều ngang
-                        ctx.textBaseline = 'middle'; // Căn giữa chữ theo chiều dọc
+                            // Cài đặt font và màu chữ
+                            ctx.fillStyle = 'white'; // Màu chữ trắng cho dễ nhìn trên nền màu thanh
+                            ctx.font = 'bold 12px Arial'; // Font và kích thước chữ
+                            ctx.textAlign = 'center'; // Căn giữa chữ theo chiều ngang
+                            ctx.textBaseline = 'middle'; // Căn giữa chữ theo chiều dọc
 
-                        // Tính toán vị trí chữ
-                        // Đặt chữ ở giữa thanh bar
-                        const textX = barX - (barWidth / 2); // Vị trí X của chữ (ở giữa thanh)
-                        const textY = barY; // Vị trí Y của chữ (ở giữa thanh)
+                            // Tính toán vị trí chữ
+                            // Đặt chữ ở giữa thanh bar
+                            const textX = barX - (barWidth / 2); // Vị trí X của chữ (ở giữa thanh)
+                            const textY = barY; // Vị trí Y của chữ (ở giữa thanh)
 
-                        // Vẽ chữ
-                        ctx.fillText(percentage, textX, textY);
-                    }
-                });
-            }
-        });
+                            // Vẽ chữ
+                            ctx.fillText(percentage, textX, textY);
+                        }
+                    });
+                }
+            });
 
-        ctx.restore();
-    }
-};
+            ctx.restore();
+        }
+    };
 
     // Dữ liệu cho biểu đồ Ngũ Hành Thập Thần (Horizontal Bar Chart)
     const thapThanData = {

@@ -2922,4 +2922,50 @@ class Formula
             ],
         ];
     }
+
+    /**
+     * @index 22
+     * @desc EN: Get the formula of calculate data point heavenly stems (Special formula 12)
+     * @desc VI: Lấy công thức điểm dữ liệu thiên can tính toán (Công thức đặc biệt 12)
+     * @return object[]
+     */
+    public static function getFormulaCalculateDataPointHeavenlyStems()
+    {
+        return [
+            (object) ["id" => 1, "name" => "Giáp", "element" => "Mộc", "yin_yang" => "Dương", "point" => 1],
+            (object) ["id" => 2, "name" => "Ất", "element" => "Mộc", "yin_yang" => "Âm", "point" => 1],
+            (object) ["id" => 3, "name" => "Bính", "element" => "Hỏa", "yin_yang" => "Dương", "point" => 2],
+            (object) ["id" => 4, "name" => "Đinh", "element" => "Hỏa", "yin_yang" => "Âm", "point" => 2],
+            (object) ["id" => 5, "name" => "Mậu", "element" => "Thổ", "yin_yang" => "Dương", "point" => 3],
+            (object) ["id" => 6, "name" => "Kỷ", "element" => "Thổ", "yin_yang" => "Âm", "point" => 3],
+            (object) ["id" => 7, "name" => "Canh", "element" => "Kim", "yin_yang" => "Dương", "point" => 4],
+            (object) ["id" => 8, "name" => "Tân", "element" => "Kim", "yin_yang" => "Âm", "point" => 4],
+            (object) ["id" => 9, "name" => "Nhâm", "element" => "Thủy", "yin_yang" => "Dương", "point" => 5],
+            (object) ["id" => 10, "name" => "Quý", "element" => "Thủy", "yin_yang" => "Âm", "point" => 5]
+        ];
+    }
+
+    /**
+     * @index 23
+     * @desc EN: Get the formula of calculate data point earthly branches (Special formula 13)
+     * @desc VI: Lấy công thức điểm dữ liệu địa chi tính toán (Công thức đặc biệt 13)
+     * @return object[]
+     */
+    public static function getFormulaCalculateDataPointEarthlyBranches()
+    {
+        return [
+            (object) ["id" => 1, "name" => "Thân", "element" => "Kim", "yin_yang" => "Dương", "point" => 4],
+            (object) ["id" => 2, "name" => "Dậu", "element" => "Kim", "yin_yang" => "Âm", "point" => 4],
+            (object) ["id" => 3, "name" => "Tuất", "element" => "Thổ", "yin_yang" => "Dương", "point" => 5],
+            (object) ["id" => 4, "name" => "Hợi", "element" => "Thủy", "yin_yang" => "Âm", "point" => 5],
+            (object) ["id" => 5, "name" => "Tý", "element" => "Thủy", "yin_yang" => "Dương", "point" => 0],
+            (object) ["id" => 6, "name" => "Sửu", "element" => "Thổ", "yin_yang" => "Âm", "point" => 0],
+            (object) ["id" => 7, "name" => "Dần", "element" => "Mộc", "yin_yang" => "Dương", "point" => 1],
+            (object) ["id" => 8, "name" => "Mão", "element" => "Mộc", "yin_yang" => "Âm", "point" => 1],
+            (object) ["id" => 9, "name" => "Thìn", "element" => "Thổ", "yin_yang" => "Dương", "point" => 2],
+            (object) ["id" => 10, "name" => "Tỵ", "element" => "Hỏa", "yin_yang" => "Âm", "point" => 2],
+            (object) ["id" => 10, "name" => "Ngọ", "element" => "Hỏa", "yin_yang" => "Dương", "point" => 3],
+            (object) ["id" => 10, "name" => "Mùi", "element" => "Thổ", "yin_yang" => "Âm", "point" => 3]
+        ];
+    }
 }

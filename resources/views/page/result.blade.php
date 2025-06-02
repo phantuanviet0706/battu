@@ -303,20 +303,20 @@
                                 <div class="absolute text-thuy">Thủy</div>
                             </div>
 
-                            <div class="nguhanh-element" data-element="Moc" style="background-color: #4CAF50;">
-                                Mộc <br /> -1
+                            <div class="nguhanh-element" data-element="Moc" style="background-color: #7CB342;">
+                                Mộc <br /> {{ $result->calculated_data_point['Mộc'] }}
                             </div>
-                            <div class="nguhanh-element" data-element="Hoa" style="background-color: #F44336;">
-                                Hỏa <br /> -2
+                            <div class="nguhanh-element" data-element="Hoa" style="background-color: #D9534F;">
+                                Hỏa <br /> {{ $result->calculated_data_point['Hỏa'] }}
                             </div>
-                            <div class="nguhanh-element" data-element="Tho" style="background-color: #FFC107;">
-                                Thổ <br /> +10
+                            <div class="nguhanh-element" data-element="Tho" style="background-color: #4A201B;">
+                                Thổ <br /> {{ $result->calculated_data_point['Thổ'] }}
                             </div>
-                            <div class="nguhanh-element" data-element="Kim" style="background-color: #9E9E9E;">
-                                Kim <br /> +4
+                            <div class="nguhanh-element" data-element="Kim" style="background-color: #F0AD4E;">
+                                Kim <br /> {{ $result->calculated_data_point['Kim'] }}
                             </div>
-                            <div class="nguhanh-element" data-element="Thuy" style="background-color: #2196F3;">
-                                Thủy <br /> +5
+                            <div class="nguhanh-element" data-element="Thuy" style="background-color: #337AB7;">
+                                Thủy <br /> {{ $result->calculated_data_point['Thủy'] }}
                             </div>
 
                             <svg class="absolute w-full h-full" viewBox="0 0 250 250" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none; z-index: 0;">

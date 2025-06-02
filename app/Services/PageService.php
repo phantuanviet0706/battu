@@ -158,6 +158,8 @@ class PageService
 			'earthly_branch_hour' => $earthly_branch_hour,
 		]);
 
+		$data = $calculate_elements_data_point->data;
+
 		return (object) [
 			'message' => 'Get data successfully',
 			'code' => 1,
@@ -187,7 +189,9 @@ class PageService
 				'jdn' => $jdn_day,
 				'data_sound' => $elemental_sound,
 				'data_growth_stage' => $growth_stage,
-				'calculate_hidden_stems' => $res_hidden_stem->calculate_hidden_stems
+				'calculate_hidden_stems' => $res_hidden_stem->calculate_hidden_stems,
+				'calculated_data_point' => $data->calculated_data_point,
+				'calculated_percentage_data' => $data->calculated_percentage_data,
 			]
 		];
 	}

@@ -853,6 +853,84 @@ class Calculator
      */
     public static function calculateElementsDataPoint($data)
     {
-        
+        $heavenly_stem = $data->heavenly_stem;
+        $earthly_branch = $data->earthly_branch;
+        $heavenly_stem_month = $data->heavenly_stem_month;
+        $earthly_branch_month = $data->earthly_branch_month;
+        $heavenly_stem_day = $data->heavenly_stem_day;
+        $earthly_branch_day = $data->earthly_branch_day;
+        $heavenly_stem_hour = $data->heavenly_stem_hour;
+        $earthly_branch_hour = $data->earthly_branch_hour;
+
+        $calculated_data_point = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
+
+        $heavenly_stem_data_point_format = Formula::getFormulaCalculateDataPointHeavenlyStems();
+        foreach ($heavenly_stem_data_point_format as $format) {
+            if ($heavenly_stem->name == $format->name) {
+                $calculated_data_point[$format->element] = $calculated_data_point[$format->element] + ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($heavenly_stem_month->name == $format->name) {
+                $calculated_data_point[$format->element] = $calculated_data_point[$format->element] + ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($heavenly_stem_day->name == $format->name) {
+                $calculated_data_point[$format->element] = $calculated_data_point[$format->element] + ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($heavenly_stem_hour && isset($heavenly_stem_hour->name) && $heavenly_stem_hour->name == $format->name) {
+                $calculated_data_point[$format->element] = $calculated_data_point[$format->element] + ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+        }
+
+        $earthly_branch_data_point_format = Formula::getFormulaCalculateDataPointEarthlyBranches();
+        foreach ($earthly_branch_data_point_format as $format) {
+            if ($earthly_branch->name == $format->name) {
+                $calculated_data_point[$format->element] += ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($earthly_branch_month->name == $format->name) {
+                $calculated_data_point[$format->element] += ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($earthly_branch_day->name == $format->name) {
+                $calculated_data_point[$format->element] += ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+
+            if ($earthly_branch_hour && isset($earthly_branch_hour->name) && $earthly_branch_hour->name == $format->name) {
+                $calculated_data_point[$format->element] += ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+        }
+
+        $total_point = 0;
+        $calculated_percentage_data = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
+        foreach ($calculated_data_point as $key => $value) {
+            $total_point += abs($value);
+        }
+
+        foreach ($calculated_data_point as $key => $value) {
+            $calculated_percentage_data[$key] = round(abs($value) / $total_point * 100, 2);
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            (object) [
+                'calculated_data_point' => $calculated_data_point,
+                'calculated_percentage_data' => $calculated_percentage_data
+            ]
+        );
     }
 }
