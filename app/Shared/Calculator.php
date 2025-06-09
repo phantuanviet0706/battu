@@ -933,4 +933,64 @@ class Calculator
             ]
         );
     }
+
+    public static function calculateElementsInterrelation($data)
+    {
+        $calculated_data_point = $data->calculated_data_point;
+        $calculated_percentage_data = $data->calculated_percentage_data;
+
+        $calculated_interrelation = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
+
+        $calculated_deposite_percentage_data = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
+
+        $calculated_continuous_data = (clone) $calculated_deposite_percentage_data;
+        $array_point_values = [];
+
+        $default_data_point = 40;
+
+        foreach ($calculated_percentage_data as $key => $value) {
+            $calculated_value = $default_data_point - $value;
+            $calculated_deposite_percentage_data[$key] = $calculated_value;
+            $array_point_values[] = $calculated_value;
+        }
+        
+        $lowest_value = min($array_point_values);
+
+        $default_mean_value = 10;
+        $formatted_mean_value = intval(($default_mean_value - $lowest_value) / 4);
+
+        $lowest_key = null;
+        $sum_total_value = 0;
+        foreach ($calculated_deposite_percentage_data as $key => $value) {
+            if ($value == $lowest_value) {
+                $lowest_key = $key;
+                continue;
+            }
+            $calculated_continuous_value = $value - $formatted_mean_value;
+            $calculated_continuous_data[$key] = $calculated_continuous_value;
+            $sum_total_value += $calculated_continuous_value;
+        }
+
+        if ($lowest_key) {
+            $calculated_continuous_data[$lowest_key] = 100 - $sum_total_value;
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $calculated_interrelation,
+        );
+    }
 }

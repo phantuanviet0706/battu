@@ -160,6 +160,8 @@ class PageService
 
 		$data = $calculate_elements_data_point->data;
 
+		$calculate_elements_interrelation = Calculator::calculateElementsInterrelation($calculate_elements_data_point->data);
+
 		return (object) [
 			'message' => 'Get data successfully',
 			'code' => 1,
