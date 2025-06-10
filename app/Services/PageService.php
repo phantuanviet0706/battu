@@ -194,6 +194,7 @@ class PageService
 				'calculate_hidden_stems' => $res_hidden_stem->calculate_hidden_stems,
 				'calculated_data_point' => $data->calculated_data_point,
 				'calculated_percentage_data' => $data->calculated_percentage_data,
+				'calculated_elements_interrelation' => $calculate_elements_interrelation->data,
 			]
 		];
 	}

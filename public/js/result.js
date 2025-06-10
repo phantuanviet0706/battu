@@ -383,12 +383,22 @@ document.addEventListener('DOMContentLoaded', () => {
         svgArrows.appendChild(path);
     }
 
+    // Dữ liệu cho biểu đồ Ngũ hành đối ứng (Pie Chart)
+    let data_elements_interrelation = master_data.calculated_elements_interrelation;
+    const data_labels_elements_interrelation = ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'];
+    let sorted_data_elements_interrelation = [];
+    data_labels_elements_interrelation.forEach(key => {
+        if (data_elements_interrelation.hasOwnProperty(key)) {
+            sorted_data_elements_interrelation.push(data_elements_interrelation[key]);
+        }
+    });
+
     // Get chart dụng thần
     // Dữ liệu cho biểu đồ Ngũ Hành tương quan (Pie Chart)
     const nguHanhData1 = {
-        labels: ['Mộc', 'Hỏa', 'Thủy', 'Thổ', 'Kim'],
+        labels: data_labels_elements_interrelation,
         datasets: [{
-            data: [4.08, 9.18, 22.45, 18.37, 45.92], // Đã điều chỉnh để tổng là 100%
+            data: sorted_data_elements_interrelation, // Đã điều chỉnh để tổng là 100%
             backgroundColor: [
                 '#7CB342', // Màu cho 9% (Mộc)
                 '#D9534F', // Màu cho 18% (Hỏa)

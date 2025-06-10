@@ -921,7 +921,7 @@ class Calculator
         }
 
         foreach ($calculated_data_point as $key => $value) {
-            $calculated_percentage_data[$key] = round(abs($value) / $total_point * 100, 2);
+            $calculated_percentage_data[$key] = round(abs($value) / $total_point * 100);
         }
 
         return Helper::release(
@@ -955,7 +955,13 @@ class Calculator
             "Thổ" => 0
         ];
 
-        $calculated_continuous_data = (clone) $calculated_deposite_percentage_data;
+        $calculated_continuous_data = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
         $array_point_values = [];
 
         $default_data_point = 40;
@@ -990,7 +996,7 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            $calculated_interrelation,
+            $calculated_continuous_data,
         );
     }
 }
