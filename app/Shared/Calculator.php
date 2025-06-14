@@ -66,9 +66,14 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
 
+        $calculated_year = $year;
+        if ($date < strtotime("{$year}-02-04")) {
+            $calculated_year = $year - 1;
+        }
+
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
 
-        $round_year_int = intval($lunar_year % 10);
+        $round_year_int = intval($calculated_year % 10);
         // $last_number_of_year = $year - $round_year_int * 10;
 
         $current_heavenly_stem = null;
@@ -105,9 +110,14 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
 
+        $calculated_year = $year;
+        if ($date < strtotime("{$year}-02-04")) {
+            $calculated_year = $year - 1;
+        }
+
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
 
-        $remaining = ($lunar_year - 4) % 12;
+        $remaining = ($calculated_year - 4) % 12;
 
         $current_earthly_branch = null;
         foreach ($earthly_branch_format as $earthly_branch) {
