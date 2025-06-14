@@ -8,7 +8,6 @@
 /vendor
 .env.backup
 .env.local
-.env.production
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
