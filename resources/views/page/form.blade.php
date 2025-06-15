@@ -41,13 +41,13 @@
             </div>
 
             <div class="mb-4">
-                <label class="block mb-1">Ngày sinh (Dương lịch):</label>
+                <label class="block mb-1">Ngày sinh (Dương lịch): <br/><span class="text-sm text-gray-500">(dd - Ngày, mm - Tháng, yyyy - Năm)</span></label>
                 <input type="date" name="birth_date" value="{{ old('birth_date') }}" class="w-full border p-2 rounded" required>
             </div>
 
             <div class="mb-4">
-                <label class="block mb-1">Giờ sinh (Không bắt buộc):</label>
-                <input type="time" name="birth_time" value="{{ old('birth_time') }}" class="w-full border p-2 rounded">
+            <label class="block mb-1">Giờ sinh (Không bắt buộc): <br/><span class="text-sm text-gray-500">(hh - Giờ, mm - Phút, 24h)</span></label>
+            <input type="time" name="birth_time" value="{{ old('birth_time') }}" class="w-full border p-2 rounded">
             </div>
 
             <div class="flex justify-between mt-6">
