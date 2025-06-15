@@ -2968,4 +2968,31 @@ class Formula
             (object) ["id" => 10, "name" => "Mùi", "element" => "Thổ", "yin_yang" => "Âm", "point" => 3]
         ];
     }
+
+    public static function getFormulaAgricuturalDate()
+    {
+        return [
+            (object) ["start" => "04-02", "end" => "04-03", "month" => 1],
+            (object) ["start" => "05-03", "end" => "04-04", "month" => 2],
+            (object) ["start" => "05-04", "end" => "05-05", "month" => 3],
+            (object) ["start" => "06-05", "end" => "05-06", "month" => 4],
+            (object) ["start" => "06-06", "end" => "06-07", "month" => 5],
+            (object) ["start" => "07-07", "end" => "06-08", "month" => 6],
+            (object) ["start" => "07-08", "end" => "07-09", "month" => 7],
+            (object) ["start" => "08-09", "end" => "07-10", "month" => 8],
+            (object) ["start" => "08-10", "end" => "06-11", "month" => 9],
+            (object) ["start" => "07-11", "end" => "06-12", "month" => 10],
+            (object) ["start" => "07-12", "end" => "05-01", "month" => 11],
+            (object) ["start" => "06-01", "end" => "03-02", "month" => 12],
+        ];
+    }
+
+    public static function getFormulaHeavenlyStemDay()
+    {
+        return [
+            (object) [
+                
+            ]
+        ];
+    }
 }

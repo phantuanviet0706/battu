@@ -146,6 +146,14 @@ class Calculator
     {
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
 
+        $agricultural_date = self::calculateAgriculturalDate($date);
+        $agricultural_data = $agricultural_date->data;
+        if (!$agricultural_data) {
+            return Helper::release("Invalid agricultural date");
+        }
+
+        $agricultural_month = $agricultural_data->month;
+
         $year = date('Y', $date);
         $lunar_date = Date::convertSolar2Lunar(
             date('d', $date),
@@ -153,8 +161,18 @@ class Calculator
             $year
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
-        $heavenly_stem_year = intval($lunar_year % 10);
-        $heavenly_stem_month = intval(($lunar_month - 1  + (($heavenly_stem_year - 1) * 2)) % 10);
+        $calculated_year = $year;
+        if ($date < strtotime("{$year}-02-04")) {
+            $calculated_year = $year - 1;
+        }
+
+        $heavenly_stem_year = intval($calculated_year % 10);
+        if ($heavenly_stem_year == 0) {
+            $heavenly_stem_month = intval((8 + ($agricultural_month - 1)) % 10);
+        } else {
+            $heavenly_stem_month = intval((2 * ($calculated_year - 1) + ($agricultural_month - 1)) % 10);
+        }
+        // $heavenly_stem_month = intval(($agricultural_month - 1  + (($heavenly_stem_year - 1) * 2)) % 10);
 
         $current_heavenly_stem_by_month = null;
         foreach ($heavenly_stem_format as $format) {
@@ -189,6 +207,7 @@ class Calculator
             date('Y', $date)
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
+        
         $earthly_branch = intval(($lunar_month + 1) % 12);
 
         $selected_earthly_branch_month = null;
@@ -284,10 +303,30 @@ class Calculator
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
         $result_calculate_hs_and_eb_day = self::calculateHSandEBday($date);
 
-        $heavenly_stem_of_day_calculated = intval($result_calculate_hs_and_eb_day % 10);
+        // $heavenly_stem_of_day_calculated = intval($result_calculate_hs_and_eb_day % 10);
 
         $hour = date('H', $date);
-        $heavenly_stem_by_hour = intval((($hour + 1) / 2 + ($heavenly_stem_of_day_calculated - 2) * 2) % 10);
+        // $heavenly_stem_by_hour = intval((($hour + 1) / 2 + ($heavenly_stem_of_day_calculated - 2) * 2) % 10);
+        $x_calculator = $result_calculate_hs_and_eb_day % 5;
+        $y_calculator = 0;
+        switch ($x_calculator) {
+            case 0:
+                $y_calculator = 6;
+                break;
+            case 1:
+                $y_calculator = 8;
+                break;
+            case 2:
+                $y_calculator = 0;
+                break;
+            case 3:
+                $y_calculator = 2;
+                break;
+            case 4:
+                $y_calculator = 4;
+                break;
+        }
+        $heavenly_stem_by_hour = intval($y_calculator + intval(($hour + 1) / 2) % 12) % 10;
 
         $heavenly_stem_format = Formula::getFormulaHeavenlyStem();
         $selected_heavenly_stem_by_hour = null;
@@ -323,7 +362,7 @@ class Calculator
         }
         $hour = date('H', $date);
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        $earthly_branch_by_hour = intval((($hour + 1) / 2) % 10);
+        $earthly_branch_by_hour = intval(intval(($hour + 1) / 2) % 12);
 
         $selected_earthly_branch_by_hour = null;
         foreach ($earthly_branch_format as $format) {
@@ -1007,6 +1046,43 @@ class Calculator
             "Get data successfully",
             Helper::$SUCCESS_CODE,
             $calculated_continuous_data,
+        );
+    }
+
+    private static function calculateAgriculturalDate($date)
+    {
+        $day = date('d', $date);
+        $month = date('m', $date);
+        $year = date('Y', time());
+
+        $agricultural_date_format = Formula::getFormulaAgricuturalDate();
+        
+        $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+        $agricultural_date = null;
+        foreach ($agricultural_date_format as $agr) {
+            $start_date = DateTime::createFromFormat('d-m-Y', $agr->start . "-$year");
+            $end_date = DateTime::createFromFormat('d-m-Y', $agr->end . "-$year");
+            if ($start_date > $end_date) {
+                $year++;
+                $end_date = DateTime::createFromFormat('d-m-Y',  $agr->end . "-$year");
+                if ($start_date > $input_date) {
+                    $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+                }
+            }
+            if ($input_date >= $start_date && $input_date <= $end_date) {
+                $agricultural_date = $agr;
+                break;
+            }
+        }
+
+        if (!$agricultural_date) {
+            return Helper::release("Invalid agricultural date");
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $agricultural_date
         );
     }
 }
