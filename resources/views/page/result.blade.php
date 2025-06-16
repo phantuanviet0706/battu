@@ -272,10 +272,26 @@
                 </tr>
                 <tr>
                     <td class="text-custom-brown text-right pr-6 border border-gray-400 font-bold" colspan="2">THẦN SÁT</td>
-                    <td class="border border-gray-400">Thiên Hỷ<br>Địa Võng</td>
-                    <td class="border border-gray-400"></td>
-                    <td class="border border-gray-400">Cô Thần<br>Lục Quý Hợp</td>
-                    <td class="border border-gray-400">Tướng Tinh<br>Quý Thực</td>
+                    <td class="border border-gray-400">
+                        @foreach ($result->shensha_system['year'] as $shensha)
+                            <span>{{ $shensha }}</span><br/>
+                        @endforeach
+                    </td>
+                    <td class="border border-gray-400">
+                        @foreach ($result->shensha_system['month'] as $shensha)
+                            <span>{{ $shensha }}</span><br/>
+                        @endforeach
+                    </td>
+                    <td class="border border-gray-400">
+                        @foreach ($result->shensha_system['day'] as $shensha)
+                            <span>{{ $shensha }}</span><br/>
+                        @endforeach
+                    </td>
+                    <td class="border border-gray-400">
+                        @foreach ($result->shensha_system['hour'] as $shensha)
+                            <span>{{ $shensha }}</span><br/>
+                        @endforeach
+                    </td>
                 </tr>
             </tbody>
         </table>

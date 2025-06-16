@@ -133,19 +133,19 @@ class PageService
 			$growth_stage = $res_growth_stage->data;
 		}
 
-		// $res_shensha = Calculator::calculateShenshaSystem((object) [
-		// 	'heavenly_stem' => $heavenly_stem,
-		// 	'earthly_branch' => $earthly_branch,
-		// 	'heavenly_stem_month' => $heavenly_stem_month,
-		// 	'earthly_branch_month' => $earthly_branch_month,
-		// 	'heavenly_stem_day' => $heavenly_stem_day,
-		// 	'earthly_branch_day' => $earthly_branch_day,
-		// 	'heavenly_stem_hour' => $heavenly_stem_hour,
-		// 	'earthly_branch_hour' => $earthly_branch_hour,
-		// ]);
-		// if (!$res_shensha->code) {
-		// 	return Helper::release('Invalid Shensha data, please check and try again.');
-		// }
+		$res_shensha = Calculator::calculateShenshaSystem((object) [
+			'heavenly_stem' => $heavenly_stem,
+			'earthly_branch' => $earthly_branch,
+			'heavenly_stem_month' => $heavenly_stem_month,
+			'earthly_branch_month' => $earthly_branch_month,
+			'heavenly_stem_day' => $heavenly_stem_day,
+			'earthly_branch_day' => $earthly_branch_day,
+			'heavenly_stem_hour' => $heavenly_stem_hour,
+			'earthly_branch_hour' => $earthly_branch_hour,
+		]);
+		if (!$res_shensha->code) {
+			return Helper::release('Invalid Shensha data, please check and try again.');
+		}
 
 		$calculate_elements_data_point = Calculator::calculateElementsDataPoint((object) [
 			'heavenly_stem' => $heavenly_stem,
@@ -195,6 +195,7 @@ class PageService
 				'calculated_data_point' => $data->calculated_data_point,
 				'calculated_percentage_data' => $data->calculated_percentage_data,
 				'calculated_elements_interrelation' => $calculate_elements_interrelation->data,
+				'shensha_system' => $res_shensha->data,
 			]
 		];
 	}

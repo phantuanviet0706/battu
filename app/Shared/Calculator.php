@@ -872,19 +872,6 @@ class Calculator
      */
     public static function calculateShenshaSystem($data)
     {
-        $formula_shensha_system = Formula::getFormulaShenshaSystem();
-        $formula_shensha_by_day_master = Formula::getFormulaShenshaByDayMaster();
-        $formula_shensha_special_by_day_master = Formula::getSpecialFormulaByDayMaster();
-        $formula_shensha_by_earthly_hour = Formula::getFormulaShenshaByEarthlyHour();
-        $formula_shensha_by_earthly_day = Formula::getFormulaShenshaByEarthlyDay();
-        $formula_shensha_by_earthly_month = Formula::getFormulaShenshaByEarthlyMonth();
-        $formula_shensha_by_earthly_month_with_heavenly = Formula::getFormulaShenshaByEarthlyMonthWithHeavenly();
-        $formula_shensha_by_earthly_year = Formula::getFormulaShenshaByEarthlyYear();
-        $formula_shensha_by_earthly_year_with_heavenly = Formula::getFormulaShenshaByEarthlyYearWithHeavenly();
-        $formula_shensha_by_earthly_year_special = Formula::getFormulaShenshaByEarthlyYearSpecial();
-        $formula_shensha_by_heavenly_year = Formula::getFormulaShenshaByHeavenlyYear();
-        $formula_shensha_by_heavenly_day = Formula::getFormulaShenshaByHeavenlyDay();
-
         $heavenly_stem = $data->heavenly_stem;
         $earthly_branch = $data->earthly_branch;
         $heavenly_stem_month = $data->heavenly_stem_month;
@@ -893,6 +880,268 @@ class Calculator
         $earthly_branch_day = $data->earthly_branch_day;
         $heavenly_stem_hour = $data->heavenly_stem_hour;
         $earthly_branch_hour = $data->earthly_branch_hour;
+
+        $shensha_system = [
+            "year" => [],
+            "month" => [],
+            "day" => [],
+            "hour" => []
+        ];
+
+        $combo_year = $heavenly_stem->name . " " .$earthly_branch->name;
+        $combo_month = $heavenly_stem_month->name . " " .$earthly_branch_month->name;
+        $combo_day = $heavenly_stem_day->name . " " .$earthly_branch_day->name;
+        $combo_hour = null;
+        if (isset($heavenly_stem_hour->name) && isset($earthly_branch_hour->name)) {
+            $combo_hour = $heavenly_stem_hour->name . " " .$earthly_branch_hour->name;
+        }
+
+        // 1. Tính theo nhật chủ
+        $formula_shensha_system_by_day_master = Formula::getFormulaShenshaSystemByDayMaster();
+        foreach ($formula_shensha_system_by_day_master as $formula) {
+            if (
+                $heavenly_stem_day->name == $formula->can &&
+                $earthly_branch_day->name == $formula->chi
+            ) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $formula->data);
+            }
+        }
+
+        // 2. Tính dữ liệu Không vong
+        $formula_shensha_kv = Formula::getFormulaShenshaSpecialByDayMaster();
+        $final_data = "Không Vong";
+        foreach ($formula_shensha_kv as $formula) {
+            if (!in_array($combo_day, $formula->data)) {
+                continue;
+            }
+
+            if (in_array($earthly_branch->name, $formula->earthly_data)) {
+                $shensha_system['year'][] = $final_data;
+            }
+
+            if (in_array($earthly_branch_month->name, $formula->earthly_data)) {
+                $shensha_system['month'][] = $final_data;
+            }
+
+            if (isset($earthly_branch_hour->name) && in_array($earthly_branch_hour->name, $formula->earthly_data)) {
+                $shensha_system['hour'][] = $final_data;
+            }
+        }
+
+        // 3. Tính dữ liệu thần sát của các phần còn lại
+
+        // a. Tính theo địa chi năm
+        $formula_shensha_by_earthly_year = Formula::getFormulaShenshaByEarthlyYear();
+        $formula_shensha_by_earthly_year_with_heavenly = Formula::getFormulaShenshaByEarthlyYearWithHeavenly();
+        $formula_shensha_by_earthly_year_special = Formula::getFormulaShenshaByEarthlyYearSpecial();
+        foreach ($formula_shensha_by_earthly_year as $formula) {
+            if ($earthly_branch->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$earthly_branch_month->name])) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$earthly_branch_month->name]);
+            }
+
+            if (isset($data_shensha[$earthly_branch_day->name])) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha[$earthly_branch_day->name]);
+            }
+
+            if (isset($earthly_branch_hour->name) && isset($data_shensha[$earthly_branch_hour->name])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$earthly_branch_hour->name]);
+            }
+        }
+
+        foreach ($formula_shensha_by_earthly_year_with_heavenly as $formula) {
+            if ($earthly_branch->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha->{$heavenly_stem_month->name})) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha->{$heavenly_stem_month->name});
+            }
+
+            if (isset($data_shensha->{$heavenly_stem_day->name})) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha->{$heavenly_stem_day->name});
+            }
+
+            if (isset($heavenly_stem_hour->name) && isset($data_shensha->{$heavenly_stem_hour->name})) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha->{$heavenly_stem_hour->name});
+            }
+        }
+        
+        foreach ($formula_shensha_by_earthly_year_special as $formula) {
+            if ($earthly_branch->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha->{$combo_month})) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha->{$combo_month});
+            }
+
+            if (isset($data_shensha->{$combo_day})) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha->{$combo_day});
+            }
+
+            if ($combo_hour && isset($data_shensha->{$combo_hour})) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha->{$combo_hour});
+            }
+        }
+
+        // b. Tính theo thiên can năm
+        $formula_shensha_by_heavenly_year = Formula::getFormulaShenshaByHeavenlyYear();
+        foreach ($formula_shensha_by_heavenly_year as $formula) {
+            if ($heavenly_stem->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$earthly_branch_month->name])) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$earthly_branch_month->name]);
+            }
+
+            if (isset($data_shensha[$earthly_branch_day->name])) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha[$earthly_branch_day->name]);
+            }
+
+            if (isset($earthly_branch_hour->name) && isset($data_shensha[$earthly_branch_hour->name])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$earthly_branch_hour->name]);
+            }
+        }
+
+        // c. Tính theo địa chi tháng
+        $formula_shensha_by_earthly_month = Formula::getFormulaShenshaByEarthlyMonth();
+        foreach ($formula_shensha_by_earthly_month as $formula) {
+            if ($earthly_branch_month->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha->{$earthly_branch->name})) {
+                $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha->{$earthly_branch->name});
+            }
+
+            if (isset($data_shensha->{$earthly_branch_day->name})) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha->{$earthly_branch_day->name});
+            }
+
+            if (isset($earthly_branch_hour->name) && isset($data_shensha->{$earthly_branch_hour->name})) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha->{$earthly_branch_hour->name});
+            }
+        }
+
+        $formula_shensha_by_earthly_month_with_heavenly = Formula::getFormulaShenshaByEarthlyMonthWithHeavenly();
+        foreach ($formula_shensha_by_earthly_month_with_heavenly as $formula) {
+            if ($earthly_branch_month->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$heavenly_stem->name])) {
+                $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$heavenly_stem->name]);
+            }
+
+            if (isset($data_shensha[$heavenly_stem_day->name])) {
+                $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha[$heavenly_stem_day->name]);
+            }
+
+            if (isset($heavenly_stem_hour->name) && isset($data_shensha[$heavenly_stem_hour->name])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$heavenly_stem_hour->name]);
+            }
+        }
+
+        // d. Tính theo địa chi ngày
+        $formula_shensha_by_earthly_day = Formula::getFormulaShenshaByEarthlyDay();
+        foreach ($formula_shensha_by_earthly_day as $formula) {
+            if ($earthly_branch_day->name != $formula->id) {
+                continue;
+            }
+            
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$earthly_branch->name])) {
+                $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$earthly_branch->name]);
+            }
+
+            if (isset($data_shensha[$earthly_branch_month->name])) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$earthly_branch_month->name]);
+            }
+
+            if (isset($earthly_branch_hour->name) && isset($data_shensha[$earthly_branch_hour->name])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$earthly_branch_hour->name]);
+            }
+        }
+
+        // e. Tính theo thiên can ngày
+        $formula_shensha_by_heavenly_day = Formula::getFormulaShenshaByHeavenlyDay();
+        foreach ($formula_shensha_by_heavenly_day as $formula) {
+            if ($heavenly_stem_day->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$earthly_branch->name])) {
+                $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$earthly_branch->name]);
+            }
+
+            if (isset($data_shensha[$earthly_branch_month->name])) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$earthly_branch_month->name]);
+            }
+
+            if (isset($earthly_branch_hour->name) && isset($data_shensha[$earthly_branch_hour->name])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$earthly_branch_hour->name]);
+            }
+        }
+
+        $formula_shensha_by_heavenly_day_by_combo = Formula::getFormulaShenshaByHeavenlyDayByCombo();
+        foreach ($formula_shensha_by_heavenly_day_by_combo as $formula) {
+            if ($heavenly_stem_day->name != $formula->id) {
+                continue;
+            }
+
+            $data_shensha = $formula->data_shensha;
+            if (isset($data_shensha[$combo_year])) {
+                $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$combo_year]);
+            }
+
+            if (isset($data_shensha[$combo_month])) {
+                $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$combo_month]);
+            }
+
+            if ($combo_hour && isset($data_shensha[$combo_hour])) {
+                $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha[$combo_hour]);
+            }
+        }
+
+        if ($earthly_branch_hour) {
+            $formula_shensha_by_earthly_hour = Formula::getFormulaShenshaByEarthlyHour();
+            foreach ($formula_shensha_by_earthly_hour as $formula) {
+                if ($earthly_branch_hour->name != $formula->id) {
+                    continue;
+                }
+
+                $data_shensha = $formula->data_shensha;
+                if (isset($data_shensha[$earthly_branch->name])) {
+                    $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$earthly_branch->name]);
+                }
+
+                if (isset($data_shensha[$earthly_branch_month->name])) {
+                    $shensha_system['month'] = array_merge($shensha_system['month'], $data_shensha[$earthly_branch_month->name]);
+                }
+
+                if (isset($data_shensha[$earthly_branch_day->name])) {
+                    $shensha_system['day'] = array_merge($shensha_system['day'], $data_shensha[$earthly_branch_day->name]);
+                }
+            }
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $shensha_system
+        );
     }
 
     /**
