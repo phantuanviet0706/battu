@@ -1137,6 +1137,10 @@ class Calculator
             }
         }
 
+        foreach ($shensha_system as $key => $value) {
+            $shensha_system[$key] = array_unique($value);
+        }
+
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
