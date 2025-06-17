@@ -382,7 +382,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {{-- Mệnh Khuyết Section --}}
             <div class="chart-wrapper border rounded-lg bg-red-50 border-red-200">
-                <h2 class="text-xl font-semibold mb-2 text-red-600 text-center p-4">Mệnh Khuyết</h2>
+                <h2 class="text-xl font-semibold mb-2 text-red-600 text-center p-4" style="height: 60px;">Mệnh Khuyết</h2>
                 @if (isset($result->missing_elements->missing_elements_data))
                     @foreach ($result->missing_elements->missing_elements_data as $missing_element)
                         <h3 class="text-2xl font-bold mb-3 text-yellow-700 text-center pl-4 pr-4" style="color: {{ $missing_element->color }}">{{ $missing_element->name }}</h3>
@@ -393,7 +393,7 @@
 
             {{-- Mệnh Yếu Section --}}
             <div class="chart-wrapper border rounded-lg bg-yellow-50 border-yellow-200">
-                <h2 class="text-xl font-semibold mb-2 text-yellow-600 text-center p-4">Mệnh Yếu</h2>
+                <h2 class="text-xl font-semibold mb-2 text-yellow-600 text-center p-4" style="height: 60px;">Mệnh Yếu</h2>
                 @if (isset($result->missing_elements->weak_elements_data))
                     @foreach ($result->missing_elements->weak_elements_data as $weak_element)
                         <h3 class="text-2xl font-bold mb-3 text-yellow-700 text-center pl-4 pr-4" style="color: {{ $weak_element->color }}">{{ $weak_element->name }}</h3>
@@ -404,8 +404,8 @@
 
             {{-- Ngũ Hành đối ứng (Chart) Section --}}
             <div class="chart-wrapper border rounded-lg bg-blue-50 border-blue-200 flex flex-col items-center justify-center" style="position: relative;">
-                <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center p-4" style="position: absolute; top: 0; z-index: 1000;">Ngũ Hành đối ứng</h2>
-                <div class="relative w-full max-w-xs mx-auto pl-4 pr-4">
+                <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center p-4" style="position: absolute; height: 60px; top: 0; z-index: 1000;">Ngũ Hành đối ứng</h2>
+                <div class="relative w-full max-w-xs mx-auto pl-4 pr-4" style="margin-top: 60px;">
                     <canvas id="nguHanhChart1"></canvas>
                 </div>
             </div>

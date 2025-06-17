@@ -1393,6 +1393,9 @@ class Calculator
             if (abs($value) > 1) {
                 continue;
             }
+            if (in_array($key, $missing_elements)) {
+                continue;
+            }
             $weak_elements[] = $key;
         }
 
