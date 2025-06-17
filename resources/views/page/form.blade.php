@@ -28,7 +28,7 @@
 
             <div class="mb-4">
                 <label class="block mb-1">Họ và tên (Không bắt buộc):</label>
-                <input type="text" name="name" value="{{ old('name') ? old('name') : 'Battu' }}" class="w-full border p-2 rounded">
+                <input type="text" name="name" value="{{ old('name') ? old('name') : 'Pancharm' }}" class="w-full border p-2 rounded">
             </div>
 
             <div class="mb-4">

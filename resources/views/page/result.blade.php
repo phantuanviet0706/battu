@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 bg-gray-100 result-page-container">
+<div class="p-6 bg-gray-100 result-page-container" style="position: relative;">
     <!-- 1. LÁ SỐ -->
-    <div class="bg-white shadow rounded-lg p-4">
+    <div id="lasotuvi" class="bg-white shadow rounded-lg p-4" style="position: relative;">
+        <button id="exportLaSoBtn" style="position: absolute; top: 20px; right: 20px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000;">
+            Export Lá Số
+        </button>
         <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">1. LÁ SỐ</h1>
         <div class="head-container text-center mb-4">
             <h3 class="text-xl font-bold">{{ $result->name }}</h3>
@@ -138,78 +141,90 @@
                 </tr>
 
                 <tr>
+                    {{-- Cột "Nhân" --}}
                     <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px;">
                         <div style="writing-mode: vertical-rl; transform: rotate(180deg); height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;">
                             Nhân
                         </div>
                     </td>
-                    <td class="text-custom-yellow border border-gray-400 font-bold">TÀNG CAN</td>
+
+                    {{-- Cột "TÀNG CAN" --}}
+                    <td class="text-custom-yellow border border-gray-400 font-bold text-center">TÀNG CAN</td>
+
+                    {{-- Cột Tàng Can theo Năm --}}
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1 mt-8">
+                        {{-- mx-auto để div này căn giữa trong td --}}
+                        <div class="flex flex-wrap justify-center gap-x-1 gap-y-1 py-1 mx-auto">
                             @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
                             @php
                             $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
                             @endphp
                             @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
                             @foreach ($hidden_items_by_year->hidden as $hidden_item)
-                            <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                            <div class="flex flex-col items-center justify-center p-1 border rounded" style="flex-grow: 1; min-width: 50px;">
+                                <div class="text-gray-700 text-xs">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold text-sm">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="{{ $hidden_item->text_color }} text-xs">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
                             @endif
                         </div>
                     </td>
+
+                    {{-- Cột Tàng Can theo Tháng --}}
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1 mt-8">
+                        <div class="flex flex-wrap justify-center gap-x-1 gap-y-1 py-1 mx-auto">
                             @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
                             @php
                             $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
                             @endphp
                             @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
                             @foreach ($hidden_items_by_month->hidden as $hidden_item)
-                            <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                            <div class="flex flex-col items-center justify-center p-1 border rounded" style="flex-grow: 1; min-width: 50px;">
+                                <div class="text-gray-700 text-xs">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold text-sm">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="{{ $hidden_item->text_color }} text-xs">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
                             @endif
                         </div>
                     </td>
+
+                    {{-- Cột Tàng Can theo Ngày --}}
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1 mt-8">
+                        <div class="flex flex-wrap justify-center gap-x-1 gap-y-1 py-1 mx-auto">
                             @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
                             @php
                             $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
                             @endphp
                             @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
                             @foreach ($hidden_items_by_day->hidden as $hidden_item)
-                            <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                            <div class="flex flex-col items-center justify-center p-1 border rounded" style="flex-grow: 1; min-width: 50px;">
+                                <div class="text-gray-700 text-xs">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold text-sm">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="{{ $hidden_item->text_color }} text-xs">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
                             @endif
                         </div>
                     </td>
+
+                    {{-- Cột Tàng Can theo Giờ --}}
                     <td class="border border-gray-400 p-1 align-top">
-                        <div class="flex justify-center gap-1 mt-8">
+                        <div class="flex flex-wrap justify-center gap-x-1 gap-y-1 py-1 mx-auto">
                             @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
                             @php
                             $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
                             @endphp
                             @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
                             @foreach ($hidden_items_by_hour->hidden as $hidden_item)
-                            <div class="px-2" style="height: 100%;">
-                                <div class="mb-1 text-gray-700">{{ $hidden_item->hidden_combo }}</div>
-                                <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold">{{ $hidden_item->heavenly_stem }}</div>
-                                <div class="mb-1 {{ $hidden_item->text_color }}">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                            <div class="flex flex-col items-center justify-center p-1 border rounded" style="flex-grow: 1; min-width: 50px;">
+                                <div class="text-gray-700 text-xs">{{ $hidden_item->hidden_combo }}</div>
+                                <div class="mb-1 {{ $hidden_item->text_color }} font-semibold text-sm">{{ $hidden_item->heavenly_stem }}</div>
+                                <div class="{{ $hidden_item->text_color }} text-xs">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
                             </div>
                             @endforeach
                             @endif
@@ -274,22 +289,22 @@
                     <td class="text-custom-brown text-right pr-6 border border-gray-400 font-bold" colspan="2">THẦN SÁT</td>
                     <td class="border border-gray-400">
                         @foreach ($result->shensha_system['year'] as $shensha)
-                            <span>{{ $shensha }}</span><br/>
+                        <span>{{ $shensha }}</span><br />
                         @endforeach
                     </td>
                     <td class="border border-gray-400">
                         @foreach ($result->shensha_system['month'] as $shensha)
-                            <span>{{ $shensha }}</span><br/>
+                        <span>{{ $shensha }}</span><br />
                         @endforeach
                     </td>
                     <td class="border border-gray-400">
                         @foreach ($result->shensha_system['day'] as $shensha)
-                            <span>{{ $shensha }}</span><br/>
+                        <span>{{ $shensha }}</span><br />
                         @endforeach
                     </td>
                     <td class="border border-gray-400">
                         @foreach ($result->shensha_system['hour'] as $shensha)
-                            <span>{{ $shensha }}</span><br/>
+                        <span>{{ $shensha }}</span><br />
                         @endforeach
                     </td>
                 </tr>
@@ -358,38 +373,49 @@
     </div>
 
     <!-- 2. DỤNG THẦN -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mt-5">
+    <div id="dungthan" class="bg-white p-6 rounded-lg shadow-lg mt-5" style="position: relative;">
+        <button id="exportDungThanBtn" style="position: absolute; top: 20px; right: 20px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000;">
+            Export Dụng Thần
+        </button>
         <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">2. DỤNG THẦN</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {{-- Mệnh Khuyết Section --}}
             <div class="chart-wrapper border rounded-lg bg-red-50 border-red-200">
                 <h2 class="text-xl font-semibold mb-2 text-red-600 text-center p-4">Mệnh Khuyết</h2>
-                <h3 class="text-2xl font-bold mb-3 text-red-700 text-center pl-4 pr-4">Mộc</h3>
-                <p class="text-gray-700 text-sm pl-4 pr-4">Mộc là cây cối sinh sôi, trăm hoa đua nở, là mùa xuân tươi mới khi vạn vật phát triển, sinh lực dồi dào. Người khuyết Mộc thường thiếu sự linh hoạt trong tư duy, dễ trở nên bảo thủ, chậm thay đổi hoặc thiếu động lực phát triển. Trong giao tiếp, họ có thể ít sự mềm mại, dễ lặp lại lời nói cũ mà khó tìm đường mới. Cuộc sống dễ bị trì trệ thiếu cảm hứng, thiếu ý tưởng hoặc thiếu khát vọng vươn lên.</p>
+                @if (isset($result->missing_elements->missing_elements_data))
+                    @foreach ($result->missing_elements->missing_elements_data as $missing_element)
+                        <h3 class="text-2xl font-bold mb-3 text-yellow-700 text-center pl-4 pr-4" style="color: {{ $missing_element->color }}">{{ $missing_element->name }}</h3>
+                        <p class="text-gray-700 text-sm pl-4 pr-4 mb-4">{!! $missing_element->html !!}</p>
+                    @endforeach
+                @endif
             </div>
 
             {{-- Mệnh Yếu Section --}}
             <div class="chart-wrapper border rounded-lg bg-yellow-50 border-yellow-200">
                 <h2 class="text-xl font-semibold mb-2 text-yellow-600 text-center p-4">Mệnh Yếu</h2>
-                <h3 class="text-2xl font-bold mb-3 text-yellow-700 text-center pl-4 pr-4">Hỏa</h3>
-                <p class="text-gray-700 text-sm pl-4 pr-4">Hỏa là ngọn lửa rực cháy, là mặt trời giữa mùa hạ - tỏa sáng, ấm áp, rực rỡ và đầy nhiệt huyết. Hỏa biểu trưng cho đam mê, sự thể hiện bản thân, lòng can đảm và tinh thần chủ động. Người khuyết Hỏa thường thiếu năng lượng, dễ mất động lực, ít bộc lộ cảm xúc hoặc cảm thấy lạc lõng giữa đám đông. Họ có xu hướng sống hướng nội, khó thể hiện bản thân và dễ để lỡ những cơ hội tốt vì thiếu sự bứt phá hay quyết đoán.</p>
+                @if (isset($result->missing_elements->weak_elements_data))
+                    @foreach ($result->missing_elements->weak_elements_data as $weak_element)
+                        <h3 class="text-2xl font-bold mb-3 text-yellow-700 text-center pl-4 pr-4" style="color: {{ $weak_element->color }}">{{ $weak_element->name }}</h3>
+                        <p class="text-gray-700 text-sm pl-4 pr-4 mb-4">{!! $weak_element->html !!}</p>
+                    @endforeach
+                @endif
             </div>
 
             {{-- Ngũ Hành đối ứng (Chart) Section --}}
-            <div class="chart-wrapper border rounded-lg bg-blue-50 border-blue-200 flex flex-col items-center justify-between">
-                <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center p-4">Ngũ Hành đối ứng</h2>
+            <div class="chart-wrapper border rounded-lg bg-blue-50 border-blue-200 flex flex-col items-center justify-center" style="position: relative;">
+                <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center p-4" style="position: absolute; top: 0; z-index: 1000;">Ngũ Hành đối ứng</h2>
                 <div class="relative w-full max-w-xs mx-auto pl-4 pr-4">
                     <canvas id="nguHanhChart1"></canvas>
                 </div>
             </div>
         </div>
         <div class="text-sm text-gray-700 mt-4 text-right">
-            Bố cục 10 thành tố: 
-            1 <span style="color:#4A201B;">Thổ</span> - 
-            1 <span style="color:#337AB7;">Thủy</span> - 
-            4 <span style="color:#7CB342;">Mộc</span> - 
-            2 <span style="color:#F0AD4E;">Kim</span> - 
+            Bố cục 10 thành tố:
+            1 <span style="color:#4A201B;">Thổ</span> -
+            1 <span style="color:#337AB7;">Thủy</span> -
+            4 <span style="color:#7CB342;">Mộc</span> -
+            2 <span style="color:#F0AD4E;">Kim</span> -
             2 <span style="color:#D9534F;">Hỏa</span>
         </div>
     </div>

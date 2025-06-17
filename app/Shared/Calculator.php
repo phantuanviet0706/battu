@@ -1172,6 +1172,41 @@ class Calculator
             "Thổ" => 0
         ];
 
+        $calculated_number_elements_existed = [
+            "Kim" => 0,
+            "Mộc" => 0,
+            "Thủy" => 0,
+            "Hỏa" => 0,
+            "Thổ" => 0
+        ];
+        foreach ($calculated_number_elements_existed as $key => &$value) {
+            if ($key == $heavenly_stem->yin_yang) {
+                $value++;
+            }
+            if ($key == $heavenly_stem_month->yin_yang) {
+                $value++;
+            }
+            if ($key == $heavenly_stem_day->yin_yang) {
+                $value++;
+            }
+            if ($heavenly_stem_hour && $key == $heavenly_stem_hour->yin_yang) {
+                $value++;
+            }
+
+            if ($key == $earthly_branch->yin_yang) {
+                $value++;
+            }
+            if ($key == $earthly_branch_month->yin_yang) {
+                $value++;
+            }
+            if ($key == $earthly_branch_day->yin_yang) {
+                $value++;
+            }
+            if ($earthly_branch_hour && $key == $earthly_branch_hour->yin_yang) {
+                $value++;
+            }
+        }
+
         $heavenly_stem_data_point_format = Formula::getFormulaCalculateDataPointHeavenlyStems();
         foreach ($heavenly_stem_data_point_format as $format) {
             if ($heavenly_stem->name == $format->name) {
@@ -1231,7 +1266,8 @@ class Calculator
             Helper::$SUCCESS_CODE,
             (object) [
                 'calculated_data_point' => $calculated_data_point,
-                'calculated_percentage_data' => $calculated_percentage_data
+                'calculated_percentage_data' => $calculated_percentage_data,
+                'calculated_number_elements_existed' => $calculated_number_elements_existed
             ]
         );
     }
@@ -1336,6 +1372,53 @@ class Calculator
             "Get data successfully",
             Helper::$SUCCESS_CODE,
             $agricultural_date
+        );
+    }
+
+    public static function calculateMissingElements($data)
+    {
+        $calculated_data_point = $data->calculated_data_point;
+        $calculated_number_elements_existed = $data->calculated_number_elements_existed;
+        $formula_calculate_missing_elements = Formula::getFormulaCalculateMissingElements();
+        $missing_elements = [];
+        foreach ($calculated_number_elements_existed as $key => $value) {
+            if ($value > 0) {
+                continue;
+            }
+            $missing_elements[] = $key;
+        }
+
+        $weak_elements = [];
+        foreach ($calculated_data_point as $key => $value) {
+            if (abs($value) > 1) {
+                continue;
+            }
+            $weak_elements[] = $key;
+        }
+
+        $missing_elements_data = [];
+        $weak_elements_data = [];
+        foreach ($formula_calculate_missing_elements as $formula) {
+            foreach ($missing_elements as $element) {
+                if ($formula->id == $element) {
+                    $missing_elements_data[] = $formula;
+                }
+            }
+
+            foreach ($weak_elements as $element) {
+                if ($formula->id == $element) {
+                    $weak_elements_data[] = $formula;
+                }
+            }
+        }
+        
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            (object) [
+                'missing_elements_data' => $missing_elements_data,
+                'weak_elements_data' => $weak_elements_data,
+            ]
         );
     }
 }

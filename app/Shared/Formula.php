@@ -2905,4 +2905,45 @@ class Formula
             (object) ["start" => "06-01", "end" => "03-02", "month" => 12],
         ];
     }
+
+    public static function getFormulaCalculateMissingElements()
+    {
+        return [
+            (object) [
+                "id" => "Kim",
+                "name" => "Kim",
+                "html" => "<b>Kim</b> là thanh gươm bạc dưới ánh trăng lạnh, là tiếng chuông ngân giữa tĩnh mịch – sắc sảo, kiên cường và dứt khoát. Kim đại diện cho tư duy logic, trật tự, sự chính trực và tinh thần kỷ cương. Người mang năng lượng Kim vượng thường bản lĩnh, quyết đoán, rõ ràng trong lời nói lẫn hành động, và không ngại bảo vệ lẽ phải.
+                <br/>Người khuyết Kim giống như tấm gương chưa được mài sắc – dễ ngập ngừng, thiếu rạch ròi, và thường lẩn tránh đối đầu. Họ có thể mất phương hướng trong quyết định, thiếu tiếng nói nội tâm và để vuột mất cơ hội vì không đủ dũng khí nói “không” hoặc lựa chọn điều đúng đắn cho mình.",
+                "color" => "#F0AD4E"
+            ],
+            (object) [
+                "id" => "Mộc",
+                "name" => "Mộc",
+                "html" => "<b>Mộc</b> là chồi non vươn mình đón nắng, là cánh rừng xanh ngát khẽ đung đưa theo gió xuân – mềm mại nhưng bền bỉ, linh hoạt mà tràn đầy sức sống. Mộc tượng trưng cho sự phát triển, lòng nhân ái, khả năng sáng tạo và khát vọng vươn xa. Người vượng Mộc thường có tâm hồn cởi mở, dồi dào ý tưởng và không ngừng học hỏi để lớn lên từng ngày.
+                <br/>Người khuyết Mộc như một mầm cây thiếu ánh sáng – khó phát triển, dễ rơi vào trì trệ, sống an toàn nhưng mờ nhạt. Họ có thể thiếu cảm hứng, lạc hướng trong hành trình cá nhân, hoặc loay hoay trong việc thể hiện bản sắc thật của mình giữa thế giới nhiều cạnh tranh.",
+                "color" => "#7CB342"
+            ],
+            (object) [
+                "id" => "Thủy",
+                "name" => "Thủy",
+                "html" => "<b>Thủy</b> là dòng nước trôi êm dưới ánh trăng, là biển cả sâu thẳm bao la – dịu dàng, linh hoạt nhưng đầy nội lực. Thủy biểu trưng cho cảm xúc, sự thấu hiểu, khả năng thích nghi và trí tuệ cảm xúc. Người mang năng lượng Thủy thường tinh tế, biết lắng nghe, và có khả năng kết nối nhẹ nhàng mà sâu sắc.
+                <br/>Người khuyết Thủy giống như con suối bị ngăn dòng – ngập ngừng, khép kín và khó diễn đạt những gì mình đang mang bên trong. Họ có xu hướng nội tâm hóa nỗi buồn, ngại giao tiếp hoặc đánh mất sự linh hoạt, từ đó dễ đánh rơi các mối quan hệ ý nghĩa chỉ vì không nói ra điều cần nói.",
+                "color" => "#337AB7"
+            ],
+            (object) [
+                "id" => "Hỏa",
+                "name" => "Hỏa",
+                "html" => "<b>Hỏa</b> là ngọn lửa rực cháy, là mặt trời giữa mùa hạ – tỏa sáng, ấm áp, rực rỡ và đầy nhiệt huyết. Hỏa biểu trưng cho đam mê, sự thể hiện bản thân, lòng can đảm và tinh thần chủ động. Người mang Hỏa vượng thường lan tỏa sức sống mãnh liệt, truyền cảm hứng và luôn tiến về phía trước với niềm tin rực rỡ.
+                <br/>Người khuyết Hỏa như ngọn đèn lặng lẽ trong đêm mưa – thiếu động lực, dễ rơi vào trạng thái lạnh lẽo trong tinh thần, khó thể hiện bản thân và thường bỏ lỡ cơ hội chỉ vì thiếu sự bứt phá hoặc không dám bước ra khỏi vùng an toàn.",
+                "color" => "#D9534F"
+            ],
+            (object) [
+                "id" => "Thổ",
+                "name" => "Thổ",
+                "html" => "<b>Thổ</b> là lòng đất bao dung, là nền móng vững chãi nâng đỡ mọi sinh sôi – trầm ổn, bền bỉ và mang trong mình hơi thở của sự nuôi dưỡng. Thổ tượng trưng cho sự ổn định, lòng trung thành, tính thực tế và khả năng xây dựng. Người vượng Thổ thường sống có nguyên tắc, trách nhiệm và là điểm tựa tinh thần cho những người xung quanh.
+                <br/>Người khuyết Thổ như căn nhà thiếu móng – dễ dao động, thiếu sự định vị và cảm giác an toàn bên trong. Họ có thể sống mơ hồ, khó kết nối với thực tế, dễ lạc lõng trong các mối quan hệ vì không biết mình thực sự cần gì, muốn gì và thuộc về đâu.",
+                "color" => "#4A201B"
+            ],
+        ];
+    }
 }
