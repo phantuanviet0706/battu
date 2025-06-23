@@ -209,6 +209,15 @@ document.addEventListener('DOMContentLoaded', () => {
             indexAxis: 'y', // Biểu đồ thanh ngang
             responsive: true,
             maintainAspectRatio: false,
+            // Thêm padding cho toàn bộ biểu đồ để tạo thêm không gian
+            layout: {
+                padding: {
+                    left: 10,  // Tăng padding bên trái để nhãn có không gian
+                    right: 10,
+                    top: 5,
+                    bottom: 5
+                }
+            },
             plugins: {
                 legend: {
                     display: false // Ẩn chú giải
@@ -216,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip: {
                     enabled: false // Tắt tooltip mặc định để dùng plugin tùy chỉnh
                 },
-                // Không cần percentageInBar: {} ở đây nữa, vì plugin đã được đăng ký ở cấp độ Chart toàn cục
             },
             scales: {
                 x: {
@@ -240,8 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             weight: 'bold'
                         },
                         align: 'start', // Căn trái nhãn trục Y
-                        padding: 10 // Thêm padding để nhãn không quá sát mép
-                    }
+                        padding: 10, // Thêm padding để nhãn không quá sát mép
+                        autoSkip: false, // Ngăn Chart.js tự động bỏ qua nhãn
+                        minRotation: 0, // Đảm bảo nhãn không bị xoay
+                        maxRotation: 0  // Đảm bảo nhãn không bị xoay
+                    },
+                    offset: true // Dịch chuyển các thanh bar để căn chỉnh với các nhãn trục Y
                 }
             }
         },

@@ -121,35 +121,35 @@
                         <td class="text-custom-yellow border border-gray-400 font-bold p-2">ĐỊA CHI</td>
                         {{-- Địa Chi by Year --}}
                         <td class="border border-gray-400 {{ $result->earthly_branch->color }} font-bold p-2">
-                            <span class="text-container font-normal">{{ $result->earthly_branch->name }}</span>
+                            <div class="text-container font-normal">{{ $result->earthly_branch->name }}</div>
                             <br>
-                            <span class="text-xs">
+                            <div class="text-xs">
                                 {{ ($result->earthly_branch->polarity == "Dương" ? "+" : "-") . $result->earthly_branch->yin_yang }}
-                            </span>
+                            </div>
                         </td>
                         {{-- Địa Chi by Month --}}
                         <td class="border border-gray-400 {{ $result->earthly_branch_month->color }} font-bold p-2">
-                            <span class="text-container font-normal">{{ $result->earthly_branch_month->name }}</span>
+                            <div class="text-container font-normal">{{ $result->earthly_branch_month->name }}</div>
                             <br>
-                            <span class="text-xs">
+                            <div class="text-xs">
                                 {{ ($result->earthly_branch_month->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_month->yin_yang }}
-                            </span>
+                            </div>
                         </td>
                         {{-- Địa Chi by Day --}}
                         <td class="border border-gray-400 {{ $result->earthly_branch_day->color }} font-bold p-2">
-                            <span class="text-container font-normal">{{ $result->earthly_branch_day->name }}</span>
+                            <div class="text-container font-normal">{{ $result->earthly_branch_day->name }}</div>
                             <br>
-                            <span class="text-xs">
+                            <div class="text-xs">
                                 {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}
-                            </span>
+                            </div>
                         </td>
                         {{-- Địa Chi by Hour --}}
                         <td class="border border-gray-400 {{ isset($result->earthly_branch_hour->color) ? $result->earthly_branch_hour->color : '' }} font-bold p-2">
-                            <span class="text-container font-normal">{{ isset($result->earthly_branch_hour->name) ? $result->earthly_branch_hour->name : '' }}</span>
+                            <div class="text-container font-normal">{{ isset($result->earthly_branch_hour->name) ? $result->earthly_branch_hour->name : '' }}</div>
                             <br>
-                            <span class="text-xs">
+                            <div class="text-xs">
                                 {{ (isset($result->earthly_branch_hour->polarity) ? ($result->earthly_branch_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->earthly_branch_hour->yin_yang) ? $result->earthly_branch_hour->yin_yang : '') }}
-                            </span>
+                            </div>
                         </td>
                     </tr>
 
