@@ -316,3 +316,23 @@ table {
 .text-custom-size {
     background-color: #C7D4BF;
 }
+
+.text-moc {
+    color: #7CB342 !important;
+}
+
+.text-hoa {
+    color: #D9534F !important;
+}
+
+.text-thuy {
+    color: #337AB7 !important;
+}
+
+.text-tho {
+    color: #4A201B !important;
+}
+
+.text-kim {
+    color: #F0AD4E !important;
+}
