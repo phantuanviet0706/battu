@@ -117,6 +117,37 @@ document.addEventListener('DOMContentLoaded', () => {
         nguHanhConfig
     );
 
+    // --- Bổ sung code để tạo chú thích tùy chỉnh ---
+    function createCustomNguHanhLegend(chart, id = 'nguHanhLegend') {
+        const legendContainer = document.getElementById(id);
+        if (!legendContainer) return;
+
+        legendContainer.innerHTML = ''; // Xóa bất kỳ chú thích cũ nào
+
+        const data = chart.data;
+        const colors = data.datasets[0].backgroundColor;
+        const labels = data.labels;
+
+        labels.forEach((label, index) => {
+            const legendItem = document.createElement('div');
+            legendItem.className = 'flex items-center space-x-1'; // Tailwind classes for alignment
+
+            const colorBox = document.createElement('span');
+            colorBox.className = 'w-3 h-3 rounded-full'; // Tailwind classes for shape
+            colorBox.style.backgroundColor = colors[index];
+
+            const text = document.createElement('span');
+            text.textContent = label;
+
+            legendItem.appendChild(colorBox);
+            legendItem.appendChild(text);
+            legendContainer.appendChild(legendItem);
+        });
+    }
+
+    // Gọi hàm tạo chú thích sau khi biểu đồ đã được khởi tạo
+    createCustomNguHanhLegend(nguHanhChart);
+
     // Plugin tùy chỉnh để hiển thị phần trăm bên trong thanh
     const percentageInBarPlugin = {
         id: 'percentageInBar',
@@ -479,6 +510,8 @@ document.addEventListener('DOMContentLoaded', () => {
         plugins: [ChartDataLabels]
     });
 
+    // Gọi hàm tạo chú thích sau khi biểu đồ đã được khởi tạo
+    createCustomNguHanhLegend(nguHanhChart, 'nguHanhLegend1');
 
     // Export trang thành ảnh
     const exportLaSoButton = document.getElementById('exportLaSoBtn');

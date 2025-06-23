@@ -304,22 +304,22 @@
                     <tr>
                         {{-- Thần Sát row --}}
                         <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">THẦN SÁT</td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">
+                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
                             @foreach ($result->shensha_system['year'] as $shensha)
                             <span>{{ $shensha }}</span><br />
                             @endforeach
                         </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">
+                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
                             @foreach ($result->shensha_system['month'] as $shensha)
                             <span>{{ $shensha }}</span><br />
                             @endforeach
                         </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">
+                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
                             @foreach ($result->shensha_system['day'] as $shensha)
                             <span>{{ $shensha }}</span><br />
                             @endforeach
                         </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">
+                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
                             @foreach ($result->shensha_system['hour'] as $shensha)
                             <span>{{ $shensha }}</span><br />
                             @endforeach
@@ -353,8 +353,8 @@
                             <div class="absolute yin-yang">
                                 <div class="yin-yang-dot-black"></div>
                                 <div class="yin-yang-dot-white"></div>
-                                <div class="absolute text-nham">{{ $result->heavenly_stem_day->name }}</div>
-                                <div class="absolute text-thuy">{{ $result->earthly_branch_day->name }}</div>
+                                <div class="absolute text-pp-nham">{{ $result->heavenly_stem_day->name }}</div>
+                                <div class="absolute text-pp-thuy">{{ $result->heavenly_stem_day->yin_yang }}</div>
                             </div>
 
                             <div class="nguhanh-element" data-element="Moc" style="background-color: #7CB342;">
@@ -391,6 +391,9 @@
                     <div class="relative flex items-center justify-center w-full max-w-[200px] sm:max-w-[250px] aspect-square flex-grow p-2 sm:p-6">
                         <canvas id="nguHanhChart"></canvas>
                     </div>
+                    <div id="nguHanhLegend" class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm mt-4">
+                        {{-- Chú thích sẽ được thêm vào đây bởi JS --}}
+                    </div>
                 </div>
 
             </div>
@@ -413,14 +416,14 @@
                 <h2 class="text-lg sm:text-xl font-semibold mb-2 text-red-600 text-center">Mệnh Khuyết</h2>
                 {{-- Conditional display of missing elements data --}}
                 @if (isset($result->missing_elements->missing_elements_data))
-                    @foreach ($result->missing_elements->missing_elements_data as $missing_element)
-                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-red-700 text-center" style="color: {{ $missing_element->color }}">{{ $missing_element->name }}</h3>
-                        <p class="text-gray-700 text-sm mb-4">{!! $missing_element->html !!}</p>
-                    @endforeach
+                @foreach ($result->missing_elements->missing_elements_data as $missing_element)
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 text-red-700 text-center" style="color: {{ $missing_element->color }}">{{ $missing_element->name }}</h3>
+                <p class="text-gray-700 text-sm mb-4">{!! $missing_element->html !!}</p>
+                @endforeach
                 @else
-                    {{-- Placeholder content if data is not available --}}
-                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-red-700 text-center">Mộc</h3>
-                    <p class="text-gray-700 text-sm">Mộc là cây cối sinh sôi, trăm hoa đua nở, là mùa xuân tươi mới khi vạn vật phát triển, sinh lực dồi dào. Người khuyết Mộc thường thiếu sự linh hoạt trong tư duy, dễ trở nên bảo thủ, chậm thay đổi hoặc thiếu động lực phát triển. Trong giao tiếp, họ có thể ít sự mềm mại, dễ lặp lại lời nói cũ mà khó tìm đường mới. Cuộc sống dễ bị trì trệ thiếu cảm hứng, thiếu ý tưởng hoặc thiếu khát vọng vươn lên.</p>
+                {{-- Placeholder content if data is not available --}}
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 text-red-700 text-center">Mộc</h3>
+                <p class="text-gray-700 text-sm">Mộc là cây cối sinh sôi, trăm hoa đua nở, là mùa xuân tươi mới khi vạn vật phát triển, sinh lực dồi dào. Người khuyết Mộc thường thiếu sự linh hoạt trong tư duy, dễ trở nên bảo thủ, chậm thay đổi hoặc thiếu động lực phát triển. Trong giao tiếp, họ có thể ít sự mềm mại, dễ lặp lại lời nói cũ mà khó tìm đường mới. Cuộc sống dễ bị trì trệ thiếu cảm hứng, thiếu ý tưởng hoặc thiếu khát vọng vươn lên.</p>
                 @endif
             </div>
 
@@ -429,14 +432,14 @@
                 <h2 class="text-lg sm:text-xl font-semibold mb-2 text-yellow-600 text-center">Mệnh Yếu</h2>
                 {{-- Conditional display of weak elements data --}}
                 @if (isset($result->missing_elements->weak_elements_data))
-                    @foreach ($result->missing_elements->weak_elements_data as $weak_element)
-                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-yellow-700 text-center" style="color: {{ $weak_element->color }}">{{ $weak_element->name }}</h3>
-                        <p class="text-gray-700 text-sm mb-4">{!! $weak_element->html !!}</p>
-                    @endforeach
+                @foreach ($result->missing_elements->weak_elements_data as $weak_element)
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 text-yellow-700 text-center" style="color: {{ $weak_element->color }}">{{ $weak_element->name }}</h3>
+                <p class="text-gray-700 text-sm mb-4">{!! $weak_element->html !!}</p>
+                @endforeach
                 @else
-                    {{-- Placeholder content if data is not available --}}
-                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-yellow-700 text-center">Hỏa</h3>
-                    <p class="text-gray-700 text-sm">Hỏa là ngọn lửa rực cháy, là mặt trời giữa mùa hạ - tỏa sáng, ấm áp, rực rỡ và đầy nhiệt huyết. Hỏa biểu trưng cho đam mê, sự thể hiện bản thân, lòng can đảm và tinh thần chủ động. Người khuyết Hỏa thường thiếu năng lượng, dễ mất động lực, ít bộc lộ cảm xúc hoặc cảm thấy lạc lõng giữa đám đông. Họ có xu hướng sống hướng nội, khó thể hiện bản thân và dễ để lỡ những cơ hội tốt vì thiếu sự bứt phá hay quyết đoán.</p>
+                {{-- Placeholder content if data is not available --}}
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 text-yellow-700 text-center">Hỏa</h3>
+                <p class="text-gray-700 text-sm">Hỏa là ngọn lửa rực cháy, là mặt trời giữa mùa hạ - tỏa sáng, ấm áp, rực rỡ và đầy nhiệt huyết. Hỏa biểu trưng cho đam mê, sự thể hiện bản thân, lòng can đảm và tinh thần chủ động. Người khuyết Hỏa thường thiếu năng lượng, dễ mất động lực, ít bộc lộ cảm xúc hoặc cảm thấy lạc lõng giữa đám đông. Họ có xu hướng sống hướng nội, khó thể hiện bản thân và dễ để lỡ những cơ hội tốt vì thiếu sự bứt phá hay quyết đoán.</p>
                 @endif
             </div>
 
@@ -445,6 +448,9 @@
                 <h2 class="text-lg sm:text-xl font-semibold mb-4 text-blue-600 text-center">Ngũ Hành đối ứng</h2>
                 <div class="relative w-full max-w-[200px] sm:max-w-xs mx-auto">
                     <canvas id="nguHanhChart1"></canvas>
+                </div>
+                <div id="nguHanhLegend1" class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm mt-4">
+                    {{-- Chú thích sẽ được thêm vào đây bởi JS --}}
                 </div>
             </div>
         </div>

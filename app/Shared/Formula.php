@@ -2392,7 +2392,7 @@ class Formula
     /**
      * @index 19
      * @desc EN: Get the formula of shensha by heavenly day
-     * @desc VI: Lấy công thức thần sát theo thiên ngày
+     * @desc VI: Lấy công thức thần sát theo thiên can ngày
      * @return object[]
      */
     public static function getFormulaShenshaByHeavenlyDay()
@@ -2403,34 +2403,25 @@ class Formula
                 "data_shensha" => [
                     "Thìn" => ["Kim Dư", "Quý Thực"],
                     "Mão" => ["Lộc Thần"],
-                    "Bính" => ["Quý Thực", "nan"],
-                    "Dần" => ["nan"],
                     "Mậu" => ["Thiên Tài"],
                     "Tỵ" => ["Văn Xương Quý Nhân"],
-                    "Giáp" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Tí" => ["Lục Hợp Quý Nhân", "Thái Cực Quý Nhân"],
-                    "Ngọ" => ["nan", "nan"],
                     "Tuất" => ["Quốc Ấn Quý Nhân"],
-                    "Kỷ" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Sửu" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
-                    "Mùi" => ["nan", "Thiên Ất Quý Nhân (Âm)"],
+                    "Tý" => ["Thái Cực Quý Nhân", "Lục Hợp Quý Nhân"],
+                    "Ngọ" => ["Thái Cực Quý Nhân"],
+                    "Sửu" => ["Thiên Ất Quý Nhân (Dương)", "Quý Hợp Quý Nhân"],
+                    "Mùi" => ["Thiên Ất Quý Nhân (Âm)"],
                 ]
             ],
             (object) [
                 "id" => "Ất",
                 "data_shensha" => [
-                    "Tỵ" => ["Kim Dư", "Lục Hợp Quý Nhân"],
+                    "Tỵ" => ["Kim Dư"],
                     "Dần" => ["Lộc Thần"],
-                    "Đinh" => ["Quý Thực", "nan"],
-                    "Hợi" => ["Quý Thực", "Quốc Ấn Quý Nhân"],
-                    "Dậu" => ["nan"],
                     "Kỷ" => ["Thiên Tài"],
-                    "Ngọ" => ["Văn Xương Quý Nhân", "nan"],
-                    "Tân" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Sửu" => ["nan"],
-                    "Canh" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Tí" => ["Quý Hợp Quý Nhân", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
-                    "Thân" => ["nan", "Thiên Ất Quý Nhân (Dương)"],
+                    "Ngọ" => ["Văn Xương Quý Nhân", "Thái Cực Quý Nhân"],
+                    "Hợi" => ["Quốc Ấn Quý Nhân"],
+                    "Tý" => ["Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
+                    "Thân" => ["Thiên Ất Quý Nhân (Dương)"],
                 ]
             ],
             (object) [
@@ -2438,19 +2429,12 @@ class Formula
                 "data_shensha" => [
                     "Mùi" => ["Kim Dư"],
                     "Tỵ" => ["Lộc Thần"],
-                    "Mậu" => ["Quý Thực", "nan"],
-                    "Tí" => ["Quý Thực"],
-                    "Ngọ" => ["nan"],
                     "Canh" => ["Thiên Tài"],
                     "Thân" => ["Văn Xương Quý Nhân"],
-                    "Bính" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Dần" => ["Lục Hợp Quý Nhân"],
-                    "Thìn" => ["nan"],
                     "Sửu" => ["Quốc Ấn Quý Nhân"],
-                    "Tân" => ["Quý Hợp Quý Nhân", "nan"],
+                    "Dậu" => ["Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
+                    "Mão" => ["Thái Cực Quý Nhân"],
                     "Hợi" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
-                    "Dậu" => ["nan", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
-                    "Mão" => ["nan"],
                 ]
             ],
             (object) [
@@ -2458,87 +2442,62 @@ class Formula
                 "data_shensha" => [
                     "Thân" => ["Kim Dư"],
                     "Ngọ" => ["Lộc Thần"],
-                    "Kỷ" => ["Quý Thực", "nan"],
-                    "Tỵ" => ["Quý Thực"],
-                    "Sửu" => ["nan"],
                     "Tân" => ["Thiên Tài"],
                     "Dậu" => ["Văn Xương Quý Nhân", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
                     "Dần" => ["Quốc Ấn Quý Nhân"],
-                    "Mão" => ["nan"],
+                    "Mão" => ["Thái Cực Quý Nhân"],
                     "Hợi" => ["Thiên Ất Quý Nhân (Dương)"],
                 ]
             ],
             (object) [
                 "id" => "Mậu",
                 "data_shensha" => [
-                    "Mùi" => ["Kim Dư", "nan", "Thiên Ất Quý Nhân (Âm)"],
+                    "Mùi" => ["Kim Dư", "Thiên Ất Quý Nhân (Âm)"],
                     "Tỵ" => ["Lộc Thần"],
-                    "Canh" => ["Quý Thực", "nan"],
-                    "Tí" => ["Quý Thực", "Lục Hợp Quý Nhân"],
-                    "Ngọ" => ["nan", "nan"],
                     "Nhâm" => ["Thiên Tài"],
                     "Thân" => ["Văn Xương Quý Nhân"],
-                    "Mậu" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Sửu" => ["Quốc Ấn Quý Nhân", "Quý Hợp Quý Nhân", "nan"],
-                    "Quý" => ["Quý Hợp Quý Nhân", "nan"],
+                    "Sửu" => ["Quốc Ấn Quý Nhân", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
                     "Thìn" => ["Thái Cực Quý Nhân"],
-                    "Tuất" => ["nan"],
-                    "Sử" => ["Thiên Ất Quý Nhân (Dương)"],
+                    "Tuất" => ["Thái Cực Quý Nhân"],
                 ]
             ],
             (object) [
                 "id" => "Kỷ",
                 "data_shensha" => [
-                    "Thân" => ["Kim Dư", "nan", "Thiên Ất Quý Nhân (Âm)"],
+                    "Thân" => ["Kim Dư", "Thiên Ất Quý Nhân (Âm)"],
                     "Ngọ" => ["Lộc Thần"],
-                    "Tân" => ["Quý Thực", "nan"],
-                    "Hợi" => ["Quý Thực"],
-                    "Mùi" => ["nan"],
                     "Quý" => ["Thiên Tài"],
                     "Dậu" => ["Văn Xương Quý Nhân"],
-                    "Kỷ" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Sửu" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Tỵ" => ["nan"],
                     "Dần" => ["Quốc Ấn Quý Nhân"],
-                    "Giáp" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Tí" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
                     "Thìn" => ["Thái Cực Quý Nhân"],
-                    "Tuất" => ["nan"],
+                    "Tuất" => ["Thái Cực Quý Nhân"],
+                    "Sửu" => ["Thái Cực Quý Nhân"],
+                    "Tý" => ["Thiên Ất Quý Nhân (Dương)"],
                 ]
             ],
             (object) [
                 "id" => "Canh",
                 "data_shensha" => [
-                    "Tuất" => ["Kim Dư", "Quý Thực"],
-                    "Thân" => ["Lộc Thần", "nan"],
-                    "Nhâm" => ["Quý Thực", "nan"],
+                    "Tuất" => ["Kim Dư"],
+                    "Thân" => ["Lộc Thần"],
                     "Giáp" => ["Thiên Tài"],
-                    "Hợi" => ["Văn Xương Quý Nhân", "nan"],
-                    "Canh" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Tí" => ["Lục Hợp Quý Nhân"],
-                    "Ngọ" => ["nan"],
+                    "Hợi" => ["Văn Xương Quý Nhân", "Thái Cực Quý Nhân"],
                     "Thìn" => ["Quốc Ấn Quý Nhân"],
-                    "Ất" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Sửu" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
-                    "Mùi" => ["nan", "Thiên Ất Quý Nhân (Âm)"],
                     "Dần" => ["Thái Cực Quý Nhân"],
+                    "Sửu" => ["Thiên Ất Quý Nhân (Dương)"],
+                    "Mùi" => ["Thiên Ất Quý Nhân (Âm)"],
                 ]
             ],
             (object) [
                 "id" => "Tân",
                 "data_shensha" => [
-                    "Hợi" => ["Kim Dư", "Lục Hợp Quý Nhân", "nan"],
+                    "Hợi" => ["Kim Dư", "Thái Cực Quý Nhân"],
                     "Dậu" => ["Lộc Thần"],
-                    "Quý" => ["Quý Thực", "nan"],
-                    "Tỵ" => ["Quý Thực", "Quốc Ấn Quý Nhân"],
-                    "Mão" => ["nan"],
                     "Ất" => ["Thiên Tài"],
-                    "Tí" => ["Văn Xương Quý Nhân"],
-                    "Tân" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Mùi" => ["nan"],
-                    "Bính" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Ngọ" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
-                    "Dần" => ["nan", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
+                    "Tý" => ["Văn Xương Quý Nhân"],
+                    "Tỵ" => ["Quốc Ấn Quý Nhân"],
+                    "Dần" => ["Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
+                    "Ngọ" => ["Thiên Ất Quý Nhân (Âm)"],
                 ]
             ],
             (object) [
@@ -2546,31 +2505,23 @@ class Formula
                 "data_shensha" => [
                     "Sửu" => ["Kim Dư"],
                     "Hợi" => ["Lộc Thần"],
-                    "Giáp" => ["Quý Thực", "nan"],
-                    "Tí" => ["Quý Thực"],
-                    "Ngọ" => ["nan"],
                     "Bính" => ["Thiên Tài"],
                     "Dần" => ["Văn Xương Quý Nhân"],
-                    "Nhâm" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Thân" => ["Lục Hợp Quý Nhân", "nan"],
-                    "Tuất" => ["nan"],
                     "Mùi" => ["Quốc Ấn Quý Nhân"],
-                    "Đinh" => ["Quý Hợp Quý Nhân", "nan"],
-                    "Mão" => ["Quý Hợp Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
-                    "Tỵ" => ["nan", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
+                    "Tỵ" => ["Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
+                    "Thân" => ["Thái Cực Quý Nhân"],
+                    "Mão" => ["Thiên Ất Quý Nhân (Dương)"],
                 ]
             ],
             (object) [
                 "id" => "Quý",
                 "data_shensha" => [
                     "Dần" => ["Kim Dư"],
-                    "Tí" => ["Lộc Thần"],
-                    "Ất" => ["Quý Thực", "nan"],
-                    "Sửu" => ["Quý Thực"],
-                    "Tỵ" => ["nan", "Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
+                    "Tý" => ["Lộc Thần"],
                     "Đinh" => ["Thiên Tài"],
                     "Mão" => ["Văn Xương Quý Nhân", "Thiên Ất Quý Nhân (Âm)"],
-                    "Thân" => ["Quốc Ấn Quý Nhân", "nan"],
+                    "Thân" => ["Quốc Ấn Quý Nhân", "Thái Cực Quý Nhân"],
+                    "Tỵ" => ["Thái Cực Quý Nhân", "Thiên Ất Quý Nhân (Dương)"],
                 ]
             ],
         ];

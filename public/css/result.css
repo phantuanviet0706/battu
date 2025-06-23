@@ -168,7 +168,7 @@ body * {
 }
 
 /* Văn bản bên trong Âm Dương */
-.yin-yang .absolute.text-nham {
+.yin-yang .absolute.text-pp-nham {
     /* Nhâm ở nửa trắng (bên trái) */
     top: 60%;
     left: 25%;
@@ -184,7 +184,7 @@ body * {
     z-index: 10;
 }
 
-.yin-yang .absolute.text-thuy {
+.yin-yang .absolute.text-pp-thuy {
     /* Thủy ở nửa đen (bên phải) */
     top: 40%;
     left: 75%;
