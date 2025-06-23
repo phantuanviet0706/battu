@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tra Cứu Bát Tự</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- TailwindCSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/result.css') }}" rel="stylesheet">
@@ -17,6 +18,13 @@
     <script src="{{ asset('js/result.js') }}"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     @stack('scripts')
+
+    <script>
+        window.AppConfig = {
+            captureImageUrl: "{{ route('capture.image') }}"
+            // Bạn có thể thêm các biến khác ở đây nếu cần
+        };
+    </script>
 
 </body>
 </html>

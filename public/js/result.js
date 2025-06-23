@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     var master_data = window.LaravelData || {};
+    // Lấy URL từ biến toàn cục đã được truyền từ Blade
+    const CAPTURE_IMAGE_URL = window.AppConfig.captureImageUrl;
+
     const define_hidden_items = [
         { index: 0, id: "Thiên Tài", name: "Thiên Tài", count: 0, percentage: 0 },
         { index: 1, id: "Tỷ Kiên", name: "Tỷ Kiên", count: 0, percentage: 0 },
@@ -468,63 +471,128 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export trang thành ảnh
     const exportLaSoButton = document.getElementById('exportLaSoBtn');
 
-    exportLaSoButton.addEventListener('click', function() {
-        // Chọn phần tử mà bạn muốn chụp.
-        // Nếu muốn chụp toàn bộ trang (từ đầu đến cuối), bạn có thể chọn document.body hoặc một div chứa toàn bộ nội dung chính.
-        // Giả sử bạn có một div bao bọc toàn bộ nội dung trang với id="full-page-content"
-        const elementToCapture = document.getElementById('lasotuvi');
-        // const elementToCapture = document.body;
+    // exportLaSoButton.addEventListener('click', function() {
+    //     // Chọn phần tử mà bạn muốn chụp.
+    //     // Nếu muốn chụp toàn bộ trang (từ đầu đến cuối), bạn có thể chọn document.body hoặc một div chứa toàn bộ nội dung chính.
+    //     // Giả sử bạn có một div bao bọc toàn bộ nội dung trang với id="full-page-content"
+    //     const elementToCapture = document.getElementById('lasotuvi');
+    //     // const elementToCapture = document.body;
 
-        if (!elementToCapture) {
-            console.error('Không tìm thấy phần tử để chụp. Đảm bảo id "full-page-content" hoặc document.body tồn tại.');
-            return;
-        }
+    //     if (!elementToCapture) {
+    //         console.error('Không tìm thấy phần tử để chụp. Đảm bảo id "full-page-content" hoặc document.body tồn tại.');
+    //         return;
+    //     }
 
-        // Tạm thời ẩn nút export để nó không xuất hiện trong ảnh chụp
-        exportLaSoButton.style.display = 'none';
+    //     // Tạm thời ẩn nút export để nó không xuất hiện trong ảnh chụp
+    //     exportLaSoButton.style.display = 'none';
 
-        html2canvas(elementToCapture, {
-            // Cấu hình quan trọng để chụp toàn bộ trang, bao gồm cả phần đã cuộn xuống
-            scrollX: -window.scrollX,
-            scrollY: -window.scrollY,
-            windowWidth: document.documentElement.offsetWidth,
-            windowHeight: document.documentElement.offsetHeight,
-            useCORS: true, // Rất quan trọng nếu bạn có hình ảnh từ các nguồn khác (CDN, domain khác)
-                            // Đảm bảo các nguồn này có CORS header thích hợp.
-            logging: true, // Bật logging để debug nếu có vấn đề
-            allowTaint: false, // Ngăn chặn việc 'taint' canvas nếu có hình ảnh cross-origin không có CORS.
-                                // Nếu useCORS: true mà vẫn không hoạt động, hãy thử đặt allowTaint: true (nhưng điều này sẽ khiến canvas bị "tainted" và bạn không thể dùng toDataURL)
-                                // Tốt nhất là đảm bảo CORS đúng.
-            scale: 2 // Tăng scale lên 2 để ảnh chụp có chất lượng cao hơn (2x pixels)
-        }).then(canvas => {
-            // Hiển thị lại nút export sau khi chụp xong
-            exportLaSoButton.style.display = 'block';
+    //     html2canvas(elementToCapture, {
+    //         // Cấu hình quan trọng để chụp toàn bộ trang, bao gồm cả phần đã cuộn xuống
+    //         scrollX: -window.scrollX,
+    //         scrollY: -window.scrollY,
+    //         windowWidth: document.documentElement.offsetWidth,
+    //         windowHeight: document.documentElement.offsetHeight,
+    //         useCORS: true, // Rất quan trọng nếu bạn có hình ảnh từ các nguồn khác (CDN, domain khác)
+    //                         // Đảm bảo các nguồn này có CORS header thích hợp.
+    //         logging: true, // Bật logging để debug nếu có vấn đề
+    //         allowTaint: false, // Ngăn chặn việc 'taint' canvas nếu có hình ảnh cross-origin không có CORS.
+    //                             // Nếu useCORS: true mà vẫn không hoạt động, hãy thử đặt allowTaint: true (nhưng điều này sẽ khiến canvas bị "tainted" và bạn không thể dùng toDataURL)
+    //                             // Tốt nhất là đảm bảo CORS đúng.
+    //         scale: 2 // Tăng scale lên 2 để ảnh chụp có chất lượng cao hơn (2x pixels)
+    //     }).then(canvas => {
+    //         // Hiển thị lại nút export sau khi chụp xong
+    //         exportLaSoButton.style.display = 'block';
 
-            // Chuyển canvas thành URL dữ liệu ảnh PNG
-            const imageData = canvas.toDataURL('image/png');
+    //         // Chuyển canvas thành URL dữ liệu ảnh PNG
+    //         const imageData = canvas.toDataURL('image/png');
 
-            // Tạo một thẻ <a> ẩn để tải xuống ảnh
-            const link = document.createElement('a');
-            link.href = imageData;
-            link.download = 'giao_dien_webpage.png'; // Tên file khi tải về
+    //         // Tạo một thẻ <a> ẩn để tải xuống ảnh
+    //         const link = document.createElement('a');
+    //         link.href = imageData;
+    //         link.download = 'giao_dien_webpage.png'; // Tên file khi tải về
 
-            // Thêm link vào DOM, click tự động, sau đó xóa link
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+    //         // Thêm link vào DOM, click tự động, sau đó xóa link
+    //         document.body.appendChild(link);
+    //         link.click();
+    //         document.body.removeChild(link);
 
-            alert('Giao diện đã được xuất thành công!');
-        }).catch(error => {
-            exportLaSoButton.style.display = 'block'; // Đảm bảo nút hiện lại ngay cả khi có lỗi
-            console.error('Lỗi khi xuất ảnh:', error);
-            alert('Có lỗi xảy ra khi xuất ảnh. Vui lòng thử lại hoặc liên hệ hỗ trợ.');
+    //         alert('Giao diện đã được xuất thành công!');
+    //     }).catch(error => {
+    //         exportLaSoButton.style.display = 'block'; // Đảm bảo nút hiện lại ngay cả khi có lỗi
+    //         console.error('Lỗi khi xuất ảnh:', error);
+    //         alert('Có lỗi xảy ra khi xuất ảnh. Vui lòng thử lại hoặc liên hệ hỗ trợ.');
+    //     });
+    // });
+    if (exportLaSoButton) {
+        exportLaSoButton.addEventListener('click', async function () {
+            const elementToCapture = document.getElementById('lasotuvi');
+
+            if (!elementToCapture) {
+                console.error('Không tìm thấy phần tử để chụp. Đảm bảo id "lasotuvi" tồn tại.');
+                return;
+            }
+
+            this.style.display = 'none'; // Ẩn nút
+
+            // KHÔNG CẦN thay đổi CSS tạm thời ở đây nữa vì server sẽ xử lý
+            // Lấy toàn bộ HTML của phần tử, bao gồm cả các style inline và cấu trúc DOM
+            const htmlContent = elementToCapture.outerHTML;
+
+            // Lấy đường dẫn base URL để các CSS assets được load đúng trên server
+            const baseUrl = window.location.origin;
+
+            try {
+                const response = await fetch(CAPTURE_IMAGE_URL, { // Sử dụng Laravel route helper
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Quan trọng cho Laravel CSRF
+                    },
+                    body: JSON.stringify({
+                        html: htmlContent,
+                        targetWidth: 1920, // Kích thước ảnh output mong muốn
+                        targetHeight: 1080,
+                        // Truyền các đường dẫn CSS công khai cần thiết
+                        // Đảm bảo các đường dẫn này là URL truy cập được từ server (ví dụ: CDN hoặc asset công khai)
+                        customCss: [
+                            `${baseUrl}/css/app.css`, // Thay bằng đường dẫn thực tế của bạn
+                            // Thêm các file CSS khác nếu cần, ví dụ:
+                            // `${baseUrl}/css/custom-styles.css`,
+                        ]
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+                }
+
+                const blob = await response.blob(); // Nhận phản hồi dưới dạng Blob (ảnh)
+                const imageData = URL.createObjectURL(blob);
+
+                const link = document.createElement('a');
+                link.href = imageData;
+                link.download = 'la_so_desktop.png'; // Tên file khi tải về
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(imageData); // Giải phóng URL object
+
+                alert('Lá Số đã được xuất thành công!');
+
+            } catch (error) {
+                console.error('Lỗi khi xuất ảnh:', error);
+                alert('Có lỗi xảy ra khi xuất ảnh: ' + error.message);
+            } finally {
+                this.style.display = 'block'; // Hiển thị lại nút
+            }
         });
-    });
+    }
 
-    
     const exportDungThanButton = document.getElementById('exportDungThanBtn');
 
-    exportDungThanButton.addEventListener('click', function() {
+    exportDungThanButton.addEventListener('click', function () {
         // Chọn phần tử mà bạn muốn chụp.
         // Nếu muốn chụp toàn bộ trang (từ đầu đến cuối), bạn có thể chọn document.body hoặc một div chứa toàn bộ nội dung chính.
         // Giả sử bạn có một div bao bọc toàn bộ nội dung trang với id="full-page-content"
@@ -546,11 +614,11 @@ document.addEventListener('DOMContentLoaded', () => {
             windowWidth: document.documentElement.offsetWidth,
             windowHeight: document.documentElement.offsetHeight,
             useCORS: true, // Rất quan trọng nếu bạn có hình ảnh từ các nguồn khác (CDN, domain khác)
-                            // Đảm bảo các nguồn này có CORS header thích hợp.
+            // Đảm bảo các nguồn này có CORS header thích hợp.
             logging: true, // Bật logging để debug nếu có vấn đề
             allowTaint: false, // Ngăn chặn việc 'taint' canvas nếu có hình ảnh cross-origin không có CORS.
-                                // Nếu useCORS: true mà vẫn không hoạt động, hãy thử đặt allowTaint: true (nhưng điều này sẽ khiến canvas bị "tainted" và bạn không thể dùng toDataURL)
-                                // Tốt nhất là đảm bảo CORS đúng.
+            // Nếu useCORS: true mà vẫn không hoạt động, hãy thử đặt allowTaint: true (nhưng điều này sẽ khiến canvas bị "tainted" và bạn không thể dùng toDataURL)
+            // Tốt nhất là đảm bảo CORS đúng.
             scale: 2 // Tăng scale lên 2 để ảnh chụp có chất lượng cao hơn (2x pixels)
         }).then(canvas => {
             // Hiển thị lại nút export sau khi chụp xong

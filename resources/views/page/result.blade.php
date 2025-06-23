@@ -3,7 +3,6 @@
 @section('content')
 {{-- Main container with responsive padding --}}
 <div class="p-4 sm:p-6 bg-gray-100 result-page-container">
-    <!-- 1. LÁ SỐ Section -->
     {{-- Main content block with responsive padding and shadow --}}
     <div id="lasotuvi" class="bg-white shadow rounded-lg p-4 sm:p-6 relative">
         {{-- Export button for Lá Số: Positioned absolutely for fixed placement, with responsive padding and font size --}}
@@ -167,8 +166,8 @@
 
                         {{-- Tàng Can by Year --}}
                         <td class="border border-gray-400 p-1 align-top">
-                            {{-- Adjusted flex container for hidden items for better stacking on small screens --}}
-                            <div class="flex flex-col items-center justify-center gap-1 mt-2 sm:mt-8">
+                            {{-- Adjusted flex container for hidden items for horizontal stacking and even distribution --}}
+                            <div class="flex flex-row items-center justify-around gap-1 mt-2 sm:mt-8 h-full"> {{-- Added h-full to make sure content fills the cell for proper distribution --}}
                                 @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
                                 @php
                                 $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
@@ -176,7 +175,7 @@
                                 @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
                                 @foreach ($hidden_items_by_year->hidden as $hidden_item)
                                 {{-- Individual hidden item with responsive padding and text sizes --}}
-                                <div class="px-1 text-center h-full">
+                                <div class="px-1 text-center flex-1"> {{-- Added flex-1 to make items share space equally --}}
                                     <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
                                     <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
                                     <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
@@ -189,14 +188,14 @@
 
                         {{-- Tàng Can by Month --}}
                         <td class="border border-gray-400 p-1 align-top">
-                            <div class="flex flex-col items-center justify-center gap-1 mt-2 sm:mt-8">
+                            <div class="flex flex-row items-center justify-around gap-1 mt-2 sm:mt-8 h-full">
                                 @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
                                 @php
                                 $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
                                 @endphp
                                 @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
                                 @foreach ($hidden_items_by_month->hidden as $hidden_item)
-                                <div class="px-1 text-center h-full">
+                                <div class="px-1 text-center flex-1">
                                     <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
                                     <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
                                     <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
@@ -209,14 +208,14 @@
 
                         {{-- Tàng Can by Day --}}
                         <td class="border border-gray-400 p-1 align-top">
-                            <div class="flex flex-col items-center justify-center gap-1 mt-2 sm:mt-8">
+                            <div class="flex flex-row items-center justify-around gap-1 mt-2 sm:mt-8 h-full">
                                 @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
                                 @php
                                 $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
                                 @endphp
                                 @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
                                 @foreach ($hidden_items_by_day->hidden as $hidden_item)
-                                <div class="px-1 text-center h-full">
+                                <div class="px-1 text-center flex-1">
                                     <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
                                     <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
                                     <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
@@ -229,14 +228,14 @@
 
                         {{-- Tàng Can by Hour --}}
                         <td class="border border-gray-400 p-1 align-top">
-                            <div class="flex flex-col items-center justify-center gap-1 mt-2 sm:mt-8">
+                            <div class="flex flex-row items-center justify-around gap-1 mt-2 sm:mt-8 h-full">
                                 @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
                                 @php
                                 $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
                                 @endphp
                                 @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
                                 @foreach ($hidden_items_by_hour->hidden as $hidden_item)
-                                <div class="px-1 text-center h-full">
+                                <div class="px-1 text-center flex-1">
                                     <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
                                     <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
                                     <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
@@ -354,8 +353,8 @@
                             <div class="absolute yin-yang">
                                 <div class="yin-yang-dot-black"></div>
                                 <div class="yin-yang-dot-white"></div>
-                                <div class="absolute text-nham">Nhâm</div>
-                                <div class="absolute text-thuy">Thủy</div>
+                                <div class="absolute text-nham">{{ $result->heavenly_stem_day->name }}</div>
+                                <div class="absolute text-thuy">{{ $result->earthly_branch_day->name }}</div>
                             </div>
 
                             <div class="nguhanh-element" data-element="Moc" style="background-color: #7CB342;">
@@ -398,7 +397,6 @@
         </div>
     </div>
 
-    <!-- 2. DỤNG THẦN Section -->
     {{-- Dung Than content block with responsive padding and shadow --}}
     <div id="dungthan" class="bg-white p-4 sm:p-6 rounded-lg shadow-lg mt-5 relative">
         {{-- Export button for Dụng Thần: Positioned absolutely for fixed placement, with responsive padding and font size --}}
