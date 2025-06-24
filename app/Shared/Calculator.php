@@ -1311,15 +1311,22 @@ class Calculator
         }
         
         $lowest_value = min($array_point_values);
+        $count_lowest_values = 0;
+        foreach ($array_point_values as $value) {
+            if ($lowest_value != $value) {
+                continue;
+            }
+            $count_lowest_values++;
+        }
 
-        $default_mean_value = 10;
-        $formatted_mean_value = intval(($default_mean_value - $lowest_value) / 4);
+        $default_mean_value = 10 * $count_lowest_values;
+        $formatted_mean_value = intval(($default_mean_value - $count_lowest_values * $lowest_value) / (count($array_point_values) - $count_lowest_values));
 
-        $lowest_key = null;
+        $lowest_key = [];
         $sum_total_value = 0;
         foreach ($calculated_deposite_percentage_data as $key => $value) {
             if ($value == $lowest_value) {
-                $lowest_key = $key;
+                $lowest_key[] = $key;
                 continue;
             }
             $calculated_continuous_value = $value - $formatted_mean_value;
@@ -1327,8 +1334,10 @@ class Calculator
             $sum_total_value += $calculated_continuous_value;
         }
 
-        if ($lowest_key) {
-            $calculated_continuous_data[$lowest_key] = 100 - $sum_total_value;
+        if (count($lowest_key) > 0) {
+            foreach ($lowest_key as $key) {
+                $calculated_continuous_data[$key] = (100 - $sum_total_value) / $count_lowest_values;
+            }
         }
 
         return Helper::release(

@@ -1224,7 +1224,7 @@ class Formula
         return [
             (object) [
                 "id" => "Canh",
-                "start" => "Mùi",
+                "start" => "Tỵ",
                 "direction" => 1
             ],
             (object) [
