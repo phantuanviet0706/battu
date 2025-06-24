@@ -1424,4 +1424,63 @@ class Calculator
             ]
         );
     }
+
+    public static function calculateElementsLayout($data) {
+        arsort($data);
+        $count = 1;
+        $first_value = 0;
+        $second_value = 0;
+        $mean_value = 0;
+        foreach ($data as $key => $value) {
+            switch ($count) {
+                case 1:
+                    $first_value = $value;
+                    break;
+                case 2:
+                    $second_value = $value;
+                    break;
+                case 3:
+                    $mean_value = $value;
+                    break;
+            }
+            $count++;
+        }
+
+        $percentage_per_ten = [0, 0, 0, 0, 0];
+        if ($mean_value > 20) {
+            if ($first_value < 35) {
+                $percentage_per_ten = [3, 2, 2, 2, 1];
+            } else {
+                if ($second_value <= 25) {
+                    $percentage_per_ten = [4, 2, 2, 1, 1];
+                } else {
+                    $percentage_per_ten = [3, 3, 2, 1, 1];
+                }
+            }
+        } else {
+            if ($second_value < 25) {
+                $percentage_per_ten = [5, 2, 1, 1, 1];
+            } else {
+                $percentage_per_ten = [4, 3, 1, 1, 1];
+            }
+        }
+
+        $final_data = [];
+        $key_count = 0;
+        foreach ($data as $key => $value) {
+            if (!isset($percentage_per_ten[$key_count])) {
+                $final_data[$key] = 0;
+                $key_count++;
+                continue;
+            }
+            $final_data[$key] = $percentage_per_ten[$key_count];
+            $key_count++;
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $final_data
+        );
+    }
 }

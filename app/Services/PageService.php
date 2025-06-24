@@ -164,6 +164,8 @@ class PageService
 
 		$res_missing_elements = Calculator::calculateMissingElements($calculate_elements_data_point->data);
 
+		$calculate_10_elements_layout = Calculator::calculateElementsLayout($calculate_elements_interrelation->data);
+
 		return (object) [
 			'message' => 'Get data successfully',
 			'code' => 1,
@@ -199,6 +201,7 @@ class PageService
 				'calculated_elements_interrelation' => $calculate_elements_interrelation->data,
 				'shensha_system' => $res_shensha->data,
 				"missing_elements" => $res_missing_elements->data,
+				"percentage_per_ten" => $calculate_10_elements_layout->data
 			]
 		];
 	}

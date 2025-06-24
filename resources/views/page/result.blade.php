@@ -457,11 +457,11 @@
         {{-- Bố cục text with responsive text size and alignment --}}
         <div class="text-xs sm:text-sm text-gray-700 mt-4 text-right">
             Bố cục 10 thành tố:
-            1 <span style="color:#4A201B;">Thổ</span> -
-            1 <span style="color:#337AB7;">Thủy</span> -
-            4 <span style="color:#7CB342;">Mộc</span> -
-            2 <span style="color:#F0AD4E;">Kim</span> -
-            2 <span style="color:#D9534F;">Hỏa</span>
+            {{ isset($result->percentage_per_ten["Thổ"]) ? $result->percentage_per_ten["Thổ"] : 0 }} <span style="color:#4A201B;">Thổ</span> -
+            {{ isset($result->percentage_per_ten["Thủy"]) ? $result->percentage_per_ten["Thủy"] : 0 }} <span style="color:#337AB7;">Thủy</span> -
+            {{ isset($result->percentage_per_ten["Mộc"]) ? $result->percentage_per_ten["Mộc"] : 0 }} <span style="color:#7CB342;">Mộc</span> -
+            {{ isset($result->percentage_per_ten["Kim"]) ? $result->percentage_per_ten["Kim"] : 0 }} <span style="color:#F0AD4E;">Kim</span> -
+            {{ isset($result->percentage_per_ten["Hỏa"]) ? $result->percentage_per_ten["Hỏa"] : 0 }} <span style="color:#D9534F;">Hỏa</span>
         </div>
     </div>
 </div>
