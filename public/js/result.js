@@ -229,10 +229,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             borderWidth: 1,
             borderRadius: 5, // Bo tròn góc của thanh
-            barThickness: 15 // Độ dày của thanh
+            barThickness: 18, // Tăng nhẹ độ dày của thanh (có thể điều chỉnh thêm)
+            // Hoặc sử dụng categoryPercentage và barPercentage để kiểm soát khoảng cách tốt hơn
+            // categoryPercentage: 0.7, // Giảm tỷ lệ không gian danh mục để tạo khoảng trống giữa các thanh
+            // barPercentage: 0.8 // Giảm tỷ lệ không gian bar để tạo khoảng trống giữa các thanh trong cùng danh mục
         }]
     };
-
+    
     const thapThanConfig = {
         type: 'bar',
         data: thapThanData,
@@ -243,10 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Thêm padding cho toàn bộ biểu đồ để tạo thêm không gian
             layout: {
                 padding: {
-                    left: 10,  // Tăng padding bên trái để nhãn có không gian
+                    left: 10,   // Tăng padding bên trái để nhãn có không gian
                     right: 10,
-                    top: 5,
-                    bottom: 5
+                    top: 15,    // Tăng padding trên để có thêm không gian tổng thể
+                    bottom: 15  // Tăng padding dưới
                 }
             },
             plugins: {
@@ -256,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip: {
                     enabled: false // Tắt tooltip mặc định để dùng plugin tùy chỉnh
                 },
+                // Nếu bạn có plugin percentageInBarPlugin, hãy đảm bảo nó được khai báo đúng
             },
             scales: {
                 x: {
@@ -275,14 +279,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     ticks: {
                         color: 'black', // Màu chữ nhãn
                         font: {
-                            size: 12,
+                            size: 13, // Tăng nhẹ kích thước font để dễ nhìn hơn
                             weight: 'bold'
                         },
                         align: 'start', // Căn trái nhãn trục Y
-                        padding: 10, // Thêm padding để nhãn không quá sát mép
+                        padding: 15, // Tăng padding để nhãn không quá sát mép
                         autoSkip: false, // Ngăn Chart.js tự động bỏ qua nhãn
                         minRotation: 0, // Đảm bảo nhãn không bị xoay
-                        maxRotation: 0  // Đảm bảo nhãn không bị xoay
+                        maxRotation: 0, // Đảm bảo nhãn không bị xoay
+                        // Thêm khoảng cách giữa các nhãn trục Y
+                        autoSkipPadding: 20 // Khoảng cách đệm thêm giữa các nhãn khi autoSkip được bật (hoặc để dự phòng)
                     },
                     offset: true // Dịch chuyển các thanh bar để căn chỉnh với các nhãn trục Y
                 }
@@ -290,11 +296,15 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         plugins: [percentageInBarPlugin] // Đăng ký plugin ở đây
     };
-
+    
     const thapThanChart = new Chart(
         document.getElementById('thapThanChart'),
         thapThanConfig
     );
+    
+    // Đảm bảo rằng phần tử canvas có đủ chiều cao trong CSS của bạn
+    // Ví dụ:
+    
 
     // --- Logic cho Ngũ Hành phân phối (mũi tên) ---
     const nguhanhElements = {
