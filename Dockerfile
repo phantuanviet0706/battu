@@ -25,13 +25,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 FROM php:8.2-apache
 
 # Cài đặt wkhtmltopdf và các dependencies cần thiết
-# 1. Cập nhật apt package lists
-# 2. Cài đặt các dependencies cơ bản cho wkhtmltopdf:
-#    - libfontconfig1: Hỗ trợ font chữ
-#    - libxrender1: Hỗ trợ render X11 (cần cho headless rendering)
-#    - libjpeg62-turbo: Thư viện JPEG thay thế cho libjpeg-turbo8
-#    - wkhtmltopdf: Gói chính
-# 3. Xóa cache của apt để giảm kích thước image
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libfontconfig1 \
@@ -39,6 +32,11 @@ RUN apt-get update && \
     libjpeg62-turbo \
     wkhtmltopdf && \
     rm -rf /var/lib/apt/lists/*
+
+# --- BẮT ĐẦU PHẦN MỚI: CÀI ĐẶT COMPOSER ---
+
+# Download Composer Installer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Các cài đặt PHP và Apache khác (giữ nguyên nếu có)
 # Ví dụ: enable rewrite module, cài đặt các extension PHP
