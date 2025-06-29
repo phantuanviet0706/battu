@@ -22,21 +22,27 @@ RUN chown -R www-data:www-data /var/www \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # ----------------------------------------------------------
-# Cài đặt WKHTMLTOIMAGE
-# Ví dụ: Base image Python
-FROM python:3.9-slim-buster
+FROM php:8.2-apache
 
-# Cài đặt wkhtmltopdf (bao gồm wkhtmltoimage)
-# Cần thêm các dependencies cần thiết cho wkhtmltopdf nếu chưa có
+# Cài đặt wkhtmltopdf và các dependencies cần thiết
+# 1. Cập nhật apt package lists
+# 2. Cài đặt các dependencies cơ bản cho wkhtmltopdf:
+#    - libfontconfig1: Hỗ trợ font chữ
+#    - libxrender1: Hỗ trợ render X11 (cần cho headless rendering)
+#    - libjpeg62-turbo: Thư viện JPEG thay thế cho libjpeg-turbo8
+#    - wkhtmltopdf: Gói chính
+# 3. Xóa cache của apt để giảm kích thước image
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    # Các dependency cơ bản mà wkhtmltopdf cần
     libfontconfig1 \
     libxrender1 \
-    libjpeg-turbo8 \
-    # Package wkhtmltopdf
-    wkhtmltopdf && \
+    libjpeg62-turbo \  # <-- Đây là thay đổi quan trọng nhất
+wkhtmltopdf && \
     rm -rf /var/lib/apt/lists/*
+
+# Các cài đặt PHP và Apache khác (giữ nguyên nếu có)
+# Ví dụ: enable rewrite module, cài đặt các extension PHP
+RUN a2enmod rewrite
 
 # ----------------------------------------------------------
 
