@@ -21,20 +21,7 @@ RUN chown -R www-data:www-data /var/www \
 # Copy composer từ image composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Move vào thư mục /var/www và install packages
-WORKDIR /var/www
-RUN composer install --no-dev --optimize-autoloader
-
-# Bật mod_rewrite cho Apache (Laravel cần rewrite URL)
-RUN a2enmod rewrite
-
-# Mở port 80
-EXPOSE 80
-
-# Lệnh chạy Apache
-CMD ["apache2-foreground"]
-
-
+# ----------------------------------------------------------
 # Cài đặt WKHTMLTOIMAGE
 # Ví dụ: Base image Python
 FROM python:3.9-slim-buster
@@ -51,10 +38,17 @@ RUN apt-get update && \
     wkhtmltopdf && \
     rm -rf /var/lib/apt/lists/*
 
-# Các lệnh khác của Dockerfile của bạn tiếp theo
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+# ----------------------------------------------------------
 
-CMD ["python", "app.py"]
+# Move vào thư mục /var/www và install packages
+WORKDIR /var/www
+RUN composer install --no-dev --optimize-autoloader
+
+# Bật mod_rewrite cho Apache (Laravel cần rewrite URL)
+RUN a2enmod rewrite
+
+# Mở port 80
+EXPOSE 80
+
+# Lệnh chạy Apache
+CMD ["apache2-foreground", "python", "app.py"]
