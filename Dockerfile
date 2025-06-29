@@ -36,8 +36,8 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libfontconfig1 \
     libxrender1 \
-    libjpeg62-turbo \  # <-- Đây là thay đổi quan trọng nhất
-wkhtmltopdf && \
+    libjpeg62-turbo \
+    wkhtmltopdf && \
     rm -rf /var/lib/apt/lists/*
 
 # Các cài đặt PHP và Apache khác (giữ nguyên nếu có)
