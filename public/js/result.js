@@ -525,59 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Export trang thành ảnh
     const exportLaSoButton = document.getElementById('exportLaSoBtn');
-
-    // exportLaSoButton.addEventListener('click', function() {
-    //     // Chọn phần tử mà bạn muốn chụp.
-    //     // Nếu muốn chụp toàn bộ trang (từ đầu đến cuối), bạn có thể chọn document.body hoặc một div chứa toàn bộ nội dung chính.
-    //     // Giả sử bạn có một div bao bọc toàn bộ nội dung trang với id="full-page-content"
-    //     const elementToCapture = document.getElementById('lasotuvi');
-    //     // const elementToCapture = document.body;
-
-    //     if (!elementToCapture) {
-    //         console.error('Không tìm thấy phần tử để chụp. Đảm bảo id "full-page-content" hoặc document.body tồn tại.');
-    //         return;
-    //     }
-
-    //     // Tạm thời ẩn nút export để nó không xuất hiện trong ảnh chụp
-    //     exportLaSoButton.style.display = 'none';
-
-    //     html2canvas(elementToCapture, {
-    //         // Cấu hình quan trọng để chụp toàn bộ trang, bao gồm cả phần đã cuộn xuống
-    //         scrollX: -window.scrollX,
-    //         scrollY: -window.scrollY,
-    //         windowWidth: document.documentElement.offsetWidth,
-    //         windowHeight: document.documentElement.offsetHeight,
-    //         useCORS: true, // Rất quan trọng nếu bạn có hình ảnh từ các nguồn khác (CDN, domain khác)
-    //                         // Đảm bảo các nguồn này có CORS header thích hợp.
-    //         logging: true, // Bật logging để debug nếu có vấn đề
-    //         allowTaint: false, // Ngăn chặn việc 'taint' canvas nếu có hình ảnh cross-origin không có CORS.
-    //                             // Nếu useCORS: true mà vẫn không hoạt động, hãy thử đặt allowTaint: true (nhưng điều này sẽ khiến canvas bị "tainted" và bạn không thể dùng toDataURL)
-    //                             // Tốt nhất là đảm bảo CORS đúng.
-    //         scale: 2 // Tăng scale lên 2 để ảnh chụp có chất lượng cao hơn (2x pixels)
-    //     }).then(canvas => {
-    //         // Hiển thị lại nút export sau khi chụp xong
-    //         exportLaSoButton.style.display = 'block';
-
-    //         // Chuyển canvas thành URL dữ liệu ảnh PNG
-    //         const imageData = canvas.toDataURL('image/png');
-
-    //         // Tạo một thẻ <a> ẩn để tải xuống ảnh
-    //         const link = document.createElement('a');
-    //         link.href = imageData;
-    //         link.download = 'giao_dien_webpage.png'; // Tên file khi tải về
-
-    //         // Thêm link vào DOM, click tự động, sau đó xóa link
-    //         document.body.appendChild(link);
-    //         link.click();
-    //         document.body.removeChild(link);
-
-    //         alert('Giao diện đã được xuất thành công!');
-    //     }).catch(error => {
-    //         exportLaSoButton.style.display = 'block'; // Đảm bảo nút hiện lại ngay cả khi có lỗi
-    //         console.error('Lỗi khi xuất ảnh:', error);
-    //         alert('Có lỗi xảy ra khi xuất ảnh. Vui lòng thử lại hoặc liên hệ hỗ trợ.');
-    //     });
-    // });
+    
     if (exportLaSoButton) {
         exportLaSoButton.addEventListener('click', async function () {
             const elementToCapture = document.getElementById('lasotuvi');

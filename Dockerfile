@@ -33,3 +33,28 @@ EXPOSE 80
 
 # Lệnh chạy Apache
 CMD ["apache2-foreground"]
+
+
+# Cài đặt WKHTMLTOIMAGE
+# Ví dụ: Base image Python
+FROM python:3.9-slim-buster
+
+# Cài đặt wkhtmltopdf (bao gồm wkhtmltoimage)
+# Cần thêm các dependencies cần thiết cho wkhtmltopdf nếu chưa có
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    # Các dependency cơ bản mà wkhtmltopdf cần
+    libfontconfig1 \
+    libxrender1 \
+    libjpeg-turbo8 \
+    # Package wkhtmltopdf
+    wkhtmltopdf && \
+    rm -rf /var/lib/apt/lists/*
+
+# Các lệnh khác của Dockerfile của bạn tiếp theo
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+
+CMD ["python", "app.py"]
