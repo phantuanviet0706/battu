@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libfontconfig1 \
     libxrender1 \
-    libjpeg62-turbo \  # Gói thay thế cho libjpeg-turbo8 trên Debian
+    libjpeg62-turbo \
     wkhtmltopdf && \
     rm -rf /var/lib/apt/lists/*
 
