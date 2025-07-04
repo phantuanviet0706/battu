@@ -1,3 +1,17 @@
+
+const style = document.createElement('style');
+style.innerHTML = `
+@media (max-width: 480px) {
+    #thapThanChart {
+        height: 250px !important;
+    }
+    canvas#thapThanChart {
+        height: 250px !important;
+    }
+}
+`;
+document.head.appendChild(style);
+
 document.addEventListener('DOMContentLoaded', () => {
     var master_data = window.LaravelData || {};
     // Lấy URL từ biến toàn cục đã được truyền từ Blade
