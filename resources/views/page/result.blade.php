@@ -26,307 +26,309 @@
         {{-- Responsive table container for horizontal scrolling --}}
         <div class="overflow-x-auto">
             {{-- Table with minimum width for content, responsive text size --}}
-            <table class="min-w-full text-center border border-collapse border-gray-400 text-xs sm:text-sm">
-                <thead>
-                    <tr class="bg-[#c8b48c]">
-                        {{-- Table header for Lá số bát tự, with responsive min-width --}}
-                        <th class="text-custom-gray border border-gray-400 bg-[#5c5c2e]" colspan="2" style="width: 200px; min-width: 120px;">
-                            <i>Lá số bát tự</i>
-                        </th>
-                        {{-- Responsive table headers for columns --}}
-                        <th class="text-custom-header border border-gray-400 p-2" style="min-width: 80px;">TRỤ NĂM</th>
-                        <th class="text-custom-header border border-gray-400 p-2" style="min-width: 80px;">TRỤ THÁNG</th>
-                        <th class="text-custom-header border border-gray-400 p-2" style="min-width: 80px;">TRỤ NGÀY</th>
-                        <th class="text-custom-header border border-gray-400 p-2" style="min-width: 80px;">TRỤ GIỜ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        {{-- Vertical header for Lịch pháp, with responsive sizing --}}
-                        <td rowspan="3" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
-                            <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                                Lịch pháp
-                            </div>
-                        </td>
-                        {{-- Dương Lịch row --}}
-                        <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2" style="width: 175px; min-width: 90px;">DƯƠNG LỊCH</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->year }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->month }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->day }}</td>
-                        {{-- Hour/Minute cell spanning 3 rows --}}
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2" rowspan="3">{{ isset($result->input->hour) ? $result->input->hour : 0 }}:{{ isset($result->input->minute) ? $result->input->minute : 0 }}</td>
-                    </tr>
-                    <tr>
-                        {{-- Âm Lịch row --}}
-                        <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">ÂM LỊCH</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_month }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
-                    </tr>
-                    <tr>
-                        {{-- Nông Lịch row --}}
-                        <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">NÔNG LỊCH</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ isset($result->agricultural->selected_range->name) ? $result->agricultural->selected_range->name : 'unknown' }}</td>
-                        <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
-                    </tr>
-
-                    <tr>
-                        {{-- Vertical header for Thiên --}}
-                        <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
-                            <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                                Thiên
-                            </div>
-                        </td>
-                        {{-- Thiên Can row --}}
-                        <td class="text-custom-yellow border border-gray-400 font-bold p-2">THIÊN CAN</td>
-                        {{-- Thiên Can by Year --}}
-                        <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
-                            <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem->hidden_stem_by_year->name }}</div>
-                            <div class="text-container {{ $result->heavenly_stem->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem->name }}</div>
-                            <div class="text-[11px] {{ $result->heavenly_stem->color }}">{{ ($result->heavenly_stem->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem->yin_yang }}</div>
-                        </td>
-                        {{-- Thiên Can by Month --}}
-                        <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
-                            <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem_month->hidden_stem_by_month->name }}</div>
-                            <div class="text-container {{ $result->heavenly_stem_month->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem_month->name }}</div>
-                            <div class="text-[11px] {{ $result->heavenly_stem_month->color }}">{{ ($result->heavenly_stem_month->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_month->yin_yang }}</div>
-                        </td>
-                        {{-- Nhật Chủ --}}
-                        <td class="text-custom-size border border-gray-400 bg-[#f0f0ea] text-center text-xs p-2">
-                            <div class="font-custom-size text-[11px] font-bold mb-1">Nhật Chủ</div>
-                            <div class="text-container {{ $result->heavenly_stem_day->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem_day->name }}</div>
-                            <div class="text-[11px] {{ $result->heavenly_stem_day->color }}">{{ ($result->heavenly_stem_day->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_day->yin_yang }}</div>
-                        </td>
-                        {{-- Thiên Can by Hour --}}
-                        <td class="border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
-                            <div class="text-[11px] text-gray-600 mb-1">{{ isset($result->heavenly_stem_hour->hidden_stem_by_hour) ? $result->heavenly_stem_hour->hidden_stem_by_hour->name : '' }}</div>
-                            <div class="text-container {{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }} font-normal text-base leading-tight">
-                                {{ isset($result->heavenly_stem_hour->name) ? $result->heavenly_stem_hour->name : '' }}
-                            </div>
-                            <div class="text-[11px] {{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }}">
-                                {{ (isset($result->heavenly_stem_hour->polarity) ? ($result->heavenly_stem_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->heavenly_stem_hour->yin_yang) ? $result->heavenly_stem_hour->yin_yang : '') }}
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        {{-- Vertical header for Địa --}}
-                        <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
-                            <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                                Địa
-                            </div>
-                        </td>
-                        {{-- Địa Chi row --}}
-                        <td class="text-custom-yellow border border-gray-400 font-bold p-2">ĐỊA CHI</td>
-                        {{-- Địa Chi by Year --}}
-                        <td class="border border-gray-400 {{ $result->earthly_branch->color }} font-bold p-2">
-                            <div class="text-container font-normal">{{ $result->earthly_branch->name }}</div>
-                            <br>
-                            <div class="text-xs">
-                                {{ ($result->earthly_branch->polarity == "Dương" ? "+" : "-") . $result->earthly_branch->yin_yang }}
-                            </div>
-                        </td>
-                        {{-- Địa Chi by Month --}}
-                        <td class="border border-gray-400 {{ $result->earthly_branch_month->color }} font-bold p-2">
-                            <div class="text-container font-normal">{{ $result->earthly_branch_month->name }}</div>
-                            <br>
-                            <div class="text-xs">
-                                {{ ($result->earthly_branch_month->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_month->yin_yang }}
-                            </div>
-                        </td>
-                        {{-- Địa Chi by Day --}}
-                        <td class="border border-gray-400 {{ $result->earthly_branch_day->color }} font-bold p-2">
-                            <div class="text-container font-normal">{{ $result->earthly_branch_day->name }}</div>
-                            <br>
-                            <div class="text-xs">
-                                {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}
-                            </div>
-                        </td>
-                        {{-- Địa Chi by Hour --}}
-                        <td class="border border-gray-400 {{ isset($result->earthly_branch_hour->color) ? $result->earthly_branch_hour->color : '' }} font-bold p-2">
-                            <div class="text-container font-normal">{{ isset($result->earthly_branch_hour->name) ? $result->earthly_branch_hour->name : '' }}</div>
-                            <br>
-                            <div class="text-xs">
-                                {{ (isset($result->earthly_branch_hour->polarity) ? ($result->earthly_branch_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->earthly_branch_hour->yin_yang) ? $result->earthly_branch_hour->yin_yang : '') }}
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        {{-- Vertical header for Nhân --}}
-                        <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
-                            <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                                Nhân
-                            </div>
-                        </td>
-
-                        {{-- Tàng Can row header --}}
-                        <td class="text-custom-yellow border border-gray-400 font-bold p-2 text-center">TÀNG CAN</td>
-
-                        {{-- Tàng Can by Year --}}
-                        <td class="border border-gray-400 p-1">
-                            {{-- Adjusted flex container for hidden items for horizontal stacking and even distribution --}}
-                            <div class="flex flex-row items-center justify-around gap-1 h-full"> {{-- Added h-full to make sure content fills the cell for proper distribution --}}
-                                @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
-                                @php
-                                $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
-                                @endphp
-                                @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
-                                @foreach ($hidden_items_by_year->hidden as $hidden_item)
-                                {{-- Individual hidden item with responsive padding and text sizes --}}
-                                <div class="px-1 text-center flex-1 flex flex-col"> {{-- Added flex-1 to make items share space equally --}}
-                                    <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
-                                    <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
-                                    <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+            <div class="table-container scrollable-table">
+                <table class="min-w-full text-center border border-collapse border-gray-400 text-xs sm:text-sm">
+                    <thead>
+                        <tr class="bg-[#c8b48c]">
+                            {{-- Table header for Lá số bát tự, with responsive min-width --}}
+                            <th class="text-custom-gray border border-gray-400 bg-[#5c5c2e]" colspan="2" style="width: 200px; min-width: 120px;">
+                                <i>Lá số bát tự</i>
+                            </th>
+                            {{-- Responsive table headers for columns --}}
+                            <th class="text-custom-header border border-gray-400 p-2 text-responsive" style="min-width: 60px;">TRỤ NĂM</th>
+                            <th class="text-custom-header border border-gray-400 p-2 text-responsive" style="min-width: 60px;">TRỤ THÁNG</th>
+                            <th class="text-custom-header border border-gray-400 p-2 text-responsive" style="min-width: 60px;">TRỤ NGÀY</th>
+                            <th class="text-custom-header border border-gray-400 p-2 text-responsive" style="min-width: 60px;">TRỤ GIỜ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {{-- Vertical header for Lịch pháp, with responsive sizing --}}
+                            <td rowspan="3" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
+                                <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    Lịch pháp
                                 </div>
-                                @endforeach
-                                @endif
-                                @endif
-                            </div>
-                        </td>
+                            </td>
+                            {{-- Dương Lịch row --}}
+                            <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2 first-child">DƯƠNG LỊCH</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->year }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->month }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->day }}</td>
+                            {{-- Hour/Minute cell spanning 3 rows --}}
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2" rowspan="3">{{ isset($result->input->hour) ? $result->input->hour : 0 }}:{{ isset($result->input->minute) ? $result->input->minute : 0 }}</td>
+                        </tr>
+                        <tr>
+                            {{-- Âm Lịch row --}}
+                            <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">ÂM LỊCH</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_month }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
+                        </tr>
+                        <tr>
+                            {{-- Nông Lịch row --}}
+                            <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">NÔNG LỊCH</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ isset($result->agricultural->selected_range->name) ? $result->agricultural->selected_range->name : 'unknown' }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
+                        </tr>
 
-                        {{-- Tàng Can by Month --}}
-                        <td class="border border-gray-400 p-1">
-                            <div class="flex flex-row items-center justify-around gap-1 h-full">
-                                @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
-                                @php
-                                $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
-                                @endphp
-                                @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
-                                @foreach ($hidden_items_by_month->hidden as $hidden_item)
-                                <div class="px-1 text-center flex-1">
-                                    <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
-                                    <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
-                                    <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                        <tr class="text-custom-responsive">
+                            {{-- Vertical header for Thiên --}}
+                            <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
+                                <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    Thiên
                                 </div>
-                                @endforeach
-                                @endif
-                                @endif
-                            </div>
-                        </td>
-
-                        {{-- Tàng Can by Day --}}
-                        <td class="border border-gray-400 p-1">
-                            <div class="flex flex-row items-center justify-around gap-1 h-full">
-                                @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
-                                @php
-                                $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
-                                @endphp
-                                @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
-                                @foreach ($hidden_items_by_day->hidden as $hidden_item)
-                                <div class="px-1 text-center flex-1">
-                                    <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
-                                    <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
-                                    <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                            </td>
+                            {{-- Thiên Can row --}}
+                            <td class="text-custom-yellow border border-gray-400 font-bold p-2 first-child">THIÊN CAN</td>
+                            {{-- Thiên Can by Year --}}
+                            <td class="text-block border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
+                                <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem->hidden_stem_by_year->name }}</div>
+                                <div class="text-container {{ $result->heavenly_stem->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem->name }}</div>
+                                <div class="text-[11px] {{ $result->heavenly_stem->color }}">{{ ($result->heavenly_stem->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem->yin_yang }}</div>
+                            </td>
+                            {{-- Thiên Can by Month --}}
+                            <td class="text-block border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
+                                <div class="text-[11px] text-gray-600 mb-1">{{ $result->heavenly_stem_month->hidden_stem_by_month->name }}</div>
+                                <div class="text-container {{ $result->heavenly_stem_month->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem_month->name }}</div>
+                                <div class="text-[11px] {{ $result->heavenly_stem_month->color }}">{{ ($result->heavenly_stem_month->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_month->yin_yang }}</div>
+                            </td>
+                            {{-- Nhật Chủ --}}
+                            <td class="text-block text-custom-size border border-gray-400 bg-[#f0f0ea] text-center text-xs p-2">
+                                <div class="font-custom-size text-[11px] font-bold mb-1">Nhật Chủ</div>
+                                <div class="text-container {{ $result->heavenly_stem_day->color }} font-normal text-base leading-tight">{{ $result->heavenly_stem_day->name }}</div>
+                                <div class="text-[11px] {{ $result->heavenly_stem_day->color }}">{{ ($result->heavenly_stem_day->polarity == "Dương" ? "+" : "-") . $result->heavenly_stem_day->yin_yang }}</div>
+                            </td>
+                            {{-- Thiên Can by Hour --}}
+                            <td class="text-block border border-gray-400 bg-[#fdf8ec] text-center text-xs p-2">
+                                <div class="text-[11px] text-gray-600 mb-1">{{ isset($result->heavenly_stem_hour->hidden_stem_by_hour) ? $result->heavenly_stem_hour->hidden_stem_by_hour->name : '' }}</div>
+                                <div class="text-container {{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }} font-normal text-base leading-tight">
+                                    {{ isset($result->heavenly_stem_hour->name) ? $result->heavenly_stem_hour->name : '' }}
                                 </div>
-                                @endforeach
-                                @endif
-                                @endif
-                            </div>
-                        </td>
-
-                        {{-- Tàng Can by Hour --}}
-                        <td class="border border-gray-400 p-1">
-                            <div class="flex flex-row items-center justify-around gap-1 h-full">
-                                @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
-                                @php
-                                $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
-                                @endphp
-                                @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
-                                @foreach ($hidden_items_by_hour->hidden as $hidden_item)
-                                <div class="px-1 text-center flex-1">
-                                    <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
-                                    <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
-                                    <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                <div class="text-[11px] {{ isset($result->heavenly_stem_hour->color) ? $result->heavenly_stem_hour->color : '' }}">
+                                    {{ (isset($result->heavenly_stem_hour->polarity) ? ($result->heavenly_stem_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->heavenly_stem_hour->yin_yang) ? $result->heavenly_stem_hour->yin_yang : '') }}
                                 </div>
+                            </td>
+                        </tr>
+
+                        <tr class="text-custom-responsive">
+                            {{-- Vertical header for Địa --}}
+                            <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
+                                <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    Địa
+                                </div>
+                            </td>
+                            {{-- Địa Chi row --}}
+                            <td class="text-custom-yellow border border-gray-400 font-bold p-2 first-child">ĐỊA CHI</td>
+                            {{-- Địa Chi by Year --}}
+                            <td class="border border-gray-400 {{ $result->earthly_branch->color }} font-bold p-2">
+                                <div class="text-container font-normal">{{ $result->earthly_branch->name }}</div>
+                                <br>
+                                <div class="text-xs">
+                                    {{ ($result->earthly_branch->polarity == "Dương" ? "+" : "-") . $result->earthly_branch->yin_yang }}
+                                </div>
+                            </td>
+                            {{-- Địa Chi by Month --}}
+                            <td class="border border-gray-400 {{ $result->earthly_branch_month->color }} font-bold p-2">
+                                <div class="text-container font-normal">{{ $result->earthly_branch_month->name }}</div>
+                                <br>
+                                <div class="text-xs">
+                                    {{ ($result->earthly_branch_month->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_month->yin_yang }}
+                                </div>
+                            </td>
+                            {{-- Địa Chi by Day --}}
+                            <td class="border border-gray-400 {{ $result->earthly_branch_day->color }} font-bold p-2">
+                                <div class="text-container font-normal">{{ $result->earthly_branch_day->name }}</div>
+                                <br>
+                                <div class="text-xs">
+                                    {{ ($result->earthly_branch_day->polarity == "Dương" ? "+" : "-") . $result->earthly_branch_day->yin_yang }}
+                                </div>
+                            </td>
+                            {{-- Địa Chi by Hour --}}
+                            <td class="border border-gray-400 {{ isset($result->earthly_branch_hour->color) ? $result->earthly_branch_hour->color : '' }} font-bold p-2">
+                                <div class="text-container font-normal">{{ isset($result->earthly_branch_hour->name) ? $result->earthly_branch_hour->name : '' }}</div>
+                                <br>
+                                <div class="text-xs">
+                                    {{ (isset($result->earthly_branch_hour->polarity) ? ($result->earthly_branch_hour->polarity == "Dương" ? "+" : "-") : '') . (isset($result->earthly_branch_hour->yin_yang) ? $result->earthly_branch_hour->yin_yang : '') }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            {{-- Vertical header for Nhân --}}
+                            <td rowspan="1" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
+                                <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    Nhân
+                                </div>
+                            </td>
+
+                            {{-- Tàng Can row header --}}
+                            <td class="text-custom-yellow border border-gray-400 font-bold p-2 text-center first-child">TÀNG CAN</td>
+
+                            {{-- Tàng Can by Year --}}
+                            <td class="border border-gray-400 p-1">
+                                {{-- Adjusted flex container for hidden items for horizontal stacking and even distribution --}}
+                                <div class="custom-block flex flex-row items-center justify-around gap-1 h-full"> {{-- Added h-full to make sure content fills the cell for proper distribution --}}
+                                    @if (isset($result->heavenly_stem->hidden_hs_in_eb_by_year))
+                                    @php
+                                    $hidden_items_by_year = $result->heavenly_stem->hidden_hs_in_eb_by_year;
+                                    @endphp
+                                    @if ($hidden_items_by_year && isset($hidden_items_by_year->hidden))
+                                    @foreach ($hidden_items_by_year->hidden as $hidden_item)
+                                    {{-- Individual hidden item with responsive padding and text sizes --}}
+                                    <div class="px-1 text-center flex-1 flex flex-col"> {{-- Added flex-1 to make items share space equally --}}
+                                        <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
+                                        <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
+                                        <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </div>
+                            </td>
+
+                            {{-- Tàng Can by Month --}}
+                            <td class="border border-gray-400 p-1">
+                                <div class="custom-block flex flex-row items-center justify-around gap-1 h-full">
+                                    @if (isset($result->heavenly_stem_month->hidden_hs_in_eb_by_month))
+                                    @php
+                                    $hidden_items_by_month = $result->heavenly_stem_month->hidden_hs_in_eb_by_month;
+                                    @endphp
+                                    @if ($hidden_items_by_month && isset($hidden_items_by_month->hidden))
+                                    @foreach ($hidden_items_by_month->hidden as $hidden_item)
+                                    <div class="px-1 text-center flex-1 flex flex-col">
+                                        <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
+                                        <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
+                                        <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </div>
+                            </td>
+
+                            {{-- Tàng Can by Day --}}
+                            <td class="border border-gray-400 p-1">
+                                <div class="custom-block flex flex-row items-center justify-around gap-1 h-full">
+                                    @if (isset($result->heavenly_stem_day->hidden_hs_in_eb_by_day))
+                                    @php
+                                    $hidden_items_by_day = $result->heavenly_stem_day->hidden_hs_in_eb_by_day;
+                                    @endphp
+                                    @if ($hidden_items_by_day && isset($hidden_items_by_day->hidden))
+                                    @foreach ($hidden_items_by_day->hidden as $hidden_item)
+                                    <div class="px-1 text-center flex-1 flex flex-col">
+                                        <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
+                                        <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
+                                        <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </div>
+                            </td>
+
+                            {{-- Tàng Can by Hour --}}
+                            <td class="border border-gray-400 p-1">
+                                <div class="custom-block flex flex-row items-center justify-around gap-1 h-full">
+                                    @if (isset($result->heavenly_stem_hour->hidden_hs_in_eb_by_hour))
+                                    @php
+                                    $hidden_items_by_hour = $result->heavenly_stem_hour->hidden_hs_in_eb_by_hour;
+                                    @endphp
+                                    @if ($hidden_items_by_hour && isset($hidden_items_by_hour->hidden))
+                                    @foreach ($hidden_items_by_hour->hidden as $hidden_item)
+                                    <div class="px-1 text-center flex-1 flex flex-col">
+                                        <div class="mb-1 text-gray-700 text-[10px] sm:text-[11px]">{{ $hidden_item->hidden_combo }}</div>
+                                        <div class="text-sub-container mb-1 {{ $hidden_item->text_color }} font-semibold text-sm sm:text-base">{{ $hidden_item->heavenly_stem }}</div>
+                                        <div class="mb-1 {{ $hidden_item->text_color }} text-[10px] sm:text-[11px]">{{ ($hidden_item->polarity == 'Dương' ? "+" : "-") . $hidden_item->yin_yang }}</div>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            {{-- Nạp Âm row --}}
+                            <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">NẠP ÂM</td>
+                            @if (isset($result->data_sound->elemental_sound))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound->name }} <span class="{{ $result->data_sound->elemental_sound->color }} font-bold">{{ $result->data_sound->elemental_sound->element }}</span></td>
+                            @else
+                            <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
+                            @endif
+
+                            @if (isset($result->data_sound->elemental_sound_month))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_month->name }} <span class="{{ $result->data_sound->elemental_sound_month->color }} font-bold">{{ $result->data_sound->elemental_sound_month->element }}</span></td>
+                            @else
+                            <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
+                            @endif
+
+                            @if (isset($result->data_sound->elemental_sound_day))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_day->name }} <span class="{{ $result->data_sound->elemental_sound_day->color }} font-bold">{{ $result->data_sound->elemental_sound_day->element }}</span></td>
+                            @else
+                            <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
+                            @endif
+
+                            @if (isset($result->data_sound->elemental_sound_hour))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_hour->name }} <span class="{{ $result->data_sound->elemental_sound_hour->color }} font-bold">{{ $result->data_sound->elemental_sound_hour->element }}</span></td>
+                            @else
+                            <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
+                            @endif
+                        </tr>
+                        <tr>
+                            {{-- Trường Sinh row --}}
+                            <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">TRƯỜNG SINH</td>
+                            @if (isset($result->data_growth_stage->growth_stage->name))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage->name }}</td>
+                            @else
+                            <td class="border border-gray-400 p-2"></td>
+                            @endif
+
+                            @if (isset($result->data_growth_stage->growth_stage_month->name))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_month->name }}</td>
+                            @else
+                            <td class="border border-gray-400 p-2"></td>
+                            @endif
+
+                            @if (isset($result->data_growth_stage->growth_stage_day->name))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_day->name }}</td>
+                            @else
+                            <td class="border border-gray-400 p-2"></td>
+                            @endif
+
+                            @if (isset($result->data_growth_stage->growth_stage_hour->name))
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_hour->name }}</td>
+                            @else
+                            <td class="border border-gray-400 p-2"></td>
+                            @endif
+                        </tr>
+                        <tr>
+                            {{-- Thần Sát row --}}
+                            <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">THẦN SÁT</td>
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
+                                @foreach ($result->shensha_system['year'] as $shensha)
+                                <span>{{ $shensha }}</span><br />
                                 @endforeach
-                                @endif
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        {{-- Nạp Âm row --}}
-                        <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">NẠP ÂM</td>
-                        @if (isset($result->data_sound->elemental_sound))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound->name }} <span class="{{ $result->data_sound->elemental_sound->color }} font-bold">{{ $result->data_sound->elemental_sound->element }}</span></td>
-                        @else
-                        <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
-                        @endif
-
-                        @if (isset($result->data_sound->elemental_sound_month))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_month->name }} <span class="{{ $result->data_sound->elemental_sound_month->color }} font-bold">{{ $result->data_sound->elemental_sound_month->element }}</span></td>
-                        @else
-                        <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
-                        @endif
-
-                        @if (isset($result->data_sound->elemental_sound_day))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_day->name }} <span class="{{ $result->data_sound->elemental_sound_day->color }} font-bold">{{ $result->data_sound->elemental_sound_day->element }}</span></td>
-                        @else
-                        <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
-                        @endif
-
-                        @if (isset($result->data_sound->elemental_sound_hour))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_sound->elemental_sound_hour->name }} <span class="{{ $result->data_sound->elemental_sound_hour->color }} font-bold">{{ $result->data_sound->elemental_sound_hour->element }}</span></td>
-                        @else
-                        <td class="border border-gray-400 p-2"><span class="font-bold"></span></td>
-                        @endif
-                    </tr>
-                    <tr>
-                        {{-- Trường Sinh row --}}
-                        <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">TRƯỜNG SINH</td>
-                        @if (isset($result->data_growth_stage->growth_stage->name))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage->name }}</td>
-                        @else
-                        <td class="border border-gray-400 p-2"></td>
-                        @endif
-
-                        @if (isset($result->data_growth_stage->growth_stage_month->name))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_month->name }}</td>
-                        @else
-                        <td class="border border-gray-400 p-2"></td>
-                        @endif
-
-                        @if (isset($result->data_growth_stage->growth_stage_day->name))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_day->name }}</td>
-                        @else
-                        <td class="border border-gray-400 p-2"></td>
-                        @endif
-
-                        @if (isset($result->data_growth_stage->growth_stage_hour->name))
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm">{{ $result->data_growth_stage->growth_stage_hour->name }}</td>
-                        @else
-                        <td class="border border-gray-400 p-2"></td>
-                        @endif
-                    </tr>
-                    <tr>
-                        {{-- Thần Sát row --}}
-                        <td class="text-custom-brown text-right pr-4 sm:pr-6 border border-gray-400 font-bold p-2" colspan="2">THẦN SÁT</td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
-                            @foreach ($result->shensha_system['year'] as $shensha)
-                            <span>{{ $shensha }}</span><br />
-                            @endforeach
-                        </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
-                            @foreach ($result->shensha_system['month'] as $shensha)
-                            <span>{{ $shensha }}</span><br />
-                            @endforeach
-                        </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
-                            @foreach ($result->shensha_system['day'] as $shensha)
-                            <span>{{ $shensha }}</span><br />
-                            @endforeach
-                        </td>
-                        <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
-                            @foreach ($result->shensha_system['hour'] as $shensha)
-                            <span>{{ $shensha }}</span><br />
-                            @endforeach
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
+                                @foreach ($result->shensha_system['month'] as $shensha)
+                                <span>{{ $shensha }}</span><br />
+                                @endforeach
+                            </td>
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
+                                @foreach ($result->shensha_system['day'] as $shensha)
+                                <span>{{ $shensha }}</span><br />
+                                @endforeach
+                            </td>
+                            <td class="border border-gray-400 p-2 text-xs sm:text-sm align-top">
+                                @foreach ($result->shensha_system['hour'] as $shensha)
+                                <span>{{ $shensha }}</span><br />
+                                @endforeach
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {{-- Content charts section --}}
@@ -388,7 +390,7 @@
                 {{-- Ngũ Hành tương quan Chart --}}
                 <div class="chart-wrapper col-span-1 bg-white rounded-xl shadow-md flex flex-col items-center p-4">
                     <h2 class="text-lg sm:text-xl font-bold text-gray-800 text-center p-2 sm:p-4">Ngũ Hành tương quan</h2>
-                    <div class="relative flex items-center justify-center w-full max-w-[200px] sm:max-w-[250px] aspect-square flex-grow p-2 sm:p-6">
+                    <div class="relative flex items-center justify-center w-full max-w-[200px] sm:max-w-xs mx-auto">
                         <canvas id="nguHanhChart"></canvas>
                     </div>
                     <div id="nguHanhLegend" class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm mt-4">
