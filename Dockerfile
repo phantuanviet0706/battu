@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libzip-dev \
-    wkhtmltopdf \
     && docker-php-ext-install pdo pdo_mysql zip
 
 # Copy source code vào /var/www
