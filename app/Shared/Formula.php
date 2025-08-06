@@ -2905,4 +2905,179 @@ class Formula
             ],
         ];
     }
+
+    public static function getFormulaNoDataHour()
+    {
+        return [
+            (object) [
+                "from_date" => "01-01",
+                "to_date" => "05-01",
+                "missing_elements" => ["Kim"],
+                "weak_elements" => ["Hỏa"],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "1"],
+                    (object) ["id" => "Mộc", "name" => "3"],
+                    (object) ["id" => "Thủy", "name" => "-5"],
+                    (object) ["id" => "Hỏa", "name" => "0"],
+                    (object) ["id" => "Thổ", "name" => "2"],
+                ]
+            ],
+            (object) [
+                "from_date" => "06-01",
+                "to_date" => "03-02",
+                "missing_elements" => ["Hỏa"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "2"],
+                    (object) ["id" => "Mộc", "name" => "3"],
+                    (object) ["id" => "Thủy", "name" => "4"],
+                    (object) ["id" => "Hỏa", "name" => "-1"],
+                    (object) ["id" => "Thổ", "name" => "-7"],
+                ]
+            ],
+            (object) [
+                "from_date" => "04-02",
+                "to_date" => "04-03",
+                "missing_elements" => ["Thủy", "Kim"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "-1"],
+                    (object) ["id" => "Mộc", "name" => "8"],
+                    (object) ["id" => "Thủy", "name" => "1"],
+                    (object) ["id" => "Hỏa", "name" => "5"],
+                    (object) ["id" => "Thổ", "name" => "4"],
+                ]
+            ],
+            (object) [
+                "from_date" => "05-03",
+                "to_date" => "04-04",
+                "missing_elements" => ["Thủy"],
+                "weak_elements" => ["Kim"],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "0"],
+                    (object) ["id" => "Mộc", "name" => "9"],
+                    (object) ["id" => "Thủy", "name" => "-1"],
+                    (object) ["id" => "Hỏa", "name" => "3"],
+                    (object) ["id" => "Thổ", "name" => "-3"],
+                ]
+            ],
+            (object) [
+                "from_date" => "05-04",
+                "to_date" => "05-05",
+                "missing_elements" => ["Kim"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "-1"],
+                    (object) ["id" => "Mộc", "name" => "-6"],
+                    (object) ["id" => "Thủy", "name" => "4"],
+                    (object) ["id" => "Hỏa", "name" => "3"],
+                    (object) ["id" => "Thổ", "name" => "7"],
+                ]
+            ],
+            (object) [
+                "from_date" => "06-05",
+                "to_date" => "05-06",
+                "missing_elements" => ["Mộc", "Thủy"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "4"],
+                    (object) ["id" => "Mộc", "name" => "-1"],
+                    (object) ["id" => "Thủy", "name" => "1"],
+                    (object) ["id" => "Hỏa", "name" => "11"],
+                    (object) ["id" => "Thổ", "name" => "9"],
+                ]
+            ],
+            (object) [
+                "from_date" => "06-06",
+                "to_date" => "06-07",
+                "missing_elements" => ["Mộc"],
+                "weak_elements" => ["Thủy"],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "3"],
+                    (object) ["id" => "Mộc", "name" => "1"],
+                    (object) ["id" => "Thủy", "name" => "0"],
+                    (object) ["id" => "Hỏa", "name" => "-8"],
+                    (object) ["id" => "Thổ", "name" => "-6"],
+                ]
+            ],
+            (object) [
+                "from_date" => "07-07",
+                "to_date" => "06-08",
+                "missing_elements" => ["Thủy"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "3"],
+                    (object) ["id" => "Mộc", "name" => "-4"],
+                    (object) ["id" => "Thủy", "name" => "1"],
+                    (object) ["id" => "Hỏa", "name" => "-7"],
+                    (object) ["id" => "Thổ", "name" => "-9"],
+                ]
+            ],
+            (object) [
+                "from_date" => "07-08",
+                "to_date" => "07-09",
+                "missing_elements" => ["Hỏa", "Mộc"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "8"],
+                    (object) ["id" => "Mộc", "name" => "-1"],
+                    (object) ["id" => "Thủy", "name" => "7"],
+                    (object) ["id" => "Hỏa", "name" => "1"],
+                    (object) ["id" => "Thổ", "name" => "5"],
+                ]
+            ],
+            (object) [
+                "from_date" => "08-09",
+                "to_date" => "07-10",
+                "missing_elements" => ["Hỏa", "Thổ"],
+                "weak_elements" => ["Mộc"],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "-9"],
+                    (object) ["id" => "Mộc", "name" => "0"],
+                    (object) ["id" => "Thủy", "name" => "1"],
+                    (object) ["id" => "Hỏa", "name" => "-1"],
+                    (object) ["id" => "Thổ", "name" => "4"],
+                ]
+            ],
+            (object) [
+                "from_date" => "08-10",
+                "to_date" => "06-11",
+                "missing_elements" => ["Mộc"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "-7"],
+                    (object) ["id" => "Mộc", "name" => "-1"],
+                    (object) ["id" => "Thủy", "name" => "3"],
+                    (object) ["id" => "Hỏa", "name" => "-4"],
+                    (object) ["id" => "Thổ", "name" => "8"],
+                ]
+            ],
+            (object) [
+                "from_date" => "07-11",
+                "to_date" => "06-12",
+                "missing_elements" => ["Kim", "Hỏa"],
+                "weak_elements" => [],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "-1"],
+                    (object) ["id" => "Mộc", "name" => "-6"],
+                    (object) ["id" => "Thủy", "name" => "7"],
+                    (object) ["id" => "Hỏa", "name" => "1"],
+                    (object) ["id" => "Thổ", "name" => "3"],
+                ]
+            ],
+            (object) [
+                "from_date" => "07-12",
+                "to_date" => "31-12",
+                "missing_elements" => ["Kim"],
+                "weak_elements" => ["Hỏa"],
+                "calculated_data_point" => [
+                    (object) ["id" => "Kim", "name" => "1"],
+                    (object) ["id" => "Mộc", "name" => "3"],
+                    (object) ["id" => "Thủy", "name" => "-5"],
+                    (object) ["id" => "Hỏa", "name" => "0"],
+                    (object) ["id" => "Thổ", "name" => "2"],
+                ]
+            ],
+        ];
+    }
 }

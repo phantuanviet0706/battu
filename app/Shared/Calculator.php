@@ -207,7 +207,7 @@ class Calculator
             date('Y', $date)
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
-        
+
         $earthly_branch = intval(($lunar_month + 1) % 12);
 
         $selected_earthly_branch_month = null;
@@ -888,12 +888,12 @@ class Calculator
             "hour" => []
         ];
 
-        $combo_year = $heavenly_stem->name . " " .$earthly_branch->name;
-        $combo_month = $heavenly_stem_month->name . " " .$earthly_branch_month->name;
-        $combo_day = $heavenly_stem_day->name . " " .$earthly_branch_day->name;
+        $combo_year = $heavenly_stem->name . " " . $earthly_branch->name;
+        $combo_month = $heavenly_stem_month->name . " " . $earthly_branch_month->name;
+        $combo_day = $heavenly_stem_day->name . " " . $earthly_branch_day->name;
         $combo_hour = null;
         if (isset($heavenly_stem_hour->name) && isset($earthly_branch_hour->name)) {
-            $combo_hour = $heavenly_stem_hour->name . " " .$earthly_branch_hour->name;
+            $combo_hour = $heavenly_stem_hour->name . " " . $earthly_branch_hour->name;
         }
 
         // 1. Tính theo nhật chủ
@@ -971,7 +971,7 @@ class Calculator
                 $shensha_system['hour'] = array_merge($shensha_system['hour'], $data_shensha->{$heavenly_stem_hour->name});
             }
         }
-        
+
         foreach ($formula_shensha_by_earthly_year_special as $formula) {
             if ($earthly_branch->name != $formula->id) {
                 continue;
@@ -1059,7 +1059,7 @@ class Calculator
             if ($earthly_branch_day->name != $formula->id) {
                 continue;
             }
-            
+
             $data_shensha = $formula->data_shensha;
             if (isset($data_shensha[$earthly_branch->name])) {
                 $shensha_system['year'] = array_merge($shensha_system['year'], $data_shensha[$earthly_branch->name]);
@@ -1153,7 +1153,7 @@ class Calculator
      * @param mixed $data
      * @return object
      */
-    public static function calculateElementsDataPoint($data)
+    public static function calculateElementsDataPoint($data, $is_input_time = false, $res_missing_time = null)
     {
         $heavenly_stem = $data->heavenly_stem;
         $earthly_branch = $data->earthly_branch;
@@ -1183,12 +1183,15 @@ class Calculator
             if ($key == $heavenly_stem->yin_yang) {
                 $value++;
             }
+
             if ($key == $heavenly_stem_month->yin_yang) {
                 $value++;
             }
+
             if ($key == $heavenly_stem_day->yin_yang) {
                 $value++;
             }
+
             if ($heavenly_stem_hour && $key == $heavenly_stem_hour->yin_yang) {
                 $value++;
             }
@@ -1196,12 +1199,15 @@ class Calculator
             if ($key == $earthly_branch->yin_yang) {
                 $value++;
             }
+
             if ($key == $earthly_branch_month->yin_yang) {
                 $value++;
             }
+
             if ($key == $earthly_branch_day->yin_yang) {
                 $value++;
             }
+
             if ($earthly_branch_hour && $key == $earthly_branch_hour->yin_yang) {
                 $value++;
             }
@@ -1242,6 +1248,18 @@ class Calculator
 
             if ($earthly_branch_hour && isset($earthly_branch_hour->name) && $earthly_branch_hour->name == $format->name) {
                 $calculated_data_point[$format->element] += ($format->point * ($format->yin_yang == "Dương" ? 1 : -1));
+            }
+        }
+
+        $missing_time_calculated_data_point = null;
+        if (!$is_input_time) {
+            $missing_time_calculated_data_point = $res_missing_time->calculated_data_point;
+            foreach ($calculated_data_point as $key => $value) {
+                foreach ($missing_time_calculated_data_point as $d) {
+                    if ($d->id == $key) {
+                        $calculated_data_point[$key] += $d->name;
+                    }
+                }
             }
         }
 
@@ -1309,7 +1327,7 @@ class Calculator
             $calculated_deposite_percentage_data[$key] = $calculated_value;
             $array_point_values[] = $calculated_value;
         }
-        
+
         $lowest_value = min($array_point_values);
         $count_lowest_values = 0;
         foreach ($array_point_values as $value) {
@@ -1354,7 +1372,7 @@ class Calculator
         $year = date('Y', time());
 
         $agricultural_date_format = Formula::getFormulaAgricuturalDate();
-        
+
         $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
         $agricultural_date = null;
         foreach ($agricultural_date_format as $agr) {
@@ -1384,7 +1402,7 @@ class Calculator
         );
     }
 
-    public static function calculateMissingElements($data)
+    public static function calculateMissingElements($data, $is_input_time = false, $data_missing_time = null)
     {
         $calculated_data_point = $data->calculated_data_point;
         $calculated_number_elements_existed = $data->calculated_number_elements_existed;
@@ -1398,6 +1416,27 @@ class Calculator
         }
 
         $weak_elements = [];
+
+        if (!$is_input_time) {
+            $res_missing_elements = $data_missing_time->missing_elements;
+            $res_weak_elements = $data_missing_time->weak_elements;
+            foreach ($res_missing_elements as $element) {
+                if (!in_array($element, $missing_elements)) {
+                    $missing_elements[] = $element;
+                }
+            }
+
+            foreach ($res_weak_elements as $element) {
+                if (in_array($element, $weak_elements)) {
+                    continue;
+                }
+                if (in_array($element, $missing_elements)) {
+                    continue;
+                }
+                $weak_elements[] = $element;
+            }
+        }
+
         foreach ($calculated_data_point as $key => $value) {
             if (abs($value) > 1) {
                 continue;
@@ -1423,7 +1462,7 @@ class Calculator
                 }
             }
         }
-        
+
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
@@ -1434,7 +1473,8 @@ class Calculator
         );
     }
 
-    public static function calculateElementsLayout($data) {
+    public static function calculateElementsLayout($data)
+    {
         arsort($data);
         $count = 1;
         $first_value = 0;
@@ -1490,6 +1530,48 @@ class Calculator
             "Get data successfully",
             Helper::$SUCCESS_CODE,
             $final_data
+        );
+    }
+
+    /**
+     * @desc Calculate data for missing hour
+     * @param mixed $date
+     * @return object 
+     */
+    public static function calculateMissingHourDate($date)
+    {
+        $day = date('d', $date);
+        $month = date('m', $date);
+        $year = date('Y', time());
+
+        $missing_hour_data_format = Formula::getFormulaNoDataHour();
+
+        $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+        $missing_data = null;
+        foreach ($missing_hour_data_format as $format) {
+            $start_date = DateTime::createFromFormat('d-m-Y', $format->from_date . "-$year");
+            $end_date = DateTime::createFromFormat('d-m-Y', $format->to_date . "-$year");
+            if ($start_date > $end_date) {
+                $year++;
+                $end_date = DateTime::createFromFormat('d-m-Y',  $format->to_date . "-$year");
+                if ($start_date > $input_date) {
+                    $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
+                }
+            }
+            if ($input_date >= $start_date && $input_date <= $end_date) {
+                $missing_data = $format;
+                break;
+            }
+        }
+
+        if (!$missing_data) {
+            return Helper::release("Invalid missing data by hour");
+        }
+
+        return Helper::release(
+            "Get data successfully",
+            Helper::$SUCCESS_CODE,
+            $missing_data
         );
     }
 }

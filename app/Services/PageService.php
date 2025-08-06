@@ -15,7 +15,16 @@ class PageService
 		$gender = $request['gender'];
 		$birth_date = $request['birth_date'];
 		$birth_time = $request['birth_time'];
+		$is_input_time = $request['is_input_time'];
 		$date_time = strtotime("$birth_date $birth_time");
+		$missing_time = null;
+		if (!$is_input_time) {
+			$res_missing_time = Calculator::calculateMissingHourDate($date_time);
+			if ($res_missing_time->code) {
+				$missing_time = $res_missing_time->data;
+			}
+		}
+
 		$res_agricultural = Calculator::calculateAgricultural($date_time);
 		if (!$res_agricultural->code) {
 			return Helper::release('Invalid Agricultural data, please check and try again.');
@@ -61,7 +70,6 @@ class PageService
 		}
 		$earthly_branch_day = $res_earthly_branch_day->data;
 
-		$is_input_time = $request['is_input_time'];
 		$res_heavenly_stem_hour = Calculator::calculateHeavenlyStemHour($date_time, $is_input_time);
 		$heavenly_stem_hour = isset($res_heavenly_stem_hour->data) ? $res_heavenly_stem_hour->data : null;
 
@@ -79,13 +87,13 @@ class PageService
 			'earthly_branch_hour' => $earthly_branch_hour,
 		]);
 		$res_hidden_stem = $res_hidden_stem->data;
-		
+
 		$heavenly_stem->hidden_stem_by_year = $res_hidden_stem->hidden_stem_by_year;
 		$heavenly_stem->hidden_hs_in_eb_by_year = $res_hidden_stem->hidden_hs_in_eb_by_year;
 
 		$heavenly_stem_month->hidden_stem_by_month = $res_hidden_stem->hidden_stem_by_month;
 		$heavenly_stem_month->hidden_hs_in_eb_by_month = $res_hidden_stem->hidden_hs_in_eb_by_month;
-		
+
 		$heavenly_stem_day->hidden_stem_by_day = $res_hidden_stem->hidden_stem_by_day;
 		$heavenly_stem_day->hidden_hs_in_eb_by_day = $res_hidden_stem->hidden_hs_in_eb_by_day;
 
@@ -156,13 +164,13 @@ class PageService
 			'earthly_branch_day' => $earthly_branch_day,
 			'heavenly_stem_hour' => $heavenly_stem_hour,
 			'earthly_branch_hour' => $earthly_branch_hour,
-		]);
+		], $is_input_time, $missing_time);
 
 		$data = $calculate_elements_data_point->data;
 
 		$calculate_elements_interrelation = Calculator::calculateElementsInterrelation($calculate_elements_data_point->data);
 
-		$res_missing_elements = Calculator::calculateMissingElements($calculate_elements_data_point->data);
+		$res_missing_elements = Calculator::calculateMissingElements($calculate_elements_data_point->data, $is_input_time, $missing_time);
 
 		$calculate_10_elements_layout = Calculator::calculateElementsLayout($calculate_elements_interrelation->data);
 
@@ -200,8 +208,8 @@ class PageService
 				'calculated_percentage_data' => $data->calculated_percentage_data,
 				'calculated_elements_interrelation' => $calculate_elements_interrelation->data,
 				'shensha_system' => $res_shensha->data,
-				"missing_elements" => $res_missing_elements->data,
-				"percentage_per_ten" => $calculate_10_elements_layout->data
+				'missing_elements' => $res_missing_elements->data,
+				'percentage_per_ten' => $calculate_10_elements_layout->data
 			]
 		];
 	}
