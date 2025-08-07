@@ -208,7 +208,7 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
 
-        $earthly_branch = intval(($lunar_month - 1) % 12);
+        $earthly_branch = intval(($lunar_month + 1) % 12);
 
         $selected_earthly_branch_month = null;
         foreach ($earthly_branch_format as $format) {
