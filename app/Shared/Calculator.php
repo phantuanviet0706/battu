@@ -208,7 +208,7 @@ class Calculator
         );
         [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
 
-        $earthly_branch = intval(($lunar_month + 1) % 12);
+        $earthly_branch = intval(($lunar_month - 1) % 12);
 
         $selected_earthly_branch_month = null;
         foreach ($earthly_branch_format as $format) {
@@ -836,19 +836,19 @@ class Calculator
         $growth_stage_day_result = null;
         $growth_stage_hour_result = null;
         foreach ($growth_stage_result_formula as $formula) {
-            if ($zodiac_year != false && $zodiac_year == $formula->id) {
+            if ($zodiac_year !== false && $zodiac_year == $formula->id) {
                 $growth_stage_year_result = $formula;
             }
 
-            if ($zodiac_month != false && $zodiac_month == $formula->id) {
+            if ($zodiac_month !== false && $zodiac_month == $formula->id) {
                 $growth_stage_month_result = $formula;
             }
 
-            if ($zodiac_day != false && $zodiac_day == $formula->id) {
+            if ($zodiac_day !== false && $zodiac_day == $formula->id) {
                 $growth_stage_day_result = $formula;
             }
 
-            if ($zodiac_hour != false && $zodiac_hour == $formula->id) {
+            if ($zodiac_hour !== false && $zodiac_hour == $formula->id) {
                 $growth_stage_hour_result = $formula;
             }
         }
