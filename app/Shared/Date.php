@@ -2,6 +2,8 @@
 
 namespace App\Shared;
 
+use com\nlf\calendar\Solar;
+
 class Date
 {
     private const PI = 3.14159265358979323846;
@@ -103,43 +105,56 @@ class Date
         return $i - 1;
     }
 
+    // public static function convertSolar2Lunar($dd, $mm, $yy, $timeZone = 7)
+    // {
+    //     $dayNumber = self::jdFromDate($dd, $mm, $yy);
+    //     $k = (int) floor(($dayNumber - 2415021.076998695) / 29.530588853);
+
+    //     $monthStart = self::getNewMoonDay($k + 1, $timeZone);
+    //     if ($monthStart > $dayNumber) {
+    //         $monthStart = self::getNewMoonDay($k, $timeZone);
+    //     }
+
+    //     $a11 = self::getLunarMonth11($yy - 1, $timeZone);
+    //     $b11 = self::getLunarMonth11($yy, $timeZone);
+    //     if ($monthStart >= $b11) {
+    //         $a11 = $b11;
+    //         $b11 = self::getLunarMonth11($yy + 1, $timeZone);
+    //         $lunarYear = $yy + 1;
+    //     } elseif ($monthStart >= $a11) {
+    //         $lunarYear = $yy;
+    //     } else {
+    //         $a11 = self::getLunarMonth11($yy - 2, $timeZone);
+    //         $b11 = self::getLunarMonth11($yy - 1, $timeZone);
+    //         $lunarYear = $yy - 1;
+    //     }
+    //     $lunarDay = $dayNumber - $monthStart + 1;
+    //     $diff = (int) floor(($monthStart - $a11) / 29);
+    //     $lunarLeap = 0;
+    //     $lunarMonth = $diff + 11;
+    //     if ($b11 - $a11 > 365) {
+    //         $leapMonthDiff = self::getLeapMonthOffset($a11, $timeZone);
+    //         if ($diff >= $leapMonthDiff) {
+    //             $lunarMonth = $diff + 10;
+    //             if ($diff == $leapMonthDiff) $lunarLeap = 1;
+    //         }
+    //     }
+
+    //     if ($lunarMonth > 12) $lunarMonth -= 12;
+    //     if ($lunarMonth >= 11 && $diff < 4) $lunarYear -= 1;
+
+    //     return [$lunarDay, $lunarMonth, $lunarYear, $lunarLeap];
+    // }
+
     public static function convertSolar2Lunar($dd, $mm, $yy, $timeZone = 7)
     {
-        $dayNumber = self::jdFromDate($dd, $mm, $yy);
-        $k = (int) floor(($dayNumber - 2415021.076998695) / 29.530588853);
+        $solar = Solar::fromYmd($yy, $mm, $dd);
+        $lunar = $solar->getLunar();
 
-        $monthStart = self::getNewMoonDay($k + 1, $timeZone);
-        if ($monthStart > $dayNumber) {
-            $monthStart = self::getNewMoonDay($k, $timeZone);
-        }
-
-        $a11 = self::getLunarMonth11($yy - 1, $timeZone);
-        $b11 = self::getLunarMonth11($yy, $timeZone);
-        if ($monthStart >= $b11) {
-            $a11 = $b11;
-            $b11 = self::getLunarMonth11($yy + 1, $timeZone);
-            $lunarYear = $yy + 1;
-        } elseif ($monthStart >= $a11) {
-            $lunarYear = $yy;
-        } else {
-            $a11 = self::getLunarMonth11($yy - 2, $timeZone);
-            $b11 = self::getLunarMonth11($yy - 1, $timeZone);
-            $lunarYear = $yy - 1;
-        }
-        $lunarDay = $dayNumber - $monthStart + 1;
-        $diff = (int) floor(($monthStart - $a11) / 29);
-        $lunarLeap = 0;
-        $lunarMonth = $diff + 11;
-        if ($b11 - $a11 > 365) {
-            $leapMonthDiff = self::getLeapMonthOffset($a11, $timeZone);
-            if ($diff >= $leapMonthDiff) {
-                $lunarMonth = $diff + 10;
-                if ($diff == $leapMonthDiff) $lunarLeap = 1;
-            }
-        }
-
-        if ($lunarMonth > 12) $lunarMonth -= 12;
-        if ($lunarMonth >= 11 && $diff < 4) $lunarYear -= 1;
+        $lunarDay = $lunar->getDay();
+        $lunarMonth = abs($lunar->getMonth());
+        $lunarYear = $lunar->getYear();
+        $lunarLeap = $solar->isLeapYear();
 
         return [$lunarDay, $lunarMonth, $lunarYear, $lunarLeap];
     }
