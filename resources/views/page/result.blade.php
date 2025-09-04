@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            {{-- Vertical header for Lịch pháp, with responsive sizing --}}
-                            <td rowspan="3" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
+                            {{-- Vertical header for Lịch pháp, with responsive sizing - Updated to 2 rows --}}
+                            <td rowspan="2" class="text-custom-gray border border-gray-400 bg-[#f5e4c3] font-semibold text-xs text-center" style="height: 150px; width: 25px; min-width: 25px;">
                                 <div class="flex items-center justify-center h-full w-full" style="writing-mode: vertical-rl; transform: rotate(180deg);">
                                     Lịch pháp
                                 </div>
@@ -54,16 +54,16 @@
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->year }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->month }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->day }}</td>
-                            {{-- Hour/Minute cell spanning 3 rows --}}
-                            <td class="border border-gray-400 bg-[#f5e4c3] p-2" rowspan="3">{{ isset($result->input->hour) ? $result->input->hour : 0 }}:{{ isset($result->input->minute) ? $result->input->minute : 0 }}</td>
+                            {{-- Hour/Minute cell spanning 3 rows - Updated to 2 rows --}}
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2" rowspan="2">{{ isset($result->input->hour) ? $result->input->hour : 0 }}:{{ isset($result->input->minute) ? $result->input->minute : 0 }}</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             {{-- Âm Lịch row --}}
                             <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">ÂM LỊCH</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_month }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             {{-- Nông Lịch row --}}
                             <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">NÔNG LỊCH</td>
