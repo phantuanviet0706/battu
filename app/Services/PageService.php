@@ -29,7 +29,8 @@ class PageService
 		if (!$res_agricultural->code) {
 			return Helper::release('Invalid Agricultural data, please check and try again.');
 		}
-		$agricultural = $res_agricultural->data;
+		$agricultural = isset($res_agricultural->data->agricultural) ? $res_agricultural->data->agricultural : null;
+		$agricultural_year = isset($res_agricultural->data->agricultural_year) ? $res_agricultural->data->agricultural_year : date('Y', $date_time);
 
 		$res_heavenly_stem = Calculator::calculateHeavenlyStem($date_time);
 		if (!$res_heavenly_stem->code) {
@@ -209,7 +210,8 @@ class PageService
 				'calculated_elements_interrelation' => $calculate_elements_interrelation->data,
 				'shensha_system' => $res_shensha->data,
 				'missing_elements' => $res_missing_elements->data,
-				'percentage_per_ten' => $calculate_10_elements_layout->data
+				'percentage_per_ten' => $calculate_10_elements_layout->data,
+				'agricultural_year' => $agricultural_year,
 			]
 		];
 	}

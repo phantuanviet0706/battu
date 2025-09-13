@@ -17,6 +17,10 @@ class Calculator
         $month = date('m', $date);
         $year = date('Y', time());
 
+        $agricultural_year = date('Y', $date);
+        if (strtotime("$year-$month-$day") < strtotime("{$year}-02-04")) {
+            $agricultural_year = $year - 1;
+        }
         $agricultural_format = Formula::getFormulaAgricutural();
 
         $input_date = DateTime::createFromFormat('d-m-Y', "$day-$month-$year");
@@ -47,7 +51,10 @@ class Calculator
         return Helper::release(
             "Get data successfully",
             Helper::$SUCCESS_CODE,
-            $agricultural
+            (object) [
+                "agricultural" => $agricultural,
+                "agricultural_year" => $agricultural_year,
+            ]
         );
     }
 
