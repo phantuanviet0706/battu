@@ -67,7 +67,7 @@
                         <tr>
                             {{-- Nông Lịch row --}}
                             <td class="text-custom-yellow border border-gray-400 bg-[#f5e4c3] text-[#8b3c14] font-bold p-2">NÔNG LỊCH</td>
-                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->agricultural_year }}</td>
+                            <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_year }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ isset($result->agricultural->selected_range->name) ? $result->agricultural->selected_range->name : 'unknown' }}</td>
                             <td class="border border-gray-400 bg-[#f5e4c3] p-2">{{ $result->input->lunar_day }}</td>
                         </tr>
