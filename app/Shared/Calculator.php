@@ -175,9 +175,9 @@ class Calculator
 
         $heavenly_stem_year = intval($calculated_year % 10);
         if ($heavenly_stem_year == 0) {
-            $heavenly_stem_month = intval((8 + ($agricultural_month - 1)) % 10);
+            $heavenly_stem_month = intval((8 + ($lunar_month - 1)) % 10);
         } else {
-            $heavenly_stem_month = intval((2 * ($calculated_year - 1) + ($agricultural_month - 1)) % 10);
+            $heavenly_stem_month = intval((2 * ($calculated_year - 1) + ($lunar_month - 1)) % 10);
         }
         // $heavenly_stem_month = intval(($agricultural_month - 1  + (($heavenly_stem_year - 1) * 2)) % 10);
 
