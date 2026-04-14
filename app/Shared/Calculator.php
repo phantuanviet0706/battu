@@ -59,7 +59,7 @@ class Calculator
     }
 
     /**
-     * 2. Calculate Heavenly Stem
+     * 2. Calculate Heavenly Stem - Thiên Can
      * @param mixed $date
      * @return object
      */
@@ -103,7 +103,7 @@ class Calculator
     }
 
     /**
-     * 3. Calculate Earthly Branch
+     * 3. Calculate Earthly Branch - Địa Chi
      * @param mixed $date
      * @return object
      */
@@ -145,7 +145,7 @@ class Calculator
     }
 
     /**
-     * 4. Calculate Heavenly Stem Month
+     * 4. Calculate Heavenly Stem Month - Thiên Can Tháng
      * @param mixed $date
      * @return object
      */
@@ -177,7 +177,7 @@ class Calculator
         if ($heavenly_stem_year == 0) {
             $heavenly_stem_month = intval((8 + ($lunar_month - 1)) % 10);
         } else {
-            $heavenly_stem_month = intval((2 * ($calculated_year - 1) + ($lunar_month - 1)) % 10);
+            $heavenly_stem_month = intval((2 * ($heavenly_stem_year - 1) + ($lunar_month - 1)) % 10);
         }
         // $heavenly_stem_month = intval(($agricultural_month - 1  + (($heavenly_stem_year - 1) * 2)) % 10);
 
@@ -200,7 +200,7 @@ class Calculator
     }
 
     /**
-     * 5. Calculate Earthly Branch Month
+     * 5. Calculate Earthly Branch Month - Địa Chi Tháng
      * @param mixed $date
      * @return object
      */
@@ -237,7 +237,7 @@ class Calculator
     }
 
     /**
-     * 6. Calculaed heavenly stem of day
+     * 6. Calculaed heavenly stem of day - Thiên Can Ngày
      * @param mixed $date
      * @return object
      */
@@ -293,7 +293,7 @@ class Calculator
     }
 
     /**
-     * 8. Calculate heavenly stem by hour
+     * 8. Calculate heavenly stem by hour - Thiên Can Giờ
      * @param mixed $date
      * @return object
      */
@@ -389,7 +389,7 @@ class Calculator
     }
 
     /**
-     * Private function to calculate hidden stems
+     * Private function to calculate hidden stems - Tính thiên can ẩn trong địa chi
      * @param mixed $data
      * @return object
      */
