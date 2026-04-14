@@ -1,15 +1,6 @@
 # ===== Base PHP + Apache =====
 FROM php:8.2-apache
 
-RUN rm -f /etc/apache2/mods-enabled/mpm_event.load \
-    && rm -f /etc/apache2/mods-enabled/mpm_event.conf \
-    && rm -f /etc/apache2/mods-enabled/mpm_worker.load \
-    && rm -f /etc/apache2/mods-enabled/mpm_worker.conf \
-    && a2enmod mpm_prefork
-
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
-    && sed -i 's/:80/:8080/' /etc/apache2/sites-available/000-default.conf
-
 # ===== System packages & PHP extensions =====
 RUN apt-get update && apt-get install -y \
     git \
@@ -53,5 +44,7 @@ RUN chown -R www-data:www-data /var/www \
 # ===== Optimize autoload sau khi copy code =====
 RUN composer dump-autoload -o
 
-EXPOSE 8080
+RUN a2dismod mpm_event mpm_worker mpm_prefork && a2enmod mpm_prefork
+
+EXPOSE 80
 CMD ["apache2-foreground"]
