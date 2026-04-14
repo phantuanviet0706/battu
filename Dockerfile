@@ -53,5 +53,5 @@ RUN chown -R www-data:www-data /var/www \
 # ===== Optimize autoload sau khi copy code =====
 RUN composer dump-autoload -o
 
-EXPOSE 80
+EXPOSE 8080
 CMD ["apache2-foreground"]
