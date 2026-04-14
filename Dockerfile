@@ -44,7 +44,10 @@ RUN chown -R www-data:www-data /var/www \
 # ===== Optimize autoload sau khi copy code =====
 RUN composer dump-autoload -o
 
-RUN a2dismod mpm_event mpm_worker mpm_prefork && a2enmod mpm_prefork
-
 EXPOSE 80
-CMD ["apache2-foreground"]
+
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+CMD ["/usr/local/bin/docker-entrypoint.sh"]
