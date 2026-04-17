@@ -173,12 +173,18 @@ class Calculator
             $calculated_year = $year - 1;
         }
 
+        $format_date = Helper::formatAgriculturalDate($date);
+        $year = intval($format_date->century . $format_date->suffix_year);
+
         $heavenly_stem_year = intval($calculated_year % 10);
-        if ($heavenly_stem_year == 0) {
-            $heavenly_stem_month = intval((8 + ($lunar_month - 1)) % 10);
-        } else {
-            $heavenly_stem_month = intval((2 * ($heavenly_stem_year - 1) + ($lunar_month - 1)) % 10);
-        }
+        // if ($heavenly_stem_year == 0) {
+        //     $heavenly_stem_month = intval((8 + ($lunar_month - 1)) % 10);
+        // } else {
+        //     $heavenly_stem_month = intval((2 * ($heavenly_stem_year - 1) + ($lunar_month - 1)) % 10);
+        // }
+
+        $century = Helper::calculateCentury($calculated_year);
+        $heavenly_stem_month = intval((2 * $year + $format_date->month + 7) % 10);
         // $heavenly_stem_month = intval(($agricultural_month - 1  + (($heavenly_stem_year - 1) * 2)) % 10);
 
         $current_heavenly_stem_by_month = null;
@@ -208,14 +214,16 @@ class Calculator
     {
 
         $earthly_branch_format = Formula::getFormulaEarthlyBranch();
-        $lunar_date = Date::convertSolar2Lunar(
-            date('d', $date),
-            date('m', $date),
-            date('Y', $date)
-        );
-        [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
+        // $lunar_date = Date::convertSolar2Lunar(
+        //     date('d', $date),
+        //     date('m', $date),
+        //     date('Y', $date)
+        // );
+        // [$lunar_day, $lunar_month, $lunar_year, $isLeap] = $lunar_date;
 
-        $earthly_branch = intval(($lunar_month + 1) % 12);
+        $format_date = Helper::formatAgriculturalDate($date);
+
+        $earthly_branch = intval(($format_date->month + 1) % 12);
 
         $selected_earthly_branch_month = null;
         foreach ($earthly_branch_format as $format) {
