@@ -11,5 +11,3 @@ Route::get('/', function () {
 Route::get('/page', [PageController::class, 'showForm'])->name('page.form');
 Route::post('/page', [PageController::class, 'calculate'])->name('page.calculate');
 Route::post('/capture-image', [ImageCaptureController::class, 'captureHtml'])->name('capture.image');
-
-Route::post("/page-api", [PageController::class, 'calculateApi']);
